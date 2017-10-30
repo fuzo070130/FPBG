@@ -1,0 +1,141 @@
+@CHARSET "UTF-8";
+/* 전체영역 */
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+* {
+	font-family: 'Nanum Gothic';
+}
+html,body {height: 100%}
+body {
+	background: url("/FPBG/resources/images/mainback7.png");
+	background-color: #424242;
+	-webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    margin: 0
+}
+textarea:FOCUS {
+	outline: none;
+}
+button:FOCUS {
+	outline: none;
+}
+input:FOCUS {
+	outline: none;
+}
+select:FOCUS {
+	outline: none;
+}
+/* 네비게이션 영역 */
+.header ,
+.navbar ,
+.container-fluid ,
+.navbar-inverse {
+	background-color: #2E2E2E;
+	border-color: #2E2E2E;
+}
+/* 로고 영역 */
+.logo {
+	height: 200px;
+	margin: 50px 300px;
+}
+/* 검색바 영역 */
+.search {
+	height: 100px;
+	padding: 0px 350px;
+}
+/* 상단 탭 호버 액션 */
+body > div.header > nav > div > ul:nth-child(2) > li.active > a {
+	color: white;
+}
+body > div.header > nav > div > div > a ,
+body > div.header > nav > div > ul:nth-child(2) > li:nth-child(2) > a ,
+body > div.header > nav > div > ul:nth-child(2) > li:nth-child(3) > a ,
+body > div.header > nav > div > ul:nth-child(2) > li:nth-child(4) > a ,
+body > div.header > nav > div > ul:nth-child(2) > li:nth-child(5) > a ,
+body > div.header > nav > div > ul:nth-child(2) > li:nth-child(6) > a {
+	color: #bbbbbb;	
+}
+body > div.header > nav > div > div > a:HOVER ,
+body > div.header > nav > div > ul:nth-child(2) > li.active > a:HOVER ,
+body > div.header > nav > div > ul:nth-child(2) > li:nth-child(2) > a:HOVER ,
+body > div.header > nav > div > ul:nth-child(2) > li:nth-child(3) > a:HOVER ,
+body > div.header > nav > div > ul:nth-child(2) > li:nth-child(4) > a:HOVER ,
+body > div.header > nav > div > ul:nth-child(2) > li:nth-child(5) > a:HOVER ,
+body > div.header > nav > div > ul:nth-child(2) > li:nth-child(6) > a:HOVER ,
+body > div.header > nav > div > div > a:FOCUS ,
+body > div.header > nav > div > ul:nth-child(2) > li.active > a:FOCUS,
+body > div.header > nav > div > ul:nth-child(2) > li:nth-child(2) > a:FOCUS ,
+body > div.header > nav > div > ul:nth-child(2) > li:nth-child(3) > a:FOCUS ,
+body > div.header > nav > div > ul:nth-child(2) > li:nth-child(4) > a:FOCUS ,
+body > div.header > nav > div > ul:nth-child(2) > li:nth-child(5) > a:FOCUS ,
+body > div.header > nav > div > ul:nth-child(2) > li:nth-child(6) > a:FOCUS
+{
+	background-color: transparent;
+	background-color: #000000;
+	color: white;	
+}
+/* 드랍다운 영역 */
+body > div.header > nav > div > ul:nth-child(2) > li.dropdown.open > ul
+{
+	background-color: #2E2E2E;
+}
+body > div.header > nav > div > ul:nth-child(2) > li.dropdown.open > ul > li > a
+{
+	color: white;
+}
+body > div.header > nav > div > ul:nth-child(2) > li.dropdown.open > ul > li > a:HOVER ,
+body > div.header > nav > div > ul:nth-child(2) > li.dropdown.open > ul > li > a:FOCUS 
+{
+	color: black;
+}
+
+
+/* 리더보드 */
+.readboard {
+	height: 300px;
+	background-color: #2E2E2E;
+	opacity: 0.6;
+}
+/* 리더보드 상단*/
+.textboard {
+	background-color: #1C1C1C;
+	height: 50px;
+	margin: 0 auto;
+	text-align: center;
+	font-size: 24px;
+	padding: 11px 0px;
+	color: white;
+}
+/* 푸터 영역 */	
+.footer
+{
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 100px;
+}
+.footer > .container {
+	background-color: #1C1C1C;
+	opacity: 0.6;
+	color: white;
+}
+.footer-logo {
+	position: absolute;
+	height: 50px;
+	width: 74px;
+	left: 13px;
+	top: 25px;
+	background: url("/FPBG/resources/images/left-logo.png");
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+.footer-body {
+	position: absolute;
+	left: 100px;
+	width: 1070px;
+	height: 100px;
+	background: url("/FPBG/resources/images/footer.png");
+	background-size: cover;
+	background-repeat: no-repeat;
+}

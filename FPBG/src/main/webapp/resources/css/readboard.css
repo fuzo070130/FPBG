@@ -1,0 +1,45 @@
+@CHARSET "UTF-8";
+.body > .container {
+	background-color : #2E2E2E;
+	height: 780px;
+	opacity: 0.6;
+	color: white;
+	
+}
+.custom-slelct::-ms-expand {
+	display: none;
+}
+.submit-button {
+	width: 150px;
+	height: 75px;
+	border-color: #000000;
+	border-radius: 0px;
+	background-color: #000000;
+}
+.container-header {
+	height: 75px;
+	margin: 50px;
+}
+.select-toggle1 ,
+.select-toggle2 ,
+.select-toggle3 {
+	width: 178px;
+	height: 75px;
+	border-radius: 0px;
+	outline: none;
+}
+.select-menu1 ,
+.select-menu2 ,
+.select-menu3 {
+	width: 178px;
+}
+.select-menu1 > li:nth-child(1n) > a:HOVER ,
+.select-menu1 > li:nth-child(1n) > a:FOCUS ,
+.select-menu2 > li:nth-child(1n) > a:HOVER ,
+.select-menu2 > li:nth-child(1n) > a:FOCUS ,
+.select-menu3 > li:nth-child(1n) > a:HOVER ,
+.select-menu3 > li:nth-child(1n) > a:FOCUS {
+	background-color: #2E2E2E;
+	color: white;
+	border-top-color: #2E2E2E;
+}
