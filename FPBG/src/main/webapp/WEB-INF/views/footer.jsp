@@ -7,16 +7,18 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div class="footer">
-		<div class="container" style="height: 100px;">
-			<div class="row" style="position:relative;">
-				<div class="footer-logo">
-				
-				</div>
-				<div class="footer-body">
+	<footer>
+		<div class="footer">
+			<div class="container" style="height: 100px;">
+				<div class="row" style="position:relative;">
+					<div class="footer-logo">
+					
+					</div>
+					<div class="footer-body">
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+	</footer>
 </body>
 </html>

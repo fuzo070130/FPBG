@@ -7,12 +7,20 @@
 html,body {height: 100%}
 body {
 	background: url("/FPBG/resources/images/mainback7.png");
-	background-color: #424242;
+	background-color: white;
 	-webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    margin: 0
+    margin: 0px;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 1700px;
+    
+}
+.body {
+	padding-top: 70px;
+	padding-bottom: 150px;
 }
 textarea:FOCUS {
 	outline: none;
@@ -28,7 +36,6 @@ select:FOCUS {
 }
 /* 네비게이션 영역 */
 .header ,
-.navbar ,
 .container-fluid ,
 .navbar-inverse {
 	background-color: #2E2E2E;
@@ -110,10 +117,11 @@ body > div.header > nav > div > ul:nth-child(2) > li.dropdown.open > ul > li > a
 /* 푸터 영역 */	
 .footer
 {
-	position: absolute;
-	bottom: 0;
-	width: 100%;
 	height: 100px;
+	position: fixed;
+	left: 0px;
+	bottom: 0px;
+	width: 100%;
 }
 .footer > .container {
 	background-color: #1C1C1C;

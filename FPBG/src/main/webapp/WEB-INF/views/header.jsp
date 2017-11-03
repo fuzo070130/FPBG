@@ -11,7 +11,7 @@
 </head>
 <body>
 	<div class="header">
-		<nav class="navbar navbar-inverse" style="border-radius: 0px; margin-left: 451px; margin-right: 451px;">
+		<nav class="navbar navbar-inverse navbar-fixed-top" style="border-radius: 0px; margin-left: 451px; margin-right: 451px;">
 		    <div class="container-fluid">
 			    <div class="navbar-header">
 		    		<a class="navbar-brand" href="/FPBG"><img alt="" src="/FPBG/resources/images/left-logo2.png" style="position: absolute; top: 0;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
@@ -49,7 +49,7 @@
 	</div>
 	
 	<!-- modal -->
-	<div class="modal fade" id="register" role="dialog">
+	<div class="modal fade" id="register" role="dialog" style="color: white;">
     	<div class="modal-dialog">
       		<!-- Modal content-->
       		<div class="modal-content" style="background-color: #424242;">
@@ -58,10 +58,16 @@
 	            	<h4 class="modal-title">회원 가입</h4>
 	        	</div>
 		        <div class="modal-body">
-		            <p>Some text in the modal.</p>
+						아이디 : <input type="text" name="memID"><br>
+						닉네임 : <input type="text" name="memNickName"><br>
+						이메일 : <input type="text" name="memEmail">
+			            <button type="button" class="btn btn-default" style="border-radius: 0px; background-color: #2E2E2E; border-color: #2E2E2E; color: white;">이메일 인증 발송</button>
+			            <button type="button" class="btn btn-default" style="border-radius: 0px; background-color: #2E2E2E; border-color: #2E2E2E; color: white;">이메일 확인</button><br>
+						비밀번호 : <input type="password" name="memPassword"><br>
 		        </div>
 		        <div class="modal-footer" style="border-color: #424242;">
-		            <button type="button" class="btn btn-default" data-dismiss="modal" style="border-radius: 0px; background-color: #2E2E2E; border-color: #2E2E2E; color: white;">Close</button>
+		            <button type="button" class="btn btn-default" style="border-radius: 0px; background-color: #2E2E2E; border-color: #2E2E2E; color: white;">가입</button>
+		            <button type="button" class="btn btn-default" data-dismiss="modal" style="border-radius: 0px; background-color: #2E2E2E; border-color: #2E2E2E; color: white;">취소</button>
 		        </div>
       		</div>
     	</div>
