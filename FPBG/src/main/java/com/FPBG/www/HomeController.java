@@ -11,6 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.FPBG.domain.vo.BoardVO;
+import com.FPBG.service.BoardService;
 import com.FPBG.service.SampleService;
 import com.jpubg.www.TOP10;
 
@@ -24,6 +26,9 @@ public class HomeController {
 	
 	@Inject
 	private SampleService service;
+	
+	@Inject
+	private BoardService boardservice;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model)throws Exception {
@@ -54,5 +59,17 @@ public class HomeController {
 	public String board() {
 		return "board";
 	}
+	@RequestMapping(value = "/register", method = RequestMethod.GET)
+	public String registerGet() {
+		System.out.println("get");
+		return "register";
+	}
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
+	public String registerPost(BoardVO vo)throws Exception {
+		System.out.println("post");
+		boardservice.create(vo);
+		return "home";
+	}
+	
 	
 }
