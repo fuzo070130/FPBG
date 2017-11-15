@@ -1,4 +1,4 @@
-package com.FPBG.www;
+package com.FPBG.util;
 
 import javax.mail.Authenticator;
 import javax.mail.PasswordAuthentication;

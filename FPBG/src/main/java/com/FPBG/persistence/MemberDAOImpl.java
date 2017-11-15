@@ -32,7 +32,7 @@ public class MemberDAOImpl implements MemberDAO{
 	
 	@Override
 	public boolean registerCheck(MemberVO vo) throws Exception {
-		return session.selectOne(namespace+"registerCheck" , vo);
+		return session.selectOne(namespace+".registerCheck" , vo);
 	}
 
 

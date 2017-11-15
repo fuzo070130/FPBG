@@ -24,10 +24,10 @@
 		select count(*)
 		from Member where
 		<if test="memNickName != null">
-			memNickName = #{ memNickname }
+			memNickName = #{memNickName}
 		</if>
 		<if test="memEmail != null">
-			memEmail = #{ memEmail }
+			and memEmail = #{memEmail}
 		</if>
 	</select>
 	 

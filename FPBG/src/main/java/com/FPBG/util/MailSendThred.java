@@ -1,4 +1,4 @@
-package com.FPBG.www;
+package com.FPBG.util;
 
 import java.util.Properties;
 
