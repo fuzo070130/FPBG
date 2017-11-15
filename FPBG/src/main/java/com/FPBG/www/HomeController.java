@@ -70,6 +70,9 @@ public class HomeController {
 		boardservice.create(vo);
 		return "home";
 	}
-	
+	@RequestMapping(value = "/new", method = RequestMethod.GET)
+	public String newfile(BoardVO vo)throws Exception {
+		return "NewFile";
+	}
 	
 }

@@ -1,0 +1,47 @@
+@CHARSET "UTF-8";
+
+/* 리더보드 전체 높이 */
+.content {
+	height: 875px;
+}
+
+/* 검색 조건 칸 */
+/* 버튼 상위 클래스 높이 */
+.col-md-2,
+.col-md-2 .dropdown,
+.col-md-2 .submit-button{
+	height: 100px;
+}
+
+/* 상단 여백 */
+.col-md-2 .dropdown,
+.col-md-4 img,
+.submit-button {
+	margin-top: 12.5px;
+}
+
+/* 하단 마진,색깔 */
+.container-header {
+	margin-bottom: 25px;
+	background-color: gray;
+}
+
+/* 검색칸 버튼 크기,색깔 */
+/* 조건 버튼 */
+.dropdown .btn-primary {
+	height: 75%;
+	width: 100%;
+}
+
+/* 검색 버튼 */
+.col-md-2 .submit-button {
+	height: 75%;
+	width: 100%;
+}
+
+/* 결과 출력 칸 */
+.container-body {
+	height: 750px;
+	background-color: gray;
+	opacity: 0.2;
+}

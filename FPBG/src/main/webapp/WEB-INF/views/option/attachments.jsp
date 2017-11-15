@@ -9,8 +9,12 @@
 <body>
 	<jsp:include page="../header.jsp"/>
 	
-	<div class="body">
-	
+	<div class="bigbody">
+		<div class="content">	
+			<div class="container">
+			
+			</div>		
+		</div>
 	</div>
 	
 	<jsp:include page="../footer.jsp"/>
