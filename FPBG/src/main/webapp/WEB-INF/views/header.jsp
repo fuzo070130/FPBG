@@ -5,15 +5,15 @@
 <head>
 <meta http-equiv="Content-Type" content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
 <title>Insert title here</title>
-	<link rel="stylesheet" href="resources/css/header.css">
-	<link rel="stylesheet" href="resources/css/headerMain.css">
-	<link rel="stylesheet" href="resources/css/bootstrap.css">
-	<link rel="stylesheet" href="resources/css/Nwagon.css">
+	<link rel="stylesheet" href="/FPBG/resources/css/header.css">
+	<link rel="stylesheet" href="/FPBG/resources/css/headerMain.css">
+	<link rel="stylesheet" href="/FPBG/resources/css/bootstrap.css">
+	<link rel="stylesheet" href="/FPBG/resources/css/Nwagon.css">
 	
 	<script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
-	<script src="resources/js/bootstrap.js"></script>
-	<script src="resources/js/Nwagon.js"></script>
-	<script src="resources/js/Nwagon_no_vml.js"></script>
+	<script src="/FPBG/resources/js/bootstrap.js"></script>
+	<script src="/FPBG/resources/js/Nwagon.js"></script>
+	<script src="/FPBG/resources/js/Nwagon_no_vml.js"></script>
 </head>
 <body>
 	<nav class="navbar navbar-default">

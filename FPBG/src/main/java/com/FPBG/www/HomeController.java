@@ -59,17 +59,7 @@ public class HomeController {
 	public String board() {
 		return "board";
 	}
-	@RequestMapping(value = "/register", method = RequestMethod.GET)
-	public String registerGet() {
-		System.out.println("get");
-		return "register";
-	}
-	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public String registerPost(BoardVO vo)throws Exception {
-		System.out.println("post");
-		boardservice.create(vo);
-		return "home";
-	}
+	
 	@RequestMapping(value = "/new", method = RequestMethod.GET)
 	public String newfile(BoardVO vo)throws Exception {
 		return "NewFile";
