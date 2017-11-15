@@ -33,6 +33,7 @@
 /* 모달창 바디 폰트사이즈*/
 .modal-body {
 	font-size: 24px;
+	color: gray;
 }
 
 /* 모달창 버튼 크기,폰트사이즈*/
@@ -65,4 +66,10 @@
 .text-hide-7 {
 	display: none;
 	font-size: 18px;
+}
+
+/* X,Y 숨김 */
+.glyphicon-remove,
+.glyphicon-ok {
+	visibility: hidden;
 }

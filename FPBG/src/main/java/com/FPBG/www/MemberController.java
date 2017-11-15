@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.FPBG.domain.vo.MemberVO;
 import com.FPBG.service.MemberService;
 import com.FPBG.util.CodeCreate;
+import com.FPBG.util.MailSendThred;
 import com.FPBG.util.PasswordSecurity;
 
 @Controller
@@ -36,8 +38,18 @@ public class MemberController {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value = "/mailCheck", method = RequestMethod.GET)
-	public ResponseEntity<String> memberMailCheck(MemberVO vo, HttpServletRequest request){
+	@RequestMapping(value = "/mailCheck", method = RequestMethod.POST)
+	public ResponseEntity<String> memberMailCheck(@RequestBody MemberVO vo, HttpServletRequest request){
+		
+		/*MemberVO vo = new MemberVO();
+		
+		vo.setMemID(memID);
+		vo.setMemNickName(memNickName);
+		vo.setMemPassword(memPassword);
+		vo.setMemEmail(memEmail);*/
+		
+		System.out.println(vo.getMemEmail());
+		System.out.println(vo.getMemNickName());
 
 		ResponseEntity<String> entity = null;
 		try {
