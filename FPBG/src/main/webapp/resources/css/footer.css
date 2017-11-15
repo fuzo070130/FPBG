@@ -1,0 +1,46 @@
+@CHARSET "UTF-8";
+
+/* 푸터 전역 */
+.footer {
+	background-color: #2E2E2E;
+	opacity: 0.5;
+	height: 100px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+/* 푸터 내용 */
+.footermain {
+	height: 100px;
+	margin: 0 auto;
+	color: white;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+/* 푸터 왼쪽 css */
+.footer-left {
+	font-size: 48px;
+}
+
+/* 푸터 텍스트 css */
+.footer-text {
+		font-size: 14px;
+}
+
+/* 푸터 텍스트 css 크기별 조정*/
+@media(max-width: 920px) {
+	.footer-left {
+		font-size: 36px;
+	}	
+}
+@media(max-width: 768px) {
+	.footer-left {
+		font-size: 24px;
+	}	
+}
+@media(max-width: 320px) {
+	.footer-left {
+		font-size: 18px;
+	}	
+}

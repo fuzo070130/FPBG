@@ -1,0 +1,68 @@
+@CHARSET "UTF-8";
+
+/* !important 부트스트랩보다 우선적용(최순위 적용) */
+/* 헤더 외곽 곡선없애기  */
+.navbar-default {
+	border-radius: 0px !important;
+}
+/* 헤더 오른쪽 빈칸없애기  */
+.container-fluid {
+	padding-right: 0px !important;
+}
+/* 버튼 크기설정, 곡선, 색깔 */
+.btn-info {
+	border-radius: 25px !important;
+	margin-top: 8px !important;
+	margin-right: 25px !important;
+	width: 125px !important;
+}
+
+/* 회원가입 , 로그인 CSS */
+
+/* 모달창 전체 */
+.modal-content {
+	text-align: center;
+}
+
+
+/* 모달창 헤더 */
+.modal-header {
+	
+}
+
+/* 모달창 바디 폰트사이즈*/
+.modal-body {
+	font-size: 24px;
+}
+
+/* 모달창 버튼 크기,폰트사이즈*/
+.modal-body .btn-default {
+	width: 256px;
+	font-size: 24px;
+}
+
+/* 모달창 인풋 크기사이즈*/
+.modal-body .input-span {
+	width: 100%;
+	height: 60px;
+}
+
+.modal-body input , .modal-body .btn-default {
+	width: 80%;
+}
+
+/* 로그인,회원가입 버튼 크기 */
+.modal-footer button {
+	width: 100%; 
+}
+
+.text-hide-1,
+.text-hide-2,
+.text-hide-3,
+.text-hide-4,
+.text-hide-5,
+.text-hide-6,
+.text-hide-7 {
+	display: none;
+	font-size: 18px;
+}

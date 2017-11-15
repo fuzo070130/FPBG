@@ -1,0 +1,60 @@
+@CHARSET "UTF-8";
+
+
+/* 로고,검색창 높이 */
+.body {
+	height: 440px;
+}
+
+/* TOP10 보드 높이 */
+.board {
+	height: 330px;
+}
+
+/* 검색창 상세높이,넓이 */
+/**
+  * input-group 검색칸의 전체 
+  * search 검색 텍스트칸
+  * search-btn 검색 버튼
+  */
+.input-group {
+	width: 400px;
+	height: 42px;
+	margin: 0 auto;
+}
+#search {
+	width: 350px;
+	height: 42px;
+}
+.search-btn {
+	width: 50px;
+	height: 42px;
+}
+
+/* 로고 중앙정렬 */
+.body .logo {
+	width: 540px;
+	height: 350px;
+	margin: auto;
+	padding-top: 75px;
+}
+
+/* TOP10 선 */
+.textboard,
+.readboard {
+	border: 2px solid #BDBDBD;
+}
+
+/* TOP10 곡선, 텍스트정렬,크기 */
+.textboard {
+	border-radius: 15px;
+	text-align: center;
+	font-size: 24px;
+}
+
+.readboard {
+	height: 300px;
+	border-left: 0px;
+	border-bottom: 0px;
+	border-right: 0px;
+}

@@ -5,4 +5,30 @@
 
 <mapper namespace="com.FPBG.mapper.MemberMapper">
 
+	<insert id="insert" parameterType="MemberVO">
+	INSERT INTO Member (memNickName ,memID, memEmail, memPassword)
+	VALUES (#{memNickName}, #{memID}, #{memEmail}, #{memPassword})
+	</insert>
+	
+	<update id="update" parameterType="MemberVO">
+	UPDATE Member SET
+	memNickName=#{memNickName} ,memEmail=#{memEmail} ,memPassword=#{memPassword} ,memDiscord=#{memDiscord}
+	WHERE memNumber=#{memNumber}
+	</update>
+	
+	<delete id="delete" parameterType="MemberVO">
+	DELETE FROM Member WHERE memNumber=#{memNumber}
+	</delete>
+	
+	<select id="registerCheck" resultType="boolean">
+		select count(*)
+		from Member where
+		<if test="memNickName != null">
+			memNickName = #{ memNickname }
+		</if>
+		<if test="memEmail != null">
+			memEmail = #{ memEmail }
+		</if>
+	</select>
+	 
 </mapper>

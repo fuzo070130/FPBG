@@ -5,20 +5,20 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+	<link rel="stylesheet" href="resources/css/footer.css">
 </head>
 <body>
-	<footer>
-		<div class="footer">
-			<div class="container" style="height: 100px;">
-				<div class="row" style="position:relative;">
-					<div class="footer-logo">
-					
-					</div>
-					<div class="footer-body">
-					</div>
-				</div>
+	<div class="footer">
+		<div class="footermain">
+			<div class="footer-left">
+				배틀그라운드 전적 검색 사이트
+			</div>
+			<div class="footer-text">
+				이준수(010-443401503)김   민(010-7767-0289)
+				정종길(010-3533-9721)김란영(010-2994-3118)
+				Copyright &copy; 국제 2017 All Right Reserved.
 			</div>
 		</div>
-	</footer>
+	</div>
 </body>
 </html>

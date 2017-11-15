@@ -14,6 +14,7 @@ public class MemberVO {
 	private String memPassword;
 	private String memDiscord;
 	private Date memReg;
+	
 	public int getMemNumber() {
 		return memNumber;
 	}
