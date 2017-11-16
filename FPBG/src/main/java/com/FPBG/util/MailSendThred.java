@@ -34,9 +34,12 @@ public class MailSendThred extends Thread{
 	public void run(){
 		Properties p = new Properties(); // 정보를 담을 객체
 		
-		p.put("mail.smtp.host","mail.modujava.com");
+		p.put("mail.smtp.host","smtp.naver.com");
+		p.put("mail.smtp.port", "587");
 		p.put("mail.smtp.auth", "true");
 		p.put("mail.smtp.debug", "true");
+		p.put("mail.smtp.ssl.enable", "true");
+        p.put("mail.smtp.ssl.trust", "smtp.naver.com");
 		
 		try{
 			

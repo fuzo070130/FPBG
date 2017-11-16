@@ -1,9 +1,11 @@
 package com.FPBG.www;
 
-import java.util.Locale;
+import java.io.PipedWriter;
+import java.io.PrintWriter;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.http.HttpStatus;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.FPBG.domain.vo.MemberVO;
 import com.FPBG.service.MemberService;
@@ -28,28 +31,48 @@ public class MemberController {
 	@Inject
 	private MemberService service;
 	
+	@ResponseBody
 	@RequestMapping(value = "/insert", method = RequestMethod.POST)
-	public String insert(MemberVO vo)throws Exception {
+	public ResponseEntity<String> insert(@RequestBody MemberVO vo)throws Exception {
+		ResponseEntity<String> entity = null;
 		/* 암호화 */
 		PasswordSecurity security = new PasswordSecurity();
 		vo.setMemPassword(security.encryptSHA256(vo.getMemPassword()));
-		service.insert(vo);
-		return "home";
+		
+		try {
+			service.insert(vo);
+			entity = new ResponseEntity<String>("succ", HttpStatus.OK);
+		}catch (Exception e){
+			entity = new ResponseEntity<String>("fail", HttpStatus.OK);
+			e.printStackTrace();
+		}
+		
+		return entity;
+	}
+	
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public String login(MemberVO vo,HttpSession session, HttpServletRequest request,HttpServletResponse response, Model model)throws Exception {
+		PasswordSecurity security = new PasswordSecurity();
+		vo.setMemPassword(security.encryptSHA256(vo.getMemPassword()));
+		
+		String referer = request.getHeader("referer");
+		if(referer == null || referer == ""){
+			referer = "/";
+		}
+		MemberVO Mvo = service.login(vo);
+
+		if(Mvo == null) {
+			return "redirect:/";
+		}
+		session.setAttribute("vo", Mvo);
+		model.addAttribute("vo", Mvo);
+		
+		return "redirect:" + referer;
 	}
 	
 	@ResponseBody
 	@RequestMapping(value = "/mailCheck", method = RequestMethod.POST)
 	public ResponseEntity<String> memberMailCheck(@RequestBody MemberVO vo, HttpServletRequest request){
-		
-		/*MemberVO vo = new MemberVO();
-		
-		vo.setMemID(memID);
-		vo.setMemNickName(memNickName);
-		vo.setMemPassword(memPassword);
-		vo.setMemEmail(memEmail);*/
-		
-		System.out.println(vo.getMemEmail());
-		System.out.println(vo.getMemNickName());
 
 		ResponseEntity<String> entity = null;
 		try {
@@ -61,7 +84,7 @@ public class MemberController {
 				session.setAttribute("code", code);
 				session.setMaxInactiveInterval(60*5);
 				
-				MailSendThred.MailSend("webmaster@place24.co.kr", vo.getMemEmail() , "제목입니다.", code);
+				MailSendThred.MailSend("fuzo070130@naver.com", vo.getMemEmail() , "제목입니다.", code);
 				entity = new ResponseEntity<String>("succ", HttpStatus.OK);
 			}else{
 				entity = new ResponseEntity<String>("fail", HttpStatus.OK);
@@ -77,7 +100,6 @@ public class MemberController {
 	@ResponseBody
 	@RequestMapping(value = "/codeCheck", method = RequestMethod.GET)
 	public ResponseEntity<String> memberCodeCheck(String code, HttpServletRequest request){
-
 		HttpSession session = request.getSession();
 		String sessionCode = (String) session.getAttribute("code");
 		if(sessionCode != null && code != null){

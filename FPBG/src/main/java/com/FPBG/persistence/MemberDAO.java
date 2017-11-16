@@ -12,6 +12,8 @@ public interface MemberDAO {
 
 	public boolean registerCheck(MemberVO vo) throws Exception;
 
+	public MemberVO login(MemberVO vo)throws Exception;
+
 	
 	
 }

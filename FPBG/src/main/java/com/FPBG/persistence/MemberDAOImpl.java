@@ -35,5 +35,10 @@ public class MemberDAOImpl implements MemberDAO{
 		return session.selectOne(namespace+".registerCheck" , vo);
 	}
 
+	@Override
+	public MemberVO login(MemberVO vo) throws Exception {
+		return session.selectOne(namespace+".login" , vo);
+	}
+
 
 }

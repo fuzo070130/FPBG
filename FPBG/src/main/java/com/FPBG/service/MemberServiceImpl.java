@@ -33,4 +33,9 @@ public class MemberServiceImpl implements MemberService{
 		return dao.registerCheck(vo);
 	}
 
+	@Override
+	public MemberVO login(MemberVO vo) throws Exception {
+		return dao.login(vo);
+	}
+
 }

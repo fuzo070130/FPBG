@@ -11,5 +11,7 @@ public interface MemberService {
 	public void delete(MemberVO vo)throws Exception;
 
 	boolean registerCheck(MemberVO vo) throws Exception;
+
+	public MemberVO login(MemberVO vo) throws Exception;
 	
 }

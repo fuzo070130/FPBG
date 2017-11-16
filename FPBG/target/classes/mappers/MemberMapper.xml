@@ -30,5 +30,11 @@
 			and memEmail = #{memEmail}
 		</if>
 	</select>
+	
+	<select id="login" resultType="MemberVO">
+		select
+			*
+		from Member where memEmail = #{ memEmail } and memPassword = #{ memPassword }
+	</select>
 	 
 </mapper>

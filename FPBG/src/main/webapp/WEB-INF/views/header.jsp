@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+   <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -54,8 +56,15 @@
 				    <li><a href="board">게시판</a></li>
 			    </ul>
 				<ul class="nav navbar-nav navbar-right">
-				    <li><button type="button" class="btn btn-info btn register" data-toggle="modal" data-target="#register" ><span class="glyphicon glyphicon-user"></span> 회원 가입</button></li>
-				    <li><button type="button" class="btn btn-info btn login" data-toggle="modal" data-target="#login"><span class="glyphicon glyphicon-log-in"></span>&nbsp;로&nbsp;그&nbsp;인&nbsp;</button></li>
+					<c:choose>
+						<c:when test="${empty session.vo}">
+					    	<li><button type="button" class="btn btn-info btn register" data-toggle="modal" data-target="#register" ><span class="glyphicon glyphicon-user"></span> 회원 가입</button></li>
+					    	<li><button type="button" class="btn btn-info btn login" data-toggle="modal" data-target="#login"><span class="glyphicon glyphicon-log-in"></span>&nbsp;로&nbsp;그&nbsp;인&nbsp;</button></li>
+						</c:when>
+						<c:when test="${!empty session.vo}">
+							
+						</c:when>
+				    </c:choose>
 	 			</ul>
 		    </div>
 	    </div>
@@ -235,21 +244,10 @@
 							$(".input-span-5").click(function(event){
 								if(idcheck() == true && nickcheck() == true && passcheck() == true && mailcheck() == true){
 									/* 아작스 처리 */
-									$(".text-hide-5").text('성공적으로 발송했습니다 이메일을 확인해주세요');
-									$("#memID").attr('readonly','true');
-									$("#memNickName").attr('readonly','true');
-									$("#memPassword").attr('readonly','true');
-									$("#memEmail").attr('readonly','true');
-									$(".div-input-span-5 .glyphicon-remove").css('visibility','hidden').css('color', 'red');
-									$(".div-input-span-5 .glyphicon-ok").css('visibility','visible').css('color', 'green');
 									var memID = $("#memID").val();
 									var memNickName = $("#memNickName").val();
 									var memPassword = $("#memPassword").val();
 									var memEmail = $("#memEmail").val();
-									console.log(memID);
-									console.log(memNickName);
-									console.log(memPassword);
-									console.log(memEmail);
 									$.ajax({
 										type : 'post',
 										url : '/FPBG/Member/mailCheck',
@@ -265,7 +263,19 @@
 											memEmail : memEmail
 										}),
 										success : function(result){
-											console.log(result);
+											if(result == 'succ'){
+												$(".text-hide-5").text('성공적으로 발송했습니다 이메일을 확인해주세요');
+												$("#memID").attr('readonly','true');
+												$("#memNickName").attr('readonly','true');
+												$("#memPassword").attr('readonly','true');
+												$("#memEmail").attr('readonly','true');
+												$(".div-input-span-5 .glyphicon-remove").css('visibility','hidden').css('color', 'red');
+												$(".div-input-span-5 .glyphicon-ok").css('visibility','visible').css('color', 'green');
+											} else if(result == 'fail'){
+												$(".text-hide-5").text('닉네임 또는 이메일이 중복됩니다');
+												$(".div-input-span-5 .glyphicon-ok").css('visibility','hidden').css('color', 'green');
+												$(".div-input-span-5 .glyphicon-remove").css('visibility','visible').css('color', 'red');
+											}
 										}
 									});
 								} else {
@@ -278,24 +288,98 @@
 							/* 코드 확인 */
 							$(".input-span-7").click(function(event){
 								if(!$("#code").val()){
-									/* 아작스 처리 */
 									$(".text-hide-7").text('빈칸입니다 확인해주세요');
 									$(".div-input-span-7 .glyphicon-ok").css('visibility','hidden').css('color', 'green');
 									$(".div-input-span-7 .glyphicon-remove").css('visibility','visible').css('color', 'red');
-									
 								} else {
-									$("#code").attr('readonly','true');
-									$(".text-hide-7").text('성공적으로 확인했습니다');
-									$(".div-input-span-7 .glyphicon-remove").css('visibility','hidden').css('color', 'red');
-									$(".div-input-span-7 .glyphicon-ok").css('visibility','visible').css('color', 'green');
-									return true;
+									/* 아작스 처리 */
+									var code = $("#code").val();
+									$.ajax({
+										type : 'get',
+										url : '/FPBG/Member/codeCheck',
+										headers : {
+											"Content-Type" : "application/json",
+											"X-HTTP-Method-Override" : "GET"
+										},
+										dataType : 'text',
+										data : {
+											"code" : code
+										},
+										success : function(result){
+											if(result == 'succ') {
+												$("#code").attr('readonly','true');
+												$(".text-hide-7").text('성공적으로 확인했습니다');
+												$(".div-input-span-7 .glyphicon-remove").css('visibility','hidden').css('color', 'red');
+												$(".div-input-span-7 .glyphicon-ok").css('visibility','visible').css('color', 'green');
+												$(".input-span-5").prop("disabled", true);
+												$(".input-span-7").prop("disabled", true);
+											} else {
+												$(".text-hide-7").text('코드가 일치하지않습니다');
+												$(".div-input-span-7 .glyphicon-ok").css('visibility','hidden').css('color', 'green');
+												$(".div-input-span-7 .glyphicon-remove").css('visibility','visible').css('color', 'red');
+											}
+										}
+									});
 								}
+							});
+							/* 회원 가입 */
+							$(".join-button").click(function(event){
+								/* 이메일 인증 여부 */
+								if($(".input-span-7").is(":disabled")) {
+									/* 성공 */
+									var memID = $("#memID").val();
+									var memNickName = $("#memNickName").val();
+									var memPassword = $("#memPassword").val();
+									var memEmail = $("#memEmail").val();
+									$.ajax({
+										type : 'post',
+										url : '/FPBG/Member/insert',
+										headers : {
+											"Content-Type" : "application/json",
+											"X-HTTP-Method-Override" : "POST"
+										},
+										dataType : 'text',
+										data : JSON.stringify({
+											memID : memID,
+											memNickName : memNickName,
+											memPassword : memPassword,
+											memEmail : memEmail
+										}),
+										success : function(result){
+											if(result == 'succ') {
+												alert('성공적으로 가입했습니다');
+												location.href = "/FPBG";
+											} else if(result == 'fail') {
+												alert('가입에 실패하셨습니다');
+												location.href = "/FPBG";
+											}
+										}
+									});
+								} else {
+									/* 실패 */
+									alert('값을 확인하시고 재시도해주세요');
+								}
+							});
+							/* 로그인 */
+							$(".login-button").click(function(event){
+								var form = $('<form></form');
+								form.attr('action', "/FPBG/Member/login");
+					            form.attr('method', 'post');
+					            form.appendTo('body');
+					            
+					            var id = $("#memID").val();
+					            var password = $("#memPassword").val();
+					            
+					            form.append($('<input type="hidden" value="' + id + '" name="memID">'));
+					            form.append($('<input type="hidden" value="' + password + '" name="memPassword">'));
+					            
+					            form.submit();
 							});
 						});
 					</script>
 		        </div>
 		        <div class="modal-footer">
-		            <button type="button" class="btn btn-default">Join</button>
+		            <button type="button" class="btn btn-default join-button">Join</button>
 		        </div>
       		</div>
     	</div>
@@ -312,15 +396,15 @@
 		        <div class="modal-body">
 		        	<div class="input-span">
 		        		<span class="glyphicon glyphicon-user"></span>
-						<input type="text" name="memID" placeholder="Your ID"><br>
+						<input type="text" name="memID" placeholder="Your ID" id="memID"><br>
 					</div>
 					<div class="input-span">
 		        		<span class="glyphicon glyphicon-lock"></span>
-						<input type="password" name="memPassword" placeholder="Your Password">
+						<input type="password" name="memPassword" placeholder="Your Password" id="memEmail">
 					</div>
 		        </div>
 		        <div class="modal-footer">
-		            <button type="button" class="btn btn-default">Log in</button>
+		            <button type="button" class="btn btn-default login-button">Log in</button>
 		        </div>
       		</div>
     	</div>
