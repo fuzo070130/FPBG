@@ -7,64 +7,56 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<jsp:include page="../header.jsp"/>
-	
+	<jsp:include page="../header.jsp" />
+
 	<div class="bigbody">
-		<div class="content">	
-			<div class="container">
-				<!-- Main content -->
-<section class="content">
-	<div class="row">
-		<!-- left column -->
-		<div class="col-md-12">
-			<!-- general form elements -->
-			<div class="box box-primary">
-				<div class="box-header">
-					<h3 class="box-title">REGISTER BOARD</h3>
+		<div class="container">
+			<!-- Main content -->
+			<section class="content">
+			<div class="row">
+				<!-- left column -->
+				<div class="col-md-12">
+					<!-- general form elements -->
+					<div class="box box-primary">
+						<div class="box-header">
+							<h3 class="box-title">REGISTER BOARD</h3>
+						</div>
+						<!-- /.box-header -->
+
+						<form role="form" method="post">
+							<div class="box-body">
+								<div class="form-group">
+									<label for="exampleInputEmail1">Title</label> <input
+										type="text" name='boardTitle' class="form-control"
+										placeholder="Enter Title">
+								</div>
+								<div class="form-group">
+									<label for="exampleInputPassword1">Content</label>
+									<textarea class="form-control" name="boardContent" rows="5"
+										placeholder="Enter ..."></textarea>
+								</div>
+
+							</div>
+							<!-- /.box-body -->
+
+							<div class="box-footer">
+								<button type="submit" class="btn btn-primary">Submit</button>
+							</div>
+						</form>
+
+
+					</div>
+					<!-- /.box -->
 				</div>
-				<!-- /.box-header -->
-
-<form role="form" method="post">
-	<div class="box-body">
-		<div class="form-group">
-			<label for="exampleInputEmail1">Title</label> 
-			<input type="text"
-				name='title' class="form-control" placeholder="Enter Title">
-		</div>
-		<div class="form-group">
-			<label for="exampleInputPassword1">Content</label>
-			<textarea class="form-control" name="content" rows="3"
-				placeholder="Enter ..."></textarea>
-		</div>
-		<div class="form-group">
-			<label for="exampleInputEmail1">Writer</label> 
-			<input type="text"
-				name="writer" class="form-control" placeholder="Enter Writer">
-		</div>
-	</div>
-	<!-- /.box-body -->
-
-	<div class="box-footer">
-		<button type="submit" class="btn btn-primary">Submit</button>
-	</div>
-</form>
-
+				<!--/.col (left) -->
 
 			</div>
-			<!-- /.box -->
+			<!-- /.row --> 
+			</section> <!-- Main content -->
 		</div>
-		<!--/.col (left) -->
+	</div>
 
-	</div>
-	<!-- /.row -->
-</section>
-<!-- /.content -->
-</div>
-<!-- /.content-wrapper -->
-			</div>		
-		</div>
-	</div>
-	
-	<jsp:include page="../footer.jsp"/>
+
+	<jsp:include page="../footer.jsp" />
 </body>
 </html>
