@@ -39,7 +39,7 @@ public class BoardController {
 		rttr.addFlashAttribute("msg", "success");
 		return "redirect:/board/listAll";
 	}
-	
+	/*주석좀 달면됨 ^^*/
 	@RequestMapping(value = "/listAll", method = RequestMethod.GET)
 	  public void listAll(Model model) throws Exception {
 		
