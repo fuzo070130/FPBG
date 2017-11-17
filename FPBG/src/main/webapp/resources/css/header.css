@@ -16,6 +16,14 @@
 	margin-right: 25px !important;
 	width: 125px !important;
 }
+.member-info {
+	border-radius: 25px !important;
+	margin-top: 8px !important;
+	margin-right: 25px !important;
+	width: 375px !important;
+	height: 34px;
+	padding-top: 5px !important;
+}
 
 /* 회원가입 , 로그인 CSS */
 

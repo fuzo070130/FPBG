@@ -1,8 +1,5 @@
 package com.FPBG.www;
 
-import java.io.PipedWriter;
-import java.io.PrintWriter;
-
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.FPBG.domain.vo.MemberVO;
 import com.FPBG.service.MemberService;
@@ -50,8 +46,11 @@ public class MemberController {
 		return entity;
 	}
 	
+	@ResponseBody
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String login(MemberVO vo,HttpSession session, HttpServletRequest request,HttpServletResponse response, Model model)throws Exception {
+	public ResponseEntity<String> login(@RequestBody MemberVO vo,HttpSession session, HttpServletRequest request,HttpServletResponse response, Model model)throws Exception {
+		ResponseEntity<String> entity = null;
+		
 		PasswordSecurity security = new PasswordSecurity();
 		vo.setMemPassword(security.encryptSHA256(vo.getMemPassword()));
 		
@@ -59,15 +58,38 @@ public class MemberController {
 		if(referer == null || referer == ""){
 			referer = "/";
 		}
-		MemberVO Mvo = service.login(vo);
-
-		if(Mvo == null) {
-			return "redirect:/";
-		}
-		session.setAttribute("vo", Mvo);
-		model.addAttribute("vo", Mvo);
 		
-		return "redirect:" + referer;
+		try {
+			MemberVO Mvo = service.login(vo);
+			if(Mvo == null) {
+				entity = new ResponseEntity<String>("fail", HttpStatus.OK);
+			}else{
+				session.setAttribute("vo", Mvo);
+				model.addAttribute("vo", Mvo);
+				entity = new ResponseEntity<String>("succ", HttpStatus.OK);
+			}
+		}catch(Exception e){
+			entity = new ResponseEntity<String>("fail", HttpStatus.OK);
+			e.printStackTrace();
+		}
+		
+		return entity;
+	}
+	
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String logout(HttpServletRequest request, 
+			HttpServletResponse response, HttpSession session) throws Exception{
+		
+		Object obj = session.getAttribute("vo");
+		
+		if(obj != null){
+			
+			session.removeAttribute("vo");
+			session.invalidate();
+			
+		}
+		
+		return "redirect:/";
 	}
 	
 	@ResponseBody
