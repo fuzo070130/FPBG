@@ -38,6 +38,7 @@ public class MailSendThred extends Thread{
 		p.put("mail.smtp.port", "587");
 		p.put("mail.smtp.auth", "true");
 		p.put("mail.smtp.debug", "true");
+		p.put("mail.smtp.starttls.enable", "true");
 		p.put("mail.smtp.ssl.enable", "true");
         p.put("mail.smtp.ssl.trust", "smtp.naver.com");
 		

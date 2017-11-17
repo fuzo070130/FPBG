@@ -43,7 +43,7 @@
 	<tr>
 		<td>${boardVO.boardNumber}</td>
 		<td><a href='/board/read?bno=${boardVO.boardNumber}'>${boardVO.boardTitle}</a></td>
-		<td></td>
+		<td>${boardVO.memNickName }</td>
 		<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
 				value="${boardVO.boardDate}" /></td>
 		<td><span class="badge bg-red">${boardVO.boardViewCount }</span></td>
@@ -55,7 +55,7 @@
 
 				</div>
 				<!-- /.box-body -->
-				<div class="box-footer">Footer</div>
+				<div class="box-footer"><a href="/FPBG/board/register"><button class="btn btn-primary btn">글쓰기</button></a></div>
 				<!-- /.box-footer-->
 			</div>
 		</div>

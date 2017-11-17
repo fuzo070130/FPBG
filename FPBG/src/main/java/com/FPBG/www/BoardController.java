@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.FPBG.domain.vo.BoardVO;
+import com.FPBG.domain.vo.MemberVO;
 import com.FPBG.service.BoardService;
 
 
@@ -31,8 +32,7 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value = "/register", method =  RequestMethod.POST)
-	public String registPOST(BoardVO board, RedirectAttributes rttr) throws Exception{
-		System.out.println(board.getBoardContent());
+	public String registPOST(BoardVO board,RedirectAttributes rttr) throws Exception{
 		
 		service.create(board);
 		

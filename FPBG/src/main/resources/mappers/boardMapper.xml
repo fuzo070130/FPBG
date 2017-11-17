@@ -6,8 +6,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.FPBG.mapper.BoardMapper">
 	
 	<insert id="create" parameterType="BoardVO" >
-	insert into Board (boardTitle, boardContent)
-	values(#{boardTitle}, #{boardContent})
+	insert into Board (boardTitle, boardContent, memNickName ,memNumber)
+	values(#{boardTitle}, #{boardContent},#{memNickName},#{memNumber})
 	</insert>
 	
 	<select id="read" resultType="BoardVO">
