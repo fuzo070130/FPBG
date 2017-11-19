@@ -4,29 +4,28 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.FPBG.mapper.BoardMapper">
-	
-	<insert id="create" parameterType="BoardVO" >
-	insert into Board (boardTitle, boardContent, memNickName ,memNumber)
-	values(#{boardTitle}, #{boardContent},#{memNickName},#{memNumber})
+
+	<insert id="create" parameterType="BoardVO">
+		insert into Board (boardTitle, boardContent, memNickName ,memNumber)
+		values(#{boardTitle}, #{boardContent},#{memNickName},#{memNumber})
 	</insert>
-	
+
 	<select id="read" resultType="BoardVO">
-	select
-	 boardNumber, boardTitle, boardContent, boardDate, boardUpdateDate
-	from 
-	 Board
-	 where boardNumber = #{boardNumber}
+		select
+		*
+		from Board
+		where boardNumber = #{boardNumber}
 	</select>
-	
+
 	<update id="update">
-	update Board set boardTitle =#{boardTitle}, boardContent=#{boardContent}
-	where boardNumber = #{boardNumber}
+		update Board set boardTitle =#{boardTitle}, boardContent=#{boardContent}
+		where boardNumber = #{boardNumber}
 	</update>
-	
+
 	<delete id="delete">
-	delete from Board where boardNumber = #{boardNumber}
+		delete from Board where boardNumber = #{boardNumber}
 	</delete>
-	
+
 	<select id="listAll" resultType="BoardVO">
 	<![CDATA[
 	select
@@ -36,4 +35,38 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	order by boardNumber desc, boardDate desc
 	]]>
 	</select>
+
+	<select id="listPage" resultType="BoardVO">
+	<![CDATA[
+	select
+	*
+	from Board
+	where boardNumber > 0
+	order by boardNumber desc, boardDate desc
+	limit #{page}, 10
+	]]>
+	</select>
+
+	<select id="listCriteria" resultType="BoardVO">
+	 <![CDATA[
+	 select 
+	  *
+	 from Board
+	  where boardNumber > 0
+	order by boardNumber desc, boardDate desc
+	 limit #{pageStart}, #{perPageNum}
+	 ]]>
+	</select>
+	
+	<select id="countPaging" resultType="int">
+	 <![CDATA[
+	 select 
+	   count(boardNumber) 
+	 from 
+	   Board
+	 where 
+	   boardNumber > 0 
+	 ]]>
+ </select>
+
 </mapper>
