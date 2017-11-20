@@ -31,7 +31,6 @@ public class BoardController {
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public void registerGET(BoardVO board, Model model) throws Exception {
 
-		logger.info("register get ...........");
 	}
 
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
@@ -40,28 +39,11 @@ public class BoardController {
 		service.create(board);
 
 		rttr.addFlashAttribute("msg", "success");
-		return "redirect:/board/listAll";
-	}
-
-	/* 주석좀 달면됨 ^^ */
-	@RequestMapping(value = "/listAll", method = RequestMethod.GET)
-	public void listAll(Model model) throws Exception {
-
-		model.addAttribute("list", service.listAll());
-	}
-
-	@RequestMapping(value = "/listCri", method = RequestMethod.GET)
-	public void listAll(Criteria cri, Model model) throws Exception {
-
-		logger.info("show list Page with Criteria......................");
-
-		model.addAttribute("list", service.listCriteria(cri));
+		return "redirect:/board/listPage";
 	}
 
 	@RequestMapping(value = "/listPage", method = RequestMethod.GET)
 	public void listPage(@ModelAttribute("cri") Criteria cri, Model model) throws Exception {
-
-		logger.info(cri.toString());
 
 		model.addAttribute("list", service.listCriteria(cri));
 		PageMaker pageMaker = new PageMaker();

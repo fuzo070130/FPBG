@@ -20,7 +20,16 @@
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
-	
+	<beans:bean id="loginCheckInterceptor" class="com.FPBG.admin.interceptor.LoginCheckInterceptor"/>
+	<interceptors>
+		<interceptor>
+			<mapping path="/board/register"/>			
+			<mapping path="/board/removePage"/>			
+			<mapping path="/board/modifyPage"/>			
+			<mapping path="/Member/select"/>			
+			<beans:ref bean="loginCheckInterceptor"/>
+		</interceptor>
+	</interceptors>
 	<context:component-scan base-package="com.FPBG.www" />
 	
 </beans:beans>

@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.FPBG.domain.vo.BoardVO;
 import com.FPBG.domain.vo.Criteria;
+import com.FPBG.domain.vo.SearchCriteria;
 
 public interface BoardDAO {
 	
@@ -15,11 +16,13 @@ public interface BoardDAO {
 	
 	public void delete(Integer boardNumber)throws Exception;
 	
-	public List<BoardVO> listAll()throws Exception;
-	
 	public List<BoardVO> listPage(int page) throws Exception;
 	
 	public List<BoardVO> listCriteria(Criteria cri) throws Exception;
 	
 	public int countPaging(Criteria cri) throws Exception;
+	
+	public List<BoardVO> listSearch(SearchCriteria cri)throws Exception;
+	  
+	public int listSearchCount(SearchCriteria cri)throws Exception;
 }

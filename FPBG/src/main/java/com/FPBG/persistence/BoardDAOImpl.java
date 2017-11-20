@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.FPBG.domain.vo.BoardVO;
 import com.FPBG.domain.vo.Criteria;
+import com.FPBG.domain.vo.SearchCriteria;
 
 @Repository
 public class BoardDAOImpl implements BoardDAO {
@@ -39,12 +40,6 @@ public class BoardDAOImpl implements BoardDAO {
 	}
 
 	@Override
-	public List<BoardVO> listAll() throws Exception {
-
-		return session.selectList(namespace + ".listAll");
-	}
-
-	@Override
 	public List<BoardVO> listPage(int page) throws Exception {
 
 		if (page <= 0) {
@@ -66,5 +61,17 @@ public class BoardDAOImpl implements BoardDAO {
 	public int countPaging(Criteria cri) throws Exception {
 
 		return session.selectOne(namespace + ".countPaging", cri);
+	}
+
+	@Override
+	public List<BoardVO> listSearch(SearchCriteria cri) throws Exception {
+		
+		 return session.selectList(namespace + ".listSearch", cri);
+	}
+
+	@Override
+	public int listSearchCount(SearchCriteria cri) throws Exception {
+		
+		return session.selectOne(namespace + ".listSearchCount", cri);
 	}
 }

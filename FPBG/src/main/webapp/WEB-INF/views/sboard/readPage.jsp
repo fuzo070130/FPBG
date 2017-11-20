@@ -30,6 +30,8 @@
 							<input type='hidden' name='boardNumber' value="${boardVO.boardNumber}">
 							<input type='hidden' name='page' value="${cri.page}">
 							<input type='hidden' name='perPageNum' value="${cri.perPageNum}">
+							<input type='hidden' name='searchType' value="${cri.searchType}">
+							<input type='hidden' name='keyword' value="${cri.keyword}">
 
 						</form>
 
@@ -72,19 +74,19 @@ $(document).ready(function(){
 	console.log(formObj);
 	
 	$(".updateBtn").on("click", function(){
-		formObj.attr("action", "/FPBG/board/modifyPage");
+		formObj.attr("action", "/FPBG/sboard/modifyPage");
 		formObj.attr("method", "get");		
 		formObj.submit();
 	});
 	
 	$(".deleteBtn").on("click", function(){
-		formObj.attr("action", "/FPBG/board/removePage");
+		formObj.attr("action", "/FPBG/sboard/removePage");
 		formObj.submit();
 	});
 	
 	$(".goListBtn").on("click", function(){
 		formObj.attr("method", "get");
-		formObj.attr("action", "/FPBG/board/listPage");
+		formObj.attr("action", "/FPBG/sboard/list");
 		formObj.submit();
 	});
 	

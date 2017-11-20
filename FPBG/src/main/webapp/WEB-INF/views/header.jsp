@@ -54,7 +54,7 @@
 				    </li>
 				    <li><a href="patch">패치내역</a></li>
 				    <li><a href="https://himap.me/">지도</a></li>
-				    <li><a href="/FPBG/board/listAll">게시판</a></li>
+				    <li><a href="/FPBG/sboard/list">게시판</a></li>
 			    </ul>
 				<ul class="nav navbar-nav navbar-right">
 					<c:choose>
@@ -65,7 +65,7 @@
 						<c:when test="${!empty sessionScope.vo}">
 							<li>
 								<div class="member-info">
-									<a href="#">${vo.memNickName }</a>님 환영합니다
+									<a href="/FPBG/Member/select">${vo.memNickName }</a>님 환영합니다
 						    	</div>
 					    	<li>
 					    	<li><button type="button" class="btn btn-info btn" onclick="logout();"><span class="glyphicon glyphicon-log-out"></span>&nbsp;로&nbsp;그&nbsp;아&nbsp;웃</button></li>
@@ -375,8 +375,6 @@
 							$(".login-button").click(function(event){
 								var memID = $("#login-memID").val();
 								var memPassword = $("#login-memPassword").val();
-								console.log(memID);
-								console.log(memPassword);
 								$.ajax({
 									type : 'post',
 									url : '/FPBG/Member/login',
