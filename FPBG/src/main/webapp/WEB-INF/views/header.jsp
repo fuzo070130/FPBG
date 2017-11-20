@@ -1,3 +1,4 @@
+<%@page import="com.FPBG.domain.vo.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -53,16 +54,26 @@
 				    </li>
 				    <li><a href="patch">패치내역</a></li>
 				    <li><a href="https://himap.me/">지도</a></li>
-				    <li><a href="board">게시판</a></li>
+				    <li><a href="/FPBG/board/listAll">게시판</a></li>
 			    </ul>
 				<ul class="nav navbar-nav navbar-right">
 					<c:choose>
-						<c:when test="${empty session.vo}">
+						<c:when test="${empty sessionScope.vo}">
 					    	<li><button type="button" class="btn btn-info btn register" data-toggle="modal" data-target="#register" ><span class="glyphicon glyphicon-user"></span> 회원 가입</button></li>
 					    	<li><button type="button" class="btn btn-info btn login" data-toggle="modal" data-target="#login"><span class="glyphicon glyphicon-log-in"></span>&nbsp;로&nbsp;그&nbsp;인&nbsp;</button></li>
 						</c:when>
-						<c:when test="${!empty session.vo}">
-							
+						<c:when test="${!empty sessionScope.vo}">
+							<li>
+								<div class="member-info">
+									<a href="#">${vo.memNickName }</a>님 환영합니다
+						    	</div>
+					    	<li>
+					    	<li><button type="button" class="btn btn-info btn" onclick="logout();"><span class="glyphicon glyphicon-log-out"></span>&nbsp;로&nbsp;그&nbsp;아&nbsp;웃</button></li>
+					    	<script>
+					    		function logout() {
+					    			location.href = '/FPBG/Member/logout';
+					    		}
+					    	</script>
 						</c:when>
 				    </c:choose>
 	 			</ul>
@@ -362,18 +373,32 @@
 							});
 							/* 로그인 */
 							$(".login-button").click(function(event){
-								var form = $('<form></form');
-								form.attr('action', "/FPBG/Member/login");
-					            form.attr('method', 'post');
-					            form.appendTo('body');
-					            
-					            var id = $("#memID").val();
-					            var password = $("#memPassword").val();
-					            
-					            form.append($('<input type="hidden" value="' + id + '" name="memID">'));
-					            form.append($('<input type="hidden" value="' + password + '" name="memPassword">'));
-					            
-					            form.submit();
+								var memID = $("#login-memID").val();
+								var memPassword = $("#login-memPassword").val();
+								console.log(memID);
+								console.log(memPassword);
+								$.ajax({
+									type : 'post',
+									url : '/FPBG/Member/login',
+									headers : {
+										"Content-Type" : "application/json",
+										"X-HTTP-Method-Override" : "POST"
+									},
+									dataType : 'text',
+									data : JSON.stringify({
+										memID : memID,
+										memPassword : memPassword
+									}),
+									success : function(result){
+										if(result == 'succ') {
+											alert('로그인에 성공했습니다');
+											location.href = "/FPBG";
+										} else if(result == 'fail') {
+											alert('로그인에 실패하셨습니다');
+											location.href = "/FPBG";
+										}
+									}
+								});
 							});
 						});
 					</script>
@@ -396,11 +421,11 @@
 		        <div class="modal-body">
 		        	<div class="input-span">
 		        		<span class="glyphicon glyphicon-user"></span>
-						<input type="text" name="memID" placeholder="Your ID" id="memID"><br>
+						<input type="text" name="memID" placeholder="Your ID" id="login-memID"><br>
 					</div>
 					<div class="input-span">
 		        		<span class="glyphicon glyphicon-lock"></span>
-						<input type="password" name="memPassword" placeholder="Your Password" id="memEmail">
+						<input type="password" name="memPassword" placeholder="Your Password" id="login-memPassword">
 					</div>
 		        </div>
 		        <div class="modal-footer">

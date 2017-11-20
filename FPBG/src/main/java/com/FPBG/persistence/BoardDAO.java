@@ -3,6 +3,7 @@ package com.FPBG.persistence;
 import java.util.List;
 
 import com.FPBG.domain.vo.BoardVO;
+import com.FPBG.domain.vo.Criteria;
 
 public interface BoardDAO {
 	
@@ -16,4 +17,9 @@ public interface BoardDAO {
 	
 	public List<BoardVO> listAll()throws Exception;
 	
+	public List<BoardVO> listPage(int page) throws Exception;
+	
+	public List<BoardVO> listCriteria(Criteria cri) throws Exception;
+	
+	public int countPaging(Criteria cri) throws Exception;
 }

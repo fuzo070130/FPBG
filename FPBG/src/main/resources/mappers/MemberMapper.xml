@@ -34,7 +34,7 @@
 	<select id="login" resultType="MemberVO">
 		select
 			*
-		from Member where memEmail = #{ memEmail } and memPassword = #{ memPassword }
+		from Member where memID = #{ memID } and memPassword = #{ memPassword }
 	</select>
 	 
 </mapper>

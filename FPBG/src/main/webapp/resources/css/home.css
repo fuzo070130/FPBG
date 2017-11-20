@@ -18,12 +18,22 @@
   * search-btn 검색 버튼
   */
 .input-group {
-	width: 400px;
 	height: 42px;
-	margin: 0 auto;
+	margin: 0 30%;
+}
+@media(max-width:992px){
+	.input-group {
+		height: 42px;
+		margin: 0 25%;
+	}
+}
+@media(max-width:568px){
+	.input-group {
+		height: 42px;
+		margin: 0 20%;
+	}
 }
 #search {
-	width: 350px;
 	height: 42px;
 }
 .search-btn {
@@ -33,10 +43,20 @@
 
 /* 로고 중앙정렬 */
 .body .logo {
-	width: 540px;
 	height: 350px;
 	margin: auto;
 	padding-top: 75px;
+}
+
+.logo-img {
+	width: 100%;
+	height: 200px;
+	line-height: 200px;
+	text-align: center;
+}
+.body .logo img{
+	width: 100%;
+	max-width: 540px;
 }
 
 /* TOP10 선 */

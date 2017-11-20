@@ -1,7 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page session="false" %>
 <html>
 <head>
 	<title>Home</title>
@@ -14,7 +13,9 @@
 			<div class="container">
 				<div class="body">
 					<div class="logo">
-						<img alt="" src="/FPBG/resources/images/logo4.png">
+						<div class="logo-img">
+							<img alt="" src="/FPBG/resources/images/logo4.png">
+						</div>
 					</div>
 					<div class="search">
 						<form action="#">
