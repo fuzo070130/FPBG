@@ -46,7 +46,7 @@
 								<div class="form-group">
 									<label for="exampleInputEmail1">Writer</label> <input
 										type="text" name="memNickName" class="form-control"
-										value="${boardVO.memNickName}">
+										value="${boardVO.memNickName}" readonly="readonly">
 								</div>
 							</div>
 							<!-- /.box-body -->
@@ -64,7 +64,7 @@
 	console.log(formObj);
 	
 	$(".btn-warning").on("click",function() {
-	self.location = "/board/listPage?page=${cri.page}&perPageNum=${cri.perPageNum}";
+	self.location = "/FPBG/board/listPage?page=${cri.page}&perPageNum=${cri.perPageNum}";
 	});
 	
 	$(".btn-primary").on("click",function() {

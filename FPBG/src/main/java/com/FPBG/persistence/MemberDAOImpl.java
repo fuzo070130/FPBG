@@ -42,7 +42,7 @@ public class MemberDAOImpl implements MemberDAO{
 	
 	@Override
 	public MemberVO select(MemberVO vo) throws Exception {
-		return session.selectOne(namespace+"select" , vo);
+		return session.selectOne(namespace+".select" , vo);
 	}
 
 

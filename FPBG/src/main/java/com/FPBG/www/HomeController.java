@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.FPBG.domain.vo.BoardVO;
 import com.FPBG.service.BoardService;
-import com.FPBG.service.SampleService;
-import com.jpubg.www.TOP10;
 
 /**
  * Handles requests for the application home page.
@@ -25,14 +23,10 @@ public class HomeController {
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
 	@Inject
-	private SampleService service;
-	
-	@Inject
 	private BoardService boardservice;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model)throws Exception {
-		System.out.println(service.select());
 		return "home";
 	}
 	@RequestMapping(value = "/readboard", method = RequestMethod.GET)

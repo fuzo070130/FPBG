@@ -54,7 +54,7 @@
 				    </li>
 				    <li><a href="patch">패치내역</a></li>
 				    <li><a href="https://himap.me/">지도</a></li>
-				    <li><a href="/FPBG/board/listAll">게시판</a></li>
+				    <li><a href="/FPBG/board/listPage">게시판</a></li>
 			    </ul>
 				<ul class="nav navbar-nav navbar-right">
 					<c:choose>
@@ -375,8 +375,6 @@
 							$(".login-button").click(function(event){
 								var memID = $("#login-memID").val();
 								var memPassword = $("#login-memPassword").val();
-								console.log(memID);
-								console.log(memPassword);
 								$.ajax({
 									type : 'post',
 									url : '/FPBG/Member/login',
