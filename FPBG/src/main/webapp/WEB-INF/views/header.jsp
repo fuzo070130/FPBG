@@ -65,7 +65,7 @@
 						<c:when test="${!empty sessionScope.vo}">
 							<li>
 								<div class="member-info">
-									<a href="#">${vo.memNickName }</a>님 환영합니다
+									<a href="/FPBG/Member/select">${vo.memNickName }</a>님 환영합니다
 						    	</div>
 					    	<li>
 					    	<li><button type="button" class="btn btn-info btn" onclick="logout();"><span class="glyphicon glyphicon-log-out"></span>&nbsp;로&nbsp;그&nbsp;아&nbsp;웃</button></li>

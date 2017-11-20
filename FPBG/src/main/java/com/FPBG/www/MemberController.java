@@ -136,7 +136,7 @@ public class MemberController {
 	@RequestMapping(value = "/select", method = RequestMethod.GET)
 	public String select(HttpServletRequest request, HttpServletResponse response, HttpSession session , Model model) throws Exception{
 		
-		return "redirect:/";
+		return "/Member/select";
 	}
 	
 }
