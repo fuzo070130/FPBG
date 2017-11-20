@@ -26,16 +26,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete from Board where boardNumber = #{boardNumber}
 	</delete>
 
-	<select id="listAll" resultType="BoardVO">
-	<![CDATA[
-	select
-	*
-	from Board
-	where boardNumber > 0
-	order by boardNumber desc, boardDate desc
-	]]>
-	</select>
-
 	<select id="listPage" resultType="BoardVO">
 	<![CDATA[
 	select

@@ -15,6 +15,7 @@ import com.FPBG.domain.vo.BoardVO;
 import com.FPBG.service.BoardService;
 import com.FPBG.service.SampleService;
 import com.jpubg.www.TOP10;
+import com.jpubg.www.TOP100;
 
 /**
  * Handles requests for the application home page.
@@ -32,7 +33,8 @@ public class HomeController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model)throws Exception {
-		System.out.println(service.select());
+		TOP100 top = new TOP100();
+		TOP10 top2 = new TOP10();
 		return "home";
 	}
 	@RequestMapping(value = "/readboard", method = RequestMethod.GET)
