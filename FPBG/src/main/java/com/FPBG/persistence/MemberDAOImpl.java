@@ -39,6 +39,11 @@ public class MemberDAOImpl implements MemberDAO{
 	public MemberVO login(MemberVO vo) throws Exception {
 		return session.selectOne(namespace+".login" , vo);
 	}
+	
+	@Override
+	public MemberVO select(MemberVO vo) throws Exception {
+		return session.selectOne(namespace+"select" , vo);
+	}
 
 
 }

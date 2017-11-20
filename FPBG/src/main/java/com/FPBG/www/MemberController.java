@@ -133,4 +133,10 @@ public class MemberController {
 		return new ResponseEntity<String>("fail", HttpStatus.OK);
 	}
 	
+	@RequestMapping(value = "/select", method = RequestMethod.GET)
+	public String select(HttpServletRequest request, HttpServletResponse response, HttpSession session , Model model) throws Exception{
+		
+		return "redirect:/";
+	}
+	
 }

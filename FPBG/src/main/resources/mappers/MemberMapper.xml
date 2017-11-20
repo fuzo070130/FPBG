@@ -12,7 +12,7 @@
 	
 	<update id="update" parameterType="MemberVO">
 	UPDATE Member SET
-	memNickName=#{memNickName} ,memEmail=#{memEmail} ,memPassword=#{memPassword} ,memDiscord=#{memDiscord}
+	memNickName=#{memNickName},memPassword=#{memPassword} ,memDiscord=#{memDiscord}
 	WHERE memNumber=#{memNumber}
 	</update>
 	
@@ -35,6 +35,10 @@
 		select
 			*
 		from Member where memID = #{ memID } and memPassword = #{ memPassword }
+	</select>
+	
+	<select id="select" resultType="MemberVO">
+	select * from Member where memID = #{ memID }
 	</select>
 	 
 </mapper>
