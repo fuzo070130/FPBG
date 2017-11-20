@@ -14,6 +14,6 @@ public interface MemberDAO {
 
 	public MemberVO login(MemberVO vo)throws Exception;
 
-	
+	public MemberVO select(MemberVO vo) throws Exception;
 	
 }

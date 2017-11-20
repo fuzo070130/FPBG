@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.FPBG.domain.vo.MemberVO;
@@ -26,25 +27,6 @@ public class MemberController {
 	
 	@Inject
 	private MemberService service;
-	
-	@ResponseBody
-	@RequestMapping(value = "/insert", method = RequestMethod.POST)
-	public ResponseEntity<String> insert(@RequestBody MemberVO vo)throws Exception {
-		ResponseEntity<String> entity = null;
-		/* 암호화 */
-		PasswordSecurity security = new PasswordSecurity();
-		vo.setMemPassword(security.encryptSHA256(vo.getMemPassword()));
-		
-		try {
-			service.insert(vo);
-			entity = new ResponseEntity<String>("succ", HttpStatus.OK);
-		}catch (Exception e){
-			entity = new ResponseEntity<String>("fail", HttpStatus.OK);
-			e.printStackTrace();
-		}
-		
-		return entity;
-	}
 	
 	@ResponseBody
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -132,5 +114,12 @@ public class MemberController {
 		}
 		return new ResponseEntity<String>("fail", HttpStatus.OK);
 	}
+	
+	@RequestMapping(value = "/select", method = RequestMethod.GET)
+	public String select() throws Exception{
+		
+		return "/Member/select";
+	}
+	
 	
 }

@@ -14,4 +14,6 @@ public interface MemberService {
 
 	public MemberVO login(MemberVO vo) throws Exception;
 	
+	public MemberVO select(MemberVO vo) throws Exception;
+	
 }

@@ -11,10 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.FPBG.domain.dto.PlayerDTO;
 import com.FPBG.domain.vo.BoardVO;
 import com.FPBG.service.BoardService;
-import com.jpubg.www.TOP10;
 import com.jpubg.www.StatsSearch;
 
 /**
@@ -24,7 +22,6 @@ import com.jpubg.www.StatsSearch;
 public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-	
 	
 	@Inject
 	private BoardService boardservice;
