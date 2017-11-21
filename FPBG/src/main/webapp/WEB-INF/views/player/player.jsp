@@ -5,16 +5,133 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+	<link rel="stylesheet" href="/FPBG/resources/css/player.css">
+	<link rel="stylesheet" href="resources/css/readboardMain.css">
 </head>
 <body>
-	RATING ${search.rating}
-	WIN% ${search.win_Ratio}
-	TOP 10 RATE ${search.top_10_Ratio}
-	K/D ${search.kill_Death_Ratio}
-	KILLS ${search.kills}
-	WINS ${search.wins}
-	AVG DMG PER MATCH${search.damage_Per_Game}
+	<jsp:include page="../header.jsp"/>
 	
-	TOTAL GAME ${search.round_Played}
+	<div class="bigbody">
+		<div class="content">	
+			<div class="container">
+				<div class="container-header">
+					<div class="row">
+							<div class="col-md-4">
+								<div class="left-box">
+								
+								</div>
+							</div>
+							<form>
+								<div class="col-md-2">
+									<div class="dropdown">
+										<button class="btn btn-primary dropdown-toggle select-toggle1" type="button" data-toggle="dropdown">2017-Pre1<span class="caret"></span></button>
+										<ul class="dropdown-menu select-menu1" style="border-radius: 0px;">
+											<li><a href="#">2017-Pre1</a></li>
+											<li><a href="#">2017-Pre2</a></li>
+											<li><a href="#">2017-Pre3</a></li>
+											<li><a href="#">2017-Pre4</a></li>
+											<li><a href="#">2017-Pre5</a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="col-md-2">
+									<div class="dropdown">
+										<button class="btn btn-primary dropdown-toggle select-toggle2" type="button" data-toggle="dropdown">Asia<span class="caret"></span></button>
+										<ul class="dropdown-menu select-menu2" style="border-radius: 0px;">
+											<li><a href="#">NA</a></li>
+											<li><a href="#">EU</a></li>
+											<li><a href="#">Asia</a></li>
+											<li><a href="#">OC</a></li>
+											<li><a href="#">SA</a></li>
+											<li><a href="#">SEA</a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="col-md-2">
+									<div class="dropdown">
+										<button class="btn btn-primary dropdown-toggle select-toggle3" type="button" data-toggle="dropdown"">Solo<span class="caret"></span></button>
+										<ul class="dropdown-menu select-menu3" style="border-radius: 0px;">
+											<li><a href="#">Solo</a></li>
+											<li><a href="#">Duo</a></li>
+											<li><a href="#">Squad</a></li>
+											<li><a href="#">FPP-Solo</a></li>
+											<li><a href="#">FPP-Duo</a></li>
+											<li><a href="#">FPP-Squad</a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="col-md-2">
+									<button class="submit-button" type="submit">검색</button>
+								</div>
+								<script type="text/javascript">
+									$(document).ready(function(){
+										$(".select-menu1 > li > a").click(function(){
+											var value = $(this).text();
+											value += "<span class='caret'></span>";
+											$(".select-toggle1").html(value);
+										});
+										$(".select-menu2 > li > a").click(function(){
+											var value = $(this).text();
+											value += "<span class='caret'></span>";
+											$(".select-toggle2").html(value);
+										});
+										$(".select-menu3 > li > a").click(function(){
+											var value = $(this).text();
+											value += "<span class='caret'></span>";
+											$(".select-toggle3").html(value);
+										});
+									});
+								</script>
+							</form>
+						</div>
+					</div>
+				<div class="row">
+					<div class="col-md-3">
+						<div class="search-box">
+							<div class="value value-blue">${search.rating}</div>
+							<div class="label label-blue">RATING</div>
+						</div>
+						<div class="search-box">
+							<div class="value value-blue">${search.win_Ratio}</div>
+							<div class="label label-blue">WIN%</div>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="search-box">
+							<div class="value value-green">${search.top_10_Ratio}</div>
+							<div class="label label-green">TOP 10 RATE</div>
+						</div>
+						<div class="search-box">
+							<div class="value value-green">${search.kill_Death_Ratio}</div>
+							<div class="label label-green">K/D</div>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="search-box">
+							<div class="value value-red">${search.kills}</div>
+							<div class="label label-red">KILLS</div>
+						</div>
+						<div class="search-box">
+							<div class="value value-red">${search.wins}</div>
+							<div class="label label-red">WINS</div>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="search-box">
+							<div class="value value-orange">${search.damage_Per_Game}</div>
+							<div class="label label-orange">AVG DMG PER MATCH</div>
+						</div>
+						<div class="search-box">
+							<div class="value value-orange">${search.round_Played}</div>
+							<div class="label label-orange">TOTAL GAME</div>
+						</div>
+					</div>
+				</div>
+			</div>		
+		</div>
+	</div>
+	
+	<jsp:include page="../footer.jsp"/>
+	
 </body>
 </html>
