@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.FPBG.mapper.AdminBoardMapper">
+
+	<insert id="create" parameterType="AdminBoardVO">
+		insert into Adminboard (adminboardTitle,
+		adminboardContent, memNickName ,memNumber)
+		values(#{adminboardTitle},
+		#{adminboardContent},#{memNickName},#{memNumber})
+	</insert>
+
+	<select id="read" resultType="AdminBoardVO">
+		select
+		*
+		from Adminboard
+		where adminboardNumber
+		= #{adminboardNumber}
+	</select>
+
+	<update id="update">
+		update Adminboard set adminboardTitle = #{adminboardTitle},
+		adminboardContent = #{adminboardContent}
+		where adminboardNumber = #{adminboardNumber}
+	</update> 
+
+	<delete id="delete">
+		delete from Adminboard where adminboardNumber = #{adminboardNumber}
+	</delete>
+
+	<select id="listPage" resultType="AdminBoardVO">
+	<![CDATA[
+	select
+	*
+	from Adminboard
+	where adminboardNumber > 0
+	order by adminboardNumber desc, adminboardDate desc
+	limit #{page}, 10
+	]]>
+	</select>
+
+	<select id="listCriteria" resultType="AdminBoardVO">
+	 <![CDATA[
+	 select 
+	  *
+	 from Adminboard
+	  where adminboardNumber > 0
+	order by adminboardNumber desc, adminboardDate desc
+	 limit #{pageStart}, #{perPageNum}
+	 ]]>
+	</select>
+
+	<select id="countPaging" resultType="int">
+	 <![CDATA[
+	 select 
+	   count(adminboardNumber) 
+	 from 
+	   Adminboard
+	 where 
+	   adminboardNumber > 0 
+	 ]]>
+	</select>
+
+	<sql id="search">
+		<if test="searchType != null">
+			<if test="searchType == 't'.toString()">
+				and adminboardTitle like CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="searchType == 'c'.toString()">
+				and adminboardContent like CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="searchType == 'w'.toString()">
+				and memNickName like CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="searchType == 'tc'.toString()">
+				and ( adminboardTitle like CONCAT('%', #{keyword}, '%') OR adminboardContent 
+				like
+				CONCAT('%', #{keyword}, '%'))
+			</if>
+			<if test="searchType == 'cw'.toString()">
+				and ( adminboardContent like CONCAT('%', #{keyword}, '%') OR memNickName
+				like
+				CONCAT('%', #{keyword}, '%'))
+			</if>
+			<if test="searchType == 'tcw'.toString()">
+				and ( adminboardTitle like CONCAT('%', #{keyword}, '%')
+				OR
+				adminboardContent
+				like CONCAT('%', #{keyword}, '%')
+				OR
+				memNickName like CONCAT('%',
+				#{keyword}, '%'))
+			</if>
+		</if>
+	</sql>
+
+	<select id="listSearch" resultType="AdminBoardVO">
+	<![CDATA[  
+  	select * 
+ 	 from Adminboard
+  	where adminboardNumber > 0 
+	]]>
+
+	<include refid="search"></include>
+  
+	<![CDATA[    
+ 	 order by adminboardNumber desc
+ 	 limit #{pageStart}, #{perPageNum}
+	]]>
+	</select>
+
+	<select id="listSearchCount" resultType="int">
+	<![CDATA[  
+ 	 select count(adminboardNumber) 
+ 	 from Adminboard
+ 	 where adminboardNumber > 0 
+	]]>
+		<include refid="search"></include>
+
+	</select>
+
+</mapper>

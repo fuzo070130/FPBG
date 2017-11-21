@@ -29,12 +29,12 @@
 							<div class="box-body">
 								<div class="form-group">
 									<label for="exampleInputEmail1">Title</label> <input
-										type="text" name='adminboardTitle' class="form-control"
+										type="text" name='boardTitle' class="form-control"
 										placeholder="Enter Title">
 								</div>
 								<div class="form-group">
 									<label for="exampleInputPassword1">Content</label>
-									<textarea class="form-control" name="adminboardContent" rows="5"
+									<textarea class="form-control" name="boardContent" rows="5"
 										placeholder="Enter ..."></textarea>
 								</div>
 
