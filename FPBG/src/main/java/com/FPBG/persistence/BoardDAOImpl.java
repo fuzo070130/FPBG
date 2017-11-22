@@ -65,11 +65,13 @@ public class BoardDAOImpl implements BoardDAO {
 
 	@Override
 	public List<BoardVO> listSearch(SearchCriteria cri) throws Exception {
-		return null;
+		
+		 return session.selectList(namespace + ".listSearch", cri);
 	}
 
 	@Override
 	public int listSearchCount(SearchCriteria cri) throws Exception {
-		return 0;
+		
+		return session.selectOne(namespace + ".listSearchCount", cri);
 	}
 }

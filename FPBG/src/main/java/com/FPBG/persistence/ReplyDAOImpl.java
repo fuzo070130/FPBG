@@ -1,16 +1,19 @@
 package com.FPBG.persistence;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.FPBG.domain.vo.Criteria;
 import com.FPBG.domain.vo.ReplyVO;
 
 @Repository
-public class ReplyImpl implements ReplyDAO{
+public class ReplyDAOImpl implements ReplyDAO{
 	
 	@Resource(name = "sqlSession")
 	private SqlSession session;
@@ -33,8 +36,23 @@ public class ReplyImpl implements ReplyDAO{
 	}
 
 	@Override
-	public List<ReplyVO> listAll() throws Exception {
-		return session.selectList(namespace + ".listAll");
+	public List<ReplyVO> list(Integer boardNumber) throws Exception {
+		return session.selectList(namespace + ".list" , boardNumber);
+	}
+
+	@Override
+	public List<ReplyVO> listPage(Integer boardNumber, Criteria cri) throws Exception {
+		Map<String , Object> param = new HashMap<>();
+		
+		param.put("boardNumber", boardNumber);
+		param.put("cri", cri);
+		
+		return session.selectList(namespace+".listPage", param);
+	}
+
+	@Override
+	public int count(Integer boardNumber) throws Exception {
+		return session.selectOne(namespace+".count",boardNumber);
 	}
 	
 }

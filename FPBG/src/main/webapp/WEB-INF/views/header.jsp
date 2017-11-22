@@ -36,25 +36,25 @@
 				    <li class="dropdown">
 				    	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">리더보드<span class="caret"></span></a>
 				    	<ul class="dropdown-menu">
-				    		<li><a href="readboard">솔로</a></li>
-				    		<li><a href="readboard">듀오</a></li>
-				    		<li><a href="readboard">스쿼드</a></li>
-				    		<li><a href="readboard">FFP 솔로</a></li>
-				    		<li><a href="readboard">FFP 듀오</a></li>
-				    		<li><a href="readboard">FFP 스쿼드</a></li>
+				    		<li><a href="/FPBG/readboard">솔로</a></li>
+				    		<li><a href="/FPBG/readboard">듀오</a></li>
+				    		<li><a href="/FPBG/readboard">스쿼드</a></li>
+				    		<li><a href="/FPBG/readboard">FFP 솔로</a></li>
+				    		<li><a href="/FPBG/readboard">FFP 듀오</a></li>
+				    		<li><a href="/FPBG/readboard">FFP 스쿼드</a></li>
 				    	</ul>
 				    </li>
 				    <li class="dropdown">
 				    	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">정보<span class="caret"></span></a>
 				    	<ul class="dropdown-menu">
-				    		<li><a href="weapons">무기</a></li>
-				    		<li><a href="items">아이템</a></li>
-				    		<li><a href="attachments">부착물</a></li>
+				    		<li><a href="/FPBG/weapons">무기</a></li>
+				    		<li><a href="/FPBG/items">아이템</a></li>
+				    		<li><a href="/FPBG/attachments">부착물</a></li>
 				    	</ul>
 				    </li>
-				    <li><a href="patch">패치내역</a></li>
+				    <li><a href="/FPBG/patch">패치내역</a></li>
 				    <li><a href="https://himap.me/">지도</a></li>
-				    <li><a href="/FPBG/board/listPage">게시판</a></li>
+				    <li><a href="/FPBG/sboard/list">게시판</a></li>
 			    </ul>
 				<ul class="nav navbar-nav navbar-right">
 					<c:choose>
@@ -66,6 +66,7 @@
 							<li>
 								<div class="member-info">
 									<a href="/FPBG/Member/select">${vo.memNickName }</a>님 환영합니다
+									<input type="hidden" id="session-memNickName" value="${vo.memNickName }">
 						    	</div>
 					    	<li>
 					    	<li><button type="button" class="btn btn-info btn" onclick="logout();"><span class="glyphicon glyphicon-log-out"></span>&nbsp;로&nbsp;그&nbsp;아&nbsp;웃</button></li>

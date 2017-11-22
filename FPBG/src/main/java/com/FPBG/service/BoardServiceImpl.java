@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.FPBG.domain.vo.BoardVO;
 import com.FPBG.domain.vo.Criteria;
+import com.FPBG.domain.vo.SearchCriteria;
 import com.FPBG.persistence.BoardDAO;
 
 @Service
@@ -47,6 +48,18 @@ public class BoardServiceImpl implements BoardService {
 
 	    return dao.countPaging(cri);
 	  }
+
+	@Override
+	public List<BoardVO> listSearchCriteria(SearchCriteria cri) throws Exception {
+		
+		 return dao.listSearch(cri);
+	}
+
+	@Override
+	public int listSearchCount(SearchCriteria cri) throws Exception {
+		
+		return dao.listSearchCount(cri);
+	}
 
 
 }

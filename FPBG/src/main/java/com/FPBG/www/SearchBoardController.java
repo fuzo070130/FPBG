@@ -5,8 +5,15 @@ import javax.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import com.FPBG.domain.vo.BoardVO;
+import com.FPBG.domain.vo.PageMaker;
+import com.FPBG.domain.vo.SearchCriteria;
 import com.FPBG.service.BoardService;
 
 @Controller
@@ -18,34 +25,34 @@ public class SearchBoardController {
   @Inject
   private BoardService service;
 
-  /*@RequestMapping(value = "/list", method = RequestMethod.GET)
+  @RequestMapping(value = "/list", method = RequestMethod.GET)
   public void listPage(@ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception {
 
     logger.info(cri.toString());
 
-    // model.addAttribute("list", service.listCriteria(cri));
+    //model.addAttribute("list", service.listCriteria(cri));
     model.addAttribute("list", service.listSearchCriteria(cri));
 
     PageMaker pageMaker = new PageMaker();
     pageMaker.setCri(cri);
 
-    // pageMaker.setTotalCount(service.listCountCriteria(cri));
+    //pageMaker.setTotalCount(service.listCountCriteria(cri));
     pageMaker.setTotalCount(service.listSearchCount(cri));
 
     model.addAttribute("pageMaker", pageMaker);
   }
 
   @RequestMapping(value = "/readPage", method = RequestMethod.GET)
-  public void read(@RequestParam("bno") int bno, @ModelAttribute("cri") SearchCriteria cri, Model model)
+  public void read(@RequestParam("boardNumber") int boardNumber, @ModelAttribute("cri") SearchCriteria cri, Model model)
       throws Exception {
 
-    model.addAttribute(service.read(bno));
+    model.addAttribute(service.read(boardNumber));
   }
 
   @RequestMapping(value = "/removePage", method = RequestMethod.POST)
-  public String remove(@RequestParam("bno") int bno, SearchCriteria cri, RedirectAttributes rttr) throws Exception {
+  public String remove(@RequestParam("boardNumber") int boardNumber, SearchCriteria cri, RedirectAttributes rttr) throws Exception {
 
-    service.remove(bno);
+    service.delete(boardNumber);
 
     rttr.addAttribute("page", cri.getPage());
     rttr.addAttribute("perPageNum", cri.getPerPageNum());
@@ -58,16 +65,16 @@ public class SearchBoardController {
   }
 
   @RequestMapping(value = "/modifyPage", method = RequestMethod.GET)
-  public void modifyPagingGET(int bno, @ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception {
+  public void modifyPagingGET(int boardNumber, @ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception {
 
-    model.addAttribute(service.read(bno));
+    model.addAttribute(service.read(boardNumber));
   }
 
   @RequestMapping(value = "/modifyPage", method = RequestMethod.POST)
   public String modifyPagingPOST(BoardVO board, SearchCriteria cri, RedirectAttributes rttr) throws Exception {
 
     logger.info(cri.toString());
-    service.modify(board);
+    service.update(board);
 
     rttr.addAttribute("page", cri.getPage());
     rttr.addAttribute("perPageNum", cri.getPerPageNum());
@@ -93,26 +100,11 @@ public class SearchBoardController {
     logger.info("regist post ...........");
     logger.info(board.toString());
 
-    service.regist(board);
+    service.create(board);
 
     rttr.addFlashAttribute("msg", "SUCCESS");
 
     return "redirect:/sboard/list";
-  } */
+  }
 
-  // @RequestMapping(value = "/list", method = RequestMethod.GET)
-  // public void listPage(@ModelAttribute("cri") SearchCriteria cri,
-  // Model model) throws Exception {
-  //
-  // logger.info(cri.toString());
-  //
-  // model.addAttribute("list", service.listCriteria(cri));
-  //
-  // PageMaker pageMaker = new PageMaker();
-  // pageMaker.setCri(cri);
-  //
-  // pageMaker.setTotalCount(service.listCountCriteria(cri));
-  //
-  // model.addAttribute("pageMaker", pageMaker);
-  // }
-}
+ }

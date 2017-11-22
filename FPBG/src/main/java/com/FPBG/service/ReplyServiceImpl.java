@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
+import com.FPBG.domain.vo.Criteria;
 import com.FPBG.domain.vo.ReplyVO;
 import com.FPBG.persistence.ReplyDAO;
 
@@ -31,8 +32,18 @@ public class ReplyServiceImpl implements ReplyService{
 	}
 
 	@Override
-	public List<ReplyVO> listAll() throws Exception {
-		return dao.listAll();
+	public List<ReplyVO> list(Integer boardNumber) throws Exception {
+		return dao.list(boardNumber);
+	}
+
+	@Override
+	public List<ReplyVO> listPage(Integer boardNumber, Criteria cri) throws Exception {
+		return dao.listPage(boardNumber, cri);
+	}
+
+	@Override
+	public int count(Integer boardNumber) throws Exception {
+		return dao.count(boardNumber);
 	}
 
 }
