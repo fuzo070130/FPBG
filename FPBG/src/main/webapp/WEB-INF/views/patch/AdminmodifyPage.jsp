@@ -23,7 +23,7 @@
 						</div>
 						<!-- /.box-header -->
 
-						<form role="form" action="modifyPage" method="post">
+						<form role="form" action="AdminmodifyPage" method="post">
 
 							<input type='hidden' name='page' value="${cri.page}"> 
 							<input type='hidden' name='perPageNum' value="${cri.perPageNum}">

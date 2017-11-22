@@ -45,8 +45,8 @@ public class AdminBoardController {
   @RequestMapping(value = "/AdminreadPage", method = RequestMethod.GET)
   public void read(@RequestParam("adminboardNumber") int adminboardNumber, @ModelAttribute("cri") SearchCriteria cri, Model model)
       throws Exception {
-
-    model.addAttribute(service.read(adminboardNumber));
+	  
+    model.addAttribute("AdminBoardVO",service.read(adminboardNumber));
   }
 
   @RequestMapping(value = "/AdminremovePage", method = RequestMethod.POST)
@@ -67,7 +67,7 @@ public class AdminBoardController {
   @RequestMapping(value = "/AdminmodifyPage", method = RequestMethod.GET)
   public void modifyPagingGET(int adminboardNumber, @ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception {
 
-    model.addAttribute(service.read(adminboardNumber));
+    model.addAttribute("AdminBoardVO", service.read(adminboardNumber));
   }
 
   @RequestMapping(value = "/AdminmodifyPage", method = RequestMethod.POST)

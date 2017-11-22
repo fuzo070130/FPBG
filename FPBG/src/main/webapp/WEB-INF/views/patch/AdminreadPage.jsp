@@ -25,7 +25,7 @@
 						</div>
 						<!-- /.box-header -->
 
-						<form role="form" action="modifyPage" method="post">
+						<form role="form" action="AdminmodifyPage" method="post">
 
 							<input type='hidden' name='adminboardNumber' value="${AdminBoardVO.adminboardNumber}">
 							<input type='hidden' name='page' value="${cri.page}">
@@ -38,13 +38,13 @@
 						<div class="box-body">
 							<div class="form-group">
 								<label for="exampleInputEmail1">Title</label> <input type="text"
-									name='boardTitle' class="form-control" value="${AdminBoardVO.adminboardTitle}"
+									name='adminboardTitle' class="form-control" value="${AdminBoardVO.adminboardTitle}"
 									readonly="readonly">
 							</div>
 							<div class="form-group">
 								<label for="exampleInputPassword1">Content</label>
-								<textarea class="form-control" name="boardContent" rows="3"
-									readonly="readonly">${AdminBoardVO.boardContent}</textarea>
+								<textarea class="form-control" name="adminboardContent" rows="3"
+									readonly="readonly">${AdminBoardVO.adminboardContent}</textarea>
 							</div>
 							<div class="form-group">
 								<label for="exampleInputEmail1">Writer</label> <input
