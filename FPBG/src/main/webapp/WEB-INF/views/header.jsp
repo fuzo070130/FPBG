@@ -53,6 +53,7 @@
 				    	</ul>
 				    </li>
 				    <li><a href="/FPBG/patch">패치내역</a></li>
+				    <li><a href="/FPBG/patch/Adminlist">패치내역</a></li>
 				    <li><a href="https://himap.me/">지도</a></li>
 				    <li><a href="/FPBG/sboard/list">게시판</a></li>
 			    </ul>
