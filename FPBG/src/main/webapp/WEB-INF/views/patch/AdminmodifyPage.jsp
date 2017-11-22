@@ -34,21 +34,21 @@
 
 								<div class="form-group">
 									<label for="exampleInputEmail1">BNO</label> <input type="text"
-										name='boardNumber' class="form-control" value="${boardVO.boardNumber}" readonly="readonly">
+										name='adminboardNumber' class="form-control" value="${AdminBoardVO.adminboardNumber}" readonly="readonly">
 								</div>
 
 								<div class="form-group">
 									<label for="exampleInputEmail1">Title</label> <input
-										type="text" name='boardTitle' class="form-control" value="${boardVO.boardTitle}">
+										type="text" name='adminboardTitle' class="form-control" value="${AdminBoardVO.adminboardTitle}">
 								</div>
 								<div class="form-group">
 									<label for="exampleInputPassword1">Content</label>
-									<textarea class="form-control" name="boardContent" rows="3">${boardVO.boardContent}</textarea>
+									<textarea class="form-control" name="adminboardContent" rows="3">${AdminBoardVO.adminboardContent}</textarea>
 								</div>
 								<div class="form-group">
 									<label for="exampleInputEmail1">Writer</label> <input
 										type="text" name="memNickName" class="form-control"
-										value="${boardVO.memNickName}" readonly="readonly">
+										value="${AdminBoardVO.memNickName}" readonly="readonly">
 								</div>
 							</div>
 							<!-- /.box-body -->
@@ -66,7 +66,7 @@
 	console.log(formObj);
 	
 	$(".btn-warning").on("click",function() {
-	self.location = "/FPBG/sboard/listPage?page=${cri.page}&perPageNum=${cri.perPageNum}"
+	self.location = "/FPBG/patch/AdminlistPage?page=${cri.page}&perPageNum=${cri.perPageNum}"
 			+ "&searchType=${cri.searchType}&keyword=${cri.keyword}";
 	});
 	

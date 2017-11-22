@@ -76,16 +76,16 @@
 								</tr>
 
 
-								<c:forEach items="${list}" var="boardVO">
+								<c:forEach items="${list}" var="AdminBoardVO">
 
 									<tr>
-										<td>${boardVO.boardNumber}</td>
-										<td><a href='/FPBG/sboard/readPage${pageMaker.makeSearch(pageMaker.cri.page) }&boardNumber=${boardVO.boardNumber}'>
-										${boardVO.boardTitle}</a></td>
-										<td>${boardVO.memNickName }</td>
+										<td>${AdminBoardVO.adminboardNumber}</td>
+										<td><a href='/FPBG/patch/AdminreadPage${pageMaker.makeSearch(pageMaker.cri.page) }&adminboardNumber=${AdminBoardVO.adminboardNumber}'>
+										${AdminBoardVO.adminboardTitle}</a></td>
+										<td>${AdminBoardVO.memNickName }</td>
 										<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
-												value="${boardVO.boardDate}" /></td>
-										<td><span class="badge bg-red">${boardVO.boardViewCount }</span></td>
+												value="${AdminBoardVO.adminboardDate}" /></td>
+										<td><span class="badge bg-red">${AdminBoardVO.adminboardViewCount }</span></td>
 									</tr>
 
 								</c:forEach>
@@ -95,7 +95,7 @@
 						</div>
 						<!-- /.box-body -->
 						<div class="box-footer">
-							<a href="/FPBG/sboard/register"><button
+							<a href="/FPBG/patch/Adminregister"><button
 									class="btn btn-primary btn">글쓰기</button></a>
 						</div>
 						<div class="text-center">

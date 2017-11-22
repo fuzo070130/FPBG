@@ -27,7 +27,7 @@
 
 						<form role="form" action="modifyPage" method="post">
 
-							<input type='hidden' name='boardNumber' value="${boardVO.boardNumber}">
+							<input type='hidden' name='adminboardNumber' value="${AdminBoardVO.adminboardNumber}">
 							<input type='hidden' name='page' value="${cri.page}">
 							<input type='hidden' name='perPageNum' value="${cri.perPageNum}">
 							<input type='hidden' name='searchType' value="${cri.searchType}">
@@ -38,27 +38,27 @@
 						<div class="box-body">
 							<div class="form-group">
 								<label for="exampleInputEmail1">Title</label> <input type="text"
-									name='boardTitle' class="form-control" value="${boardVO.boardTitle}"
+									name='boardTitle' class="form-control" value="${AdminBoardVO.adminboardTitle}"
 									readonly="readonly">
 							</div>
 							<div class="form-group">
 								<label for="exampleInputPassword1">Content</label>
 								<textarea class="form-control" name="boardContent" rows="3"
-									readonly="readonly">${boardVO.boardContent}</textarea>
+									readonly="readonly">${AdminBoardVO.boardContent}</textarea>
 							</div>
 							<div class="form-group">
 								<label for="exampleInputEmail1">Writer</label> <input
 									type="text" name="memNickName" class="form-control"
-									value="${boardVO.memNickName}" readonly="readonly">
+									value="${AdminBoardVO.memNickName}" readonly="readonly">
 							</div>
 						</div>
 						<!-- /.box-body -->
 
 						<div class="box-footer">
-							<c:if test="${boardVO.memNickName ne sessionScope.vo.memNickName or empty sessionScope.vo}">
+							<c:if test="${AdminBoardVO.memNickName ne sessionScope.vo.memNickName or empty sessionScope.vo}">
 								<button type="submit" class="btn btn-primary goListBtn">메인으로</button>
 							</c:if>
-							<c:if test="${boardVO.memNickName eq sessionScope.vo.memNickName and !empty sessionScope.vo}">
+							<c:if test="${AdminBoardVO.memNickName eq sessionScope.vo.memNickName and !empty sessionScope.vo}">
 								<button type="submit" class="btn btn-warning updateBtn">글수정</button>
 								<button type="submit" class="btn btn-danger deleteBtn">글삭제</button>
 								<button type="submit" class="btn btn-primary goListBtn">메인으로</button>
@@ -74,19 +74,19 @@ $(document).ready(function(){
 	console.log(formObj);
 	
 	$(".updateBtn").on("click", function(){
-		formObj.attr("action", "/FPBG/sboard/modifyPage");
+		formObj.attr("action", "/FPBG/patch/AdminmodifyPage");
 		formObj.attr("method", "get");		
 		formObj.submit();
 	});
 	
 	$(".deleteBtn").on("click", function(){
-		formObj.attr("action", "/FPBG/sboard/removePage");
+		formObj.attr("action", "/FPBG/patch/AdminremovePage");
 		formObj.submit();
 	});
 	
 	$(".goListBtn").on("click", function(){
 		formObj.attr("method", "get");
-		formObj.attr("action", "/FPBG/sboard/list");
+		formObj.attr("action", "/FPBG/patch/Adminlist");
 		formObj.submit();
 	});
 	
