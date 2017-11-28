@@ -120,5 +120,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<include refid="search"></include>
 
 	</select>
+	
+	<update id="ViewCount">
+		update Adminboard Set adminboardViewCount = adminboardViewCount + 1 where adminboardNumber = #{adminboardNumber}
+	</update>
 
 </mapper>

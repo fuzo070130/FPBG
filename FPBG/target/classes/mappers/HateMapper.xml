@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.FPBG.mapper.HateMapper">
+
+	<select id="hateCount" resultType="int">
+		select count(hateNumber) from Hate where boardNumber = #{boradNumber}
+	</select>
+	
+	<select id="hateSelect" resultType="int">
+		select count(memNumber) from Hate where boardNumber = #{boardNumber} and memNumber = #{memNumber}
+	</select>
+	
+	<insert id="hate">
+		insert into Hate (memNumber,boardNumber) values(#{memNumber},#{boardNumber})
+	</insert>
+	
+	<delete id="unhate">
+		delete from Hate where boardNumber = #{boardNumber} and memNumber = #{memNumber}
+	</delete>
+	
+	<update id="hateCountUp">
+		update Board set boardHateCount = boardHateCount + 1 where boardNumber = #{boardNumber}
+	</update>
+	
+	<update id="hateCountDown">
+		update Board set boardHateCount = boardHateCount - 1 where boardNumber = #{boardNumber}
+	</update>
+
+</mapper>

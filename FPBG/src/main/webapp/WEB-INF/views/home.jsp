@@ -1,6 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
 <title>Home</title>
@@ -41,15 +42,41 @@
 					<div class="row">
 						<div class="col-md-4">
 							<div class="textboard">
-								<span class="glyphicon glyphicon-user"></span> <span>TOP10</span>
-								<div class="readboard"></div>
+								<span class="glyphicon glyphicon-user"></span> <span>TOP10(Asia)</span>
+								<div class="readboard">
+									<table class="table table-bordered" style="text-align: center;">
+										<tr>
+											<th>순위</th>
+											<th>닉네임</th>
+										</tr>
+										<c:forEach var="solo" items="${solo }">
+											<tr>
+												<td>${solo.rank }</td>
+												<td><a href="/FPBG/search?search=${solo.memNickName }&Region=as&mode=solo&season=pre5-2017">${solo.memNickName }</a></td>
+											</tr>
+										</c:forEach>
+									</table>
+								</div>
 							</div>
 						</div>
 						<div class="col-md-4">
 							<div class="textboard">
 								<span class="glyphicon glyphicon-user"></span> <span
-									class="glyphicon glyphicon-user"></span> <span>TOP10</span>
-								<div class="readboard"></div>
+									class="glyphicon glyphicon-user"></span> <span>TOP10(Asia)</span>
+								<div class="readboard">
+									<table class="table table-bordered" style="text-align: center;">
+										<tr>
+											<th>순위</th>
+											<th>닉네임</th>
+										</tr>
+										<c:forEach var="duo" items="${duo }">
+											<tr>
+												<td>${duo.rank }</td>
+												<td><a href="/FPBG/search?search=${duo.memNickName }&Region=as&mode=duo&season=pre5-2017">${duo.memNickName }</a></td>
+											</tr>
+										</c:forEach>
+									</table>
+								</div>
 							</div>
 						</div>
 						<div class="col-md-4">
@@ -57,8 +84,21 @@
 								<span class="glyphicon glyphicon-user"></span> <span
 									class="glyphicon glyphicon-user"></span> <span
 									class="glyphicon glyphicon-user"></span> <span
-									class="glyphicon glyphicon-user"></span> <span>TOP10</span>
-								<div class="readboard"></div>
+									class="glyphicon glyphicon-user"></span> <span>TOP10(Asia)</span>
+								<div class="readboard">
+									<table class="table table-bordered" style="text-align: center;">
+										<tr> 
+											<th>순위</th>
+											<th>닉네임</th>
+										</tr>
+										<c:forEach var="squad" items="${squad }">
+											<tr>
+												<td>${squad.rank }</td>
+												<td><a href="/FPBG/search?search=${squad.memNickName }&Region=as&mode=squad&season=pre5-2017">${squad.memNickName }</a></td>
+											</tr>
+										</c:forEach>
+									</table>
+								</div>
 							</div>
 						</div>
 					</div>

@@ -1,4 +1,4 @@
-package com.FPBG.domain.vo;
+package com.FPBG.domain.dto;
 
 public class Criteria {
 

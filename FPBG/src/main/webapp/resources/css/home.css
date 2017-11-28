@@ -60,20 +60,20 @@
 }
 
 /* TOP10 선 */
-.textboard,
-.readboard {
+.textboard{
 	border: 2px solid #BDBDBD;
 }
 
 /* TOP10 곡선, 텍스트정렬,크기 */
 .textboard {
-	border-radius: 15px;
+	border-radius: 15px 15px 0px 0px;
 	text-align: center;
 	font-size: 24px;
+	margin-bottom: 20px;
 }
 
 .readboard {
-	height: 300px;
+	height: 430px;
 	border-left: 0px;
 	border-bottom: 0px;
 	border-right: 0px;

@@ -23,16 +23,23 @@
 	<beans:bean id="loginCheckInterceptor" class="com.FPBG.admin.interceptor.LoginCheckInterceptor"/>
 	<interceptors>
 		<interceptor>
-			<mapping path="/board/register"/>			
-			<mapping path="/board/removePage"/>			
-			<mapping path="/board/modifyPage"/>
 			<mapping path="/sboard/register"/>			
-			<mapping path="/sboard/removePage"/>			
-			<mapping path="/sboard/modifyPage"/>				
-			<mapping path="/Member/select"/>			
+			<mapping path="/Member/select"/>
+			<mapping path="/Reply/*"/>
+			<mapping path="/good/likeCheck/*"/>
+			<mapping path="/good/hateCheck/*"/>
 			<beans:ref bean="loginCheckInterceptor"/>
 		</interceptor>
 	</interceptors>
+	
+	<beans:bean id="AdminCheckInterceptor" class="com.FPBG.admin.interceptor.AdminCheckInterceptor"/>
+	<interceptors>
+		<interceptor>
+			<mapping path="/patch/Adminregister"/>			
+			<beans:ref bean="AdminCheckInterceptor"/>
+		</interceptor>
+	</interceptors>
+	
 	<context:component-scan base-package="com.FPBG.www" />
 	
 </beans:beans>

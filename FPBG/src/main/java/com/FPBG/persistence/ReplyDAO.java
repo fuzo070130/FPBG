@@ -1,7 +1,7 @@
 package com.FPBG.persistence;
 import java.util.List;
 
-import com.FPBG.domain.vo.Criteria;
+import com.FPBG.domain.dto.Criteria;
 import com.FPBG.domain.vo.ReplyVO;
 
 public interface ReplyDAO {

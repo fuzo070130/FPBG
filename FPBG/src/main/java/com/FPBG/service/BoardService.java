@@ -2,8 +2,8 @@ package com.FPBG.service;
 
 import java.util.List;
 
+import com.FPBG.domain.dto.Criteria;
 import com.FPBG.domain.vo.BoardVO;
-import com.FPBG.domain.vo.Criteria;
 import com.FPBG.domain.vo.SearchCriteria;
 
 public interface BoardService {
@@ -23,4 +23,5 @@ public interface BoardService {
 	public List<BoardVO> listSearchCriteria(SearchCriteria cri) throws Exception;
 
 	public int listSearchCount(SearchCriteria cri) throws Exception;
+	
 }

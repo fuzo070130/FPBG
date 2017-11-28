@@ -1,5 +1,7 @@
 package com.FPBG.domain.vo;
 
+import com.FPBG.domain.dto.Criteria;
+
 public class SearchCriteria extends Criteria{
 
 	private String searchType;

@@ -120,5 +120,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<include refid="search"></include>
 
 	</select>
+	
+	<update id="ViewCount">
+		update Board Set boardViewCount = boardViewCount + 1 where boardNumber = #{boardNumber}
+	</update>
+	
+	<update id="Good">
+		UPDATE Board SET boardGood=1 WHERE boardNumber = #{boardNumber}
+	</update>
+	
+	<update id="beGood">
+		UPDATE Board SET boardGood=0 WHERE boardNumber = #{boardNumber}
+	</update>
 
 </mapper>

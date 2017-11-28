@@ -62,11 +62,15 @@
 						<div class="box-footer">
 							<c:if test="${boardVO.memNickName ne sessionScope.vo.memNickName or empty sessionScope.vo}">
 								<button type="submit" class="btn btn-primary goListBtn">메인으로</button>
+								<button type="submit" class="btn btn-primary good-like" id="Like">추 천 (${boardVO.boardLikeCount })</button>
+								<button type="submit" class="btn btn-primary good-hate" id="Hate">비추천 (${boardVO.boardHateCount })</button>
 							</c:if>
 							<c:if test="${boardVO.memNickName eq sessionScope.vo.memNickName and !empty sessionScope.vo}">
 								<button type="submit" class="btn btn-warning updateBtn">글수정</button>
 								<button type="submit" class="btn btn-danger deleteBtn">글삭제</button>
 								<button type="submit" class="btn btn-primary goListBtn">메인으로</button>
+								<button type="submit" class="btn btn-primary good-like" id="Like">추 천 (${boardVO.boardLikeCount })</button>
+								<button type="submit" class="btn btn-primary good-hate" id="Hate">비추천 (${boardVO.boardHateCount })</button>
 							</c:if>
 						</div>
 
@@ -107,11 +111,12 @@ $(document).ready(function(){
 			<div class="reply">
 				<div class="reply-body">
 					<div class="reply-insert">
+						<label for="exampleInputPassword1">댓글</label>
 						<input type="hidden" name='memNickName' id='memNickName' value="${sessionScope.vo.memNickName }">
 						<input type="hidden" name='memNumber' id='memNumber' value="${sessionScope.vo.memNumber }">
-						<input type="text" name="replyContent" id='replyContent'>
+						<input type="text" name="replyContent" id='replyContent' class="form-control">
 					</div>
-					<button id="replyAddBtn">댓글 쓰기</button>
+					<button id="replyAddBtn" class="btn btn-primary">댓글 쓰기</button>
 				</div>
 				<ul id="replies">
 				
@@ -198,6 +203,132 @@ $(document).ready(function(){
 				
 				$(document).ready(function(){
 					getAllList();
+					if ($("#session-memNickName").val()){
+						console.log($("#session-memNickName").val());
+						/* 좋아요 체크 */
+						$.getJSON("/FPBG/good/likeCheck/${boardVO.boardNumber}", function(data){
+							if(data > 0){
+								$(".good-like").attr("id",'unLike').html("추천 취소 (${boardVO.boardLikeCount })");
+							}
+						});
+						/* 싫어요 체크 */
+						$.getJSON("/FPBG/good/hateCheck/${boardVO.boardNumber}", function(data){
+							if(data > 0){
+								$(".good-hate").attr("id",'unHate').html("비추천 취소 (${boardVO.boardHateCount })");
+							}
+						});
+					}
+					
+					$(".good-like").on("click",function() {
+						var memNickName = $("#session-memNickName").val();
+						if(memNickName == null) {
+							alert("로그인을 해주세요");
+						}else if (boardNumber == null) {
+							alert("잘못된 접근입니다");
+						} else {
+							var className = $(".good-like").attr("id");
+							if(className == 'Like') {
+								console.log("추천");
+								$.ajax({
+									type : 'post',
+									url : '/FPBG/good/like',
+									headers : {
+										"Content-Type" : "application/json",
+										"X-HTTP-Method-Override" : "POST"
+									},
+									dataType : 'text',
+									data : JSON.stringify({
+										boardNumber : boardNumber
+									}),
+									success : function(result) {
+										if(result == "SUCCESS") {
+											alert("추천 되었습니다");
+											getAllList();
+											history.go(0);
+										}
+									}
+								});
+							} else if(className == 'unLike') {
+								console.log("추천취소");
+								$.ajax({
+									type : 'delete',
+									url : '/FPBG/good/unlike',
+									headers : {
+										"Content-Type" : "application/json",
+										"X-HTTP-Method-Override" : "DELETE"
+									},
+									dataType : 'text',
+									data : JSON.stringify({
+										boardNumber : boardNumber
+									}),
+									success : function(result) {
+										if(result == "SUCCESS") {
+											alert("추천 취소되었습니다");
+											getAllList();
+											history.go(0);
+										}
+									}
+								});
+							}
+							
+						}
+					});
+					
+					$(".good-hate").on("click",function() {
+						var memNickName = $("#session-memNickName").val();
+						if(memNickName == null) {
+							alert("로그인을 해주세요");
+						}else if (boardNumber == null) {
+							alert("잘못된 접근입니다");
+						} else {
+							var className = $(".good-hate").attr("id");
+							if(className == 'Hate') {
+								console.log("비추천");
+								$.ajax({
+									type : 'post',
+									url : '/FPBG/good/hate',
+									headers : {
+										"Content-Type" : "application/json",
+										"X-HTTP-Method-Override" : "POST"
+									},
+									dataType : 'text',
+									data : JSON.stringify({
+										boardNumber : boardNumber
+									}),
+									success : function(result) {
+										if(result == "SUCCESS") {
+											alert("비추천 되었습니다");
+											getAllList();
+											history.go(0);
+										}
+									}
+								});
+							} else if(className == 'unHate') {
+								console.log("비추천 취소");
+								$.ajax({
+									type : 'delete',
+									url : '/FPBG/good/unhate',
+									headers : {
+										"Content-Type" : "application/json",
+										"X-HTTP-Method-Override" : "DELETE"
+									},
+									dataType : 'text',
+									data : JSON.stringify({
+										boardNumber : boardNumber
+									}),
+									success : function(result) {
+										if(result == "SUCCESS") {
+											alert("비추천 취소되었습니다");
+											getAllList();
+											history.go(0);
+										}
+									}
+								});
+							}
+							
+						}
+					});
+					
 				});
 			</script>
 			<!-- /.content -->

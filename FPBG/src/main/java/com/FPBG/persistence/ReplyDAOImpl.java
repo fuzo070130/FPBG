@@ -9,7 +9,7 @@ import javax.annotation.Resource;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import com.FPBG.domain.vo.Criteria;
+import com.FPBG.domain.dto.Criteria;
 import com.FPBG.domain.vo.ReplyVO;
 
 @Repository

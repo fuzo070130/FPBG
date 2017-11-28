@@ -74,6 +74,9 @@
 									<th>WRITER</th>
 									<th>REGDATE</th>
 									<th style="width: 40px">VIEWCNT</th>
+									<th style="width: 40px">Good</th>
+									<th style="width: 10px">Like</th>
+									<th style="width: 10px">Hate</th>
 								</tr>
 
 
@@ -87,6 +90,16 @@
 										<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
 												value="${boardVO.boardDate}" /></td>
 										<td><span class="badge bg-red">${boardVO.boardViewCount }</span></td>
+										<c:choose>
+											<c:when test="${boardVO.boardGood eq 1}">
+												<td><span class="glyphicon glyphicon-ok" style="color: green; visibility: visible;"></span></td>
+											</c:when>
+											<c:when test="${boardVO.boardGood eq 0}">
+												<td><span class="glyphicon glyphicon-remove" style="color: red; visibility: visible;"></span></td>
+											</c:when>
+									    </c:choose>
+									    <td>${boardVO.boardLikeCount }</td>
+									    <td>${boardVO.boardHateCount }</td>
 									</tr>
 
 								</c:forEach>

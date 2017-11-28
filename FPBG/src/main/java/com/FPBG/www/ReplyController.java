@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.FPBG.domain.vo.Criteria;
+import com.FPBG.domain.dto.Criteria;
+import com.FPBG.domain.dto.PageMaker;
 import com.FPBG.domain.vo.MemberVO;
-import com.FPBG.domain.vo.PageMaker;
 import com.FPBG.domain.vo.ReplyVO;
 import com.FPBG.service.ReplyService;
 
