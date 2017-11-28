@@ -11,6 +11,10 @@ html {
 	/* 모바일 767px 이하일시 오른쪽 여백 삭제 */
 		overflow-x: hidden;
 } 
+ul {
+	list-style:none !important;
+    padding-left:0px !important;
+}
 /**
  * 기본 마진값을 제거. 
  */ 

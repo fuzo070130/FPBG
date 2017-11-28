@@ -2,7 +2,7 @@ package com.FPBG.service;
 
 import java.util.List;
 
-import com.FPBG.domain.vo.Criteria;
+import com.FPBG.domain.dto.Criteria;
 import com.FPBG.domain.vo.ReplyVO;
 
 public interface ReplyService {

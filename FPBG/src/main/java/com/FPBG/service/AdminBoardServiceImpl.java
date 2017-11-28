@@ -5,9 +5,10 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.FPBG.domain.dto.Criteria;
 import com.FPBG.domain.vo.AdminBoardVO;
-import com.FPBG.domain.vo.Criteria;
 import com.FPBG.domain.vo.SearchCriteria;
 import com.FPBG.persistence.AdminBoardDAO;
 
@@ -23,9 +24,10 @@ public class AdminBoardServiceImpl implements AdminBoardService {
 		dao.create(vo);
 	}
 
+	@Transactional
 	@Override
 	public AdminBoardVO read(Integer adminboardNumber) throws Exception {
-
+		dao.ViewCount(adminboardNumber);
 		return dao.read(adminboardNumber);
 	}
 

@@ -2,19 +2,22 @@
 
 /* 리더보드 전체 높이 */
 .content {
-	height: 875px;
+	height: 2875px;
 }
 
 /* 검색 조건 칸 */
 /* 버튼 상위 클래스 높이 */
 .col-md-2,
 .col-md-2 .dropdown,
-.col-md-2 .submit-button{
+.col-md-2 .submit-button,
+.col-md-3,
+.col-md-3 .dropdown,
+.col-md-3 .submit-button{
 	height: 100px;
 }
 
 /* 상단 여백 */
-.col-md-2 .dropdown,
+.col-md-3 .dropdown,
 .col-md-4 img,
 .submit-button {
 	margin-top: 12.5px;
@@ -41,7 +44,12 @@
 
 /* 결과 출력 칸 */
 .container-body {
-	height: 750px;
-	background-color: gray;
-	opacity: 0.2;
+	height: 3738px;
+	background-color: white;
+	color: black !important;
+}
+
+.bigbody {
+	margin: 0 auto;
+	height: 3900px !important;
 }

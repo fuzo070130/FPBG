@@ -1,7 +1,9 @@
-package com.FPBG.domain.vo;
+package com.FPBG.domain.dto;
 
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
+
+import com.FPBG.domain.vo.SearchCriteria;
 
 public class PageMaker {
 

@@ -7,8 +7,8 @@ import javax.annotation.Resource;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.FPBG.domain.dto.Criteria;
 import com.FPBG.domain.vo.BoardVO;
-import com.FPBG.domain.vo.Criteria;
 import com.FPBG.domain.vo.SearchCriteria;
 
 @Repository
@@ -74,4 +74,19 @@ public class BoardDAOImpl implements BoardDAO {
 		
 		return session.selectOne(namespace + ".listSearchCount", cri);
 	}
+	
+	@Override
+	public void ViewCount(int boardNumber)throws Exception {
+		session.update(namespace+".ViewCount", boardNumber);
+	}
+	
+	@Override
+	public void Good(int boardNumber)throws Exception {
+		session.update(namespace+".Good", boardNumber);
+	}
+	@Override
+	public void beGood(int boardNumber)throws Exception {
+		session.update(namespace+".beGood", boardNumber);
+	}
+	
 }

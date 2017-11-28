@@ -5,9 +5,10 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.FPBG.domain.dto.Criteria;
 import com.FPBG.domain.vo.BoardVO;
-import com.FPBG.domain.vo.Criteria;
 import com.FPBG.domain.vo.SearchCriteria;
 import com.FPBG.persistence.BoardDAO;
 
@@ -21,10 +22,20 @@ public class BoardServiceImpl implements BoardService {
 	public void create(BoardVO vo) throws Exception {
 		dao.create(vo);
 	}
-
+	
+	@Transactional
 	@Override
 	public BoardVO read(Integer boardNumber) throws Exception {
-		return dao.read(boardNumber);
+		dao.ViewCount(boardNumber);
+		BoardVO vo = dao.read(boardNumber);
+		//좋아요가 15이상이면 화제글 업데이트
+		if(vo.getBoardLikeCount() >= 15){
+			dao.Good(boardNumber);
+		} else if (vo.getBoardLikeCount() < 15){ // 15이하면 화제글 X업데이트 
+			dao.beGood(boardNumber);
+		}
+		vo = dao.read(boardNumber);
+		return vo;
 	}
 
 	@Override

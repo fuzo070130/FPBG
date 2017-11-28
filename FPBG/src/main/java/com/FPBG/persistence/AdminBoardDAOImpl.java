@@ -7,8 +7,8 @@ import javax.annotation.Resource;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.FPBG.domain.dto.Criteria;
 import com.FPBG.domain.vo.AdminBoardVO;
-import com.FPBG.domain.vo.Criteria;
 import com.FPBG.domain.vo.SearchCriteria;
 
 @Repository
@@ -77,5 +77,10 @@ public class AdminBoardDAOImpl implements AdminBoardDAO {
 	public int listSearchCount(SearchCriteria cri) throws Exception {
 		
 		return session.selectOne(namespace + ".listSearchCount", cri);
+	}
+	
+	@Override
+	public void ViewCount(int adminboardNumber)throws Exception {
+		session.update(namespace+".ViewCount", adminboardNumber);
 	}
 }

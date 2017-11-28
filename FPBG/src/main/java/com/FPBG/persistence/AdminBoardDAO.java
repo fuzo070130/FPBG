@@ -2,8 +2,8 @@ package com.FPBG.persistence;
 
 import java.util.List;
 
+import com.FPBG.domain.dto.Criteria;
 import com.FPBG.domain.vo.AdminBoardVO;
-import com.FPBG.domain.vo.Criteria;
 import com.FPBG.domain.vo.SearchCriteria;
 
 public interface AdminBoardDAO {
@@ -25,5 +25,7 @@ public interface AdminBoardDAO {
 	public List<AdminBoardVO> listSearch(SearchCriteria cri)throws Exception;
 	  
 	public int listSearchCount(SearchCriteria cri)throws Exception;
+
+	public void ViewCount(int adminboardNumber) throws Exception;
 	
 }

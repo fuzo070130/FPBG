@@ -11,8 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.FPBG.domain.dto.PageMaker;
 import com.FPBG.domain.vo.BoardVO;
-import com.FPBG.domain.vo.PageMaker;
 import com.FPBG.domain.vo.SearchCriteria;
 import com.FPBG.service.BoardService;
 
@@ -27,8 +28,6 @@ public class SearchBoardController {
 
   @RequestMapping(value = "/list", method = RequestMethod.GET)
   public void listPage(@ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception {
-
-    logger.info(cri.toString());
 
     //model.addAttribute("list", service.listCriteria(cri));
     model.addAttribute("list", service.listSearchCriteria(cri));
@@ -73,7 +72,6 @@ public class SearchBoardController {
   @RequestMapping(value = "/modifyPage", method = RequestMethod.POST)
   public String modifyPagingPOST(BoardVO board, SearchCriteria cri, RedirectAttributes rttr) throws Exception {
 
-    logger.info(cri.toString());
     service.update(board);
 
     rttr.addAttribute("page", cri.getPage());
@@ -83,22 +81,16 @@ public class SearchBoardController {
 
     rttr.addFlashAttribute("msg", "SUCCESS");
 
-    logger.info(rttr.toString());
-
     return "redirect:/sboard/list";
   }
 
   @RequestMapping(value = "/register", method = RequestMethod.GET)
   public void registGET() throws Exception {
 
-    logger.info("regist get ...........");
   }
 
   @RequestMapping(value = "/register", method = RequestMethod.POST)
   public String registPOST(BoardVO board, RedirectAttributes rttr) throws Exception {
-
-    logger.info("regist post ...........");
-    logger.info(board.toString());
 
     service.create(board);
 

@@ -2,8 +2,8 @@ package com.FPBG.persistence;
 
 import java.util.List;
 
+import com.FPBG.domain.dto.Criteria;
 import com.FPBG.domain.vo.BoardVO;
-import com.FPBG.domain.vo.Criteria;
 import com.FPBG.domain.vo.SearchCriteria;
 
 public interface BoardDAO {
@@ -25,4 +25,10 @@ public interface BoardDAO {
 	public List<BoardVO> listSearch(SearchCriteria cri)throws Exception;
 	  
 	public int listSearchCount(SearchCriteria cri)throws Exception;
+
+	public void ViewCount(int boardNumber) throws Exception;
+
+	public void Good(int boardNumber) throws Exception;
+
+	public void beGood(int boardNumber) throws Exception;
 }
