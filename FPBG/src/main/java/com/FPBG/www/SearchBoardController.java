@@ -99,9 +99,10 @@ public class SearchBoardController {
 
     logger.info("regist post ...........");
     logger.info(board.toString());
-    String content = board.getBoardContent();
+    
+    /*String content = board.getBoardContent();
     String contentMain = content.substring(3 , content.length()-4);
-    board.setBoardContent(contentMain);
+    board.setBoardContent(contentMain);*/
     
     service.create(board);
 

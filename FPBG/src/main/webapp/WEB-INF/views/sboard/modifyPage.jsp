@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript" src="/FPBG/resources/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
 <title>Insert title here</title>
 </head>
 <body>
@@ -23,7 +24,7 @@
 						</div>
 						<!-- /.box-header -->
 
-						<form role="form" action="modifyPage" method="post">
+						<form role="form" action="modifyPage" method="post" id="frm">
 
 							<input type='hidden' name='page' value="${cri.page}"> 
 							<input type='hidden' name='perPageNum' value="${cri.perPageNum}">
@@ -43,7 +44,8 @@
 								</div>
 								<div class="form-group">
 									<label for="exampleInputPassword1">Content</label>
-									<textarea class="form-control" name="boardContent" rows="3">${boardVO.boardContent}</textarea>
+									<%-- <textarea class="form-control" name="boardContent" rows="3">${boardVO.boardContent}</textarea> --%>
+									<textarea class="form-control" name="boardContent" id="smarteditor" rows="10" cols="100" style="width:766px; height:412px;">${boardVO.boardContent}</textarea>
 								</div>
 								<div class="form-group">
 									<label for="exampleInputEmail1">Writer</label> <input
@@ -54,7 +56,7 @@
 							<!-- /.box-body -->
 						</form>
 						<div class="box-footer">
-							<button type="submit" class="btn btn-primary">SAVE</button>
+							<button type="submit" class="btn btn-primary" id="smartSubmit">SAVE</button>
 							<button type="submit" class="btn btn-warning">CANCEL</button>
 						</div>
 
@@ -91,5 +93,32 @@
 	</div>
 
 	<jsp:include page="../footer.jsp" />
+	<script>
+	
+	$(function(){
+    //전역변수선언
+    var editor_object = [];
+     
+    	nhn.husky.EZCreator.createInIFrame({
+	        oAppRef: editor_object,
+	        elPlaceHolder: "smarteditor",
+	        sSkinURI: "/FPBG/resources/smarteditor/SmartEditor2Skin.html",
+	        htParams : {
+	            // 툴바 사용 여부 (true:사용/ false:사용하지 않음)
+	            bUseToolbar : true,            
+	            // 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음)
+	            bUseVerticalResizer : true,    
+	            // 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음)
+	            bUseModeChanger : true,
+		        		}
+	    });
+    	$("#smartSubmit").click(function(){
+    		editor_object.getById["smarteditor"].exec("UPDATE_CONTENTS_FIELD", []);
+    		
+    		$("#frm").submit();
+    	})
+    
+	})
+</script>
 </body>
 </html>

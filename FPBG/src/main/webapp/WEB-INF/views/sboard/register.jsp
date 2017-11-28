@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript" src="/FPBG/resources/smarteditor/js/service/HuskyEZCreator.js" charset="utf-8"></script>
+<script type="text/javascript" src="/FPBG/resources/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
 </head>
 <body>
 	<jsp:include page="../header.jsp" />
