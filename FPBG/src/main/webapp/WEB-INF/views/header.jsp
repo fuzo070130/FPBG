@@ -52,6 +52,7 @@
 				    		<li><a href="/FPBG/attachments">부착물</a></li>
 				    	</ul>
 				    </li>
+				    <li><a href="/FPBG/patch">패치내역</a></li>
 				    <li><a href="/FPBG/patch/Adminlist">패치내역</a></li>
 				    <li><a href="https://himap.me/">지도</a></li>
 				    <li><a href="/FPBG/sboard/list">게시판</a></li>
@@ -66,6 +67,7 @@
 							<li>
 								<div class="member-info">
 									<a href="/FPBG/Member/select">${vo.memNickName }</a>님 환영합니다
+									<input type="hidden" id="session-memNickName" value="${vo.memNickName }">
 						    	</div>
 					    	<li>
 					    	<li><button type="button" class="btn btn-info btn" onclick="logout();"><span class="glyphicon glyphicon-log-out"></span>&nbsp;로&nbsp;그&nbsp;아&nbsp;웃</button></li>

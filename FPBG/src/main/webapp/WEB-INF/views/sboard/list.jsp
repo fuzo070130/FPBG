@@ -54,7 +54,8 @@
 							Title OR Content OR Writer</option>
 					</select> <input type="text" name='keyword' id="keywordInput"
 						value='${cri.keyword }'>
-					<button id='searchBtn'>Search</button>
+					<button id='searchBtn' class="btn btn-primary btn"
+					>Search</button>
 					
 
 				</div>
@@ -62,7 +63,7 @@
 
 					<div class="box">
 						<div class="box-header with-border">
-							<h3 class="box-title">LIST ALL PAGE</h3>
+							<h3 class="box-title">게시판</h3>
 						</div>
 						<div class="box-body">
 

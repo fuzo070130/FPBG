@@ -27,7 +27,7 @@
 
 						<form role="form" action="modifyPage" method="post">
 
-							<input type='hidden' name='boardNumber' value="${boardVO.boardNumber}">
+							<input type='hidden' name='boardNumber' value="${boardVO.boardNumber}" id="boardNumber">
 							<input type='hidden' name='page' value="${cri.page}">
 							<input type='hidden' name='perPageNum' value="${cri.perPageNum}">
 							<input type='hidden' name='searchType' value="${cri.searchType}">
@@ -76,8 +76,6 @@ $(document).ready(function(){
 	
 	var formObj = $("form[role='form']");
 	
-	console.log(formObj);
-	
 	$(".updateBtn").on("click", function(){
 		formObj.attr("action", "/FPBG/sboard/modifyPage");
 		formObj.attr("method", "get");		
@@ -106,6 +104,102 @@ $(document).ready(function(){
 
 			</div>
 			<!-- /.row --> </section>
+			<div class="reply">
+				<div class="reply-body">
+					<div class="reply-insert">
+						<input type="hidden" name='memNickName' id='memNickName' value="${sessionScope.vo.memNickName }">
+						<input type="hidden" name='memNumber' id='memNumber' value="${sessionScope.vo.memNumber }">
+						<input type="text" name="replyContent" id='replyContent'>
+					</div>
+					<button id="replyAddBtn">댓글 쓰기</button>
+				</div>
+				<ul id="replies">
+				
+				</ul>
+			</div>
+			<script>
+				boardNumber = $("#boardNumber").val();
+				function getAllList() {
+					$.getJSON("/FPBG/Reply/all/" + boardNumber, function(data) {
+						var str = "";
+						
+						$(data).each(
+							function() {
+								str += "<li data-replyNumber='" + this.replyNumber + "' class='replyLi'>"
+									+ this.memNickName + " : " + this.replyContent
+									+ "<button data-replyNumber='" + this.replyNumber + "' data-memNickName='" + this.memNickName + "'>X</button></li>";
+							});
+						$("#replies").html(str);
+					});
+				}
+				
+				$("#replyAddBtn").on("click",function() {
+					var memNickName = $("#session-memNickName").val();
+					var memNumber = $("#memNumber").val();
+					var replyContent = $("#replyContent").val();
+					if(memNickName == null || memNumber == null) {
+						alert("로그인을 해주세요");
+					} else if (replyContent == '') {
+						alert("댓글내용을 확인해주세요");
+					} else if (boardNumber == null) {
+						alert("잘못된 접근입니다");
+					} else {
+						$.ajax({
+							type : 'post',
+							url : '/FPBG/Reply/insert',
+							headers : {
+								"Content-Type" : "application/json",
+								"X-HTTP-Method-Override" : "POST"
+							},
+							dataType : 'text',
+							data : JSON.stringify({
+								memNickName : memNickName,
+								memNumber : memNumber,
+								replyContent : replyContent,
+								boardNumber : boardNumber
+							}),
+							success : function(result) {
+								if(result == "SUCCESS") {
+									alert("등록 되었습니다");
+									getAllList();
+									history.go(0);
+								}
+							}
+						});
+					}
+				});
+				
+				$("#replies").on("click" , ".replyLi button", function() {
+					var replyNumber = $(this).attr('data-replyNumber');
+					var smemNickName = $("#session-memNickName").val();
+					var memNickName = $(this).attr('data-memNickName');
+					if(smemNickName == null) {
+						alert("로그인을 해주세요");
+					} else if(smemNickName != memNickName) {
+						alert("권한이 없습니다");
+					} else {
+						$.ajax({
+							type : 'delete',
+							url : '/FPBG/Reply/' + replyNumber,
+							headers : {
+								"Content-Type" : "application/json",
+								"X-HTTP-Method-Override" : "DELETE"
+							},
+							dataType : 'text',
+							success : function(result) {
+								if(result == "SUCCESS") {
+									alert("삭제 되었습니다");
+									getAllList();
+								}
+							}
+						});
+					}
+				});
+				
+				$(document).ready(function(){
+					getAllList();
+				});
+			</script>
 			<!-- /.content -->
 		</div>
 		<!-- /.content-wrapper -->

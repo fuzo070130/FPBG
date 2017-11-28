@@ -25,7 +25,10 @@
 		<interceptor>
 			<mapping path="/board/register"/>			
 			<mapping path="/board/removePage"/>			
-			<mapping path="/board/modifyPage"/>			
+			<mapping path="/board/modifyPage"/>
+			<mapping path="/sboard/register"/>			
+			<mapping path="/sboard/removePage"/>			
+			<mapping path="/sboard/modifyPage"/>				
 			<mapping path="/Member/select"/>			
 			<beans:ref bean="loginCheckInterceptor"/>
 		</interceptor>

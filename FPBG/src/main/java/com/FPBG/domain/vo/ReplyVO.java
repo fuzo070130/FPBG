@@ -7,9 +7,17 @@ public class ReplyVO {
 	private int replyNumber;
 	private int boardNumber;
 	private String replyContent;
-	private Date replyDate;
 	private String memNickName;
 	private int memNumber;
+	private Date replyDate;
+	private Date replyUpdate;
+	
+	public Date getReplyUpdate() {
+		return replyUpdate;
+	}
+	public void setReplyUpdate(Date replyUpdate) {
+		this.replyUpdate = replyUpdate;
+	}
 	public int getReplyNumber() {
 		return replyNumber;
 	}
