@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.FPBG.domain.dto.PlayerDTO;
 import com.FPBG.domain.dto.RankMemberDTO;
 import com.FPBG.domain.vo.BoardVO;
 import com.FPBG.service.BoardService;
@@ -51,7 +52,12 @@ public class HomeController {
 	public String search(String search ,String season, String mode, String Region,Model model) {
 		StatsSearch playersearch = new StatsSearch();
 		try {
-			model.addAttribute("search" , playersearch.search(search,season,mode,Region));
+			PlayerDTO dto = playersearch.search(search, season, mode, Region);
+			if(dto != null){
+				model.addAttribute("search" , playersearch.search(search,season,mode,Region));
+			}else{
+				model.addAttribute("error", "error");
+			}
 		}catch(Exception e){
 			model.addAttribute("error", "error");
 		}

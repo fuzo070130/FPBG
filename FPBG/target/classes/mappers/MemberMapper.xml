@@ -12,7 +12,7 @@
 	
 	<update id="update" parameterType="MemberVO">
 	UPDATE Member SET
-	memNickName=#{memNickName},memPassword=#{memPassword} ,memDiscord=#{memDiscord}
+	memID=#{memID},memDiscord=#{memDiscord}
 	WHERE memNumber=#{memNumber}
 	</update>
 	

@@ -92,7 +92,6 @@ public class SearchBoardController {
   @RequestMapping(value = "/register", method = RequestMethod.POST)
   public String registPOST(BoardVO board, RedirectAttributes rttr) throws Exception {
 
-<<<<<<< HEAD
     logger.info("regist post ...........");
     logger.info(board.toString());
     
@@ -100,8 +99,6 @@ public class SearchBoardController {
     String contentMain = content.substring(3 , content.length()-4);
     board.setBoardContent(contentMain);*/
     
-=======
->>>>>>> branch 'master' of https://github.com/fuzo070130/FPBG.git
     service.create(board);
 
     rttr.addFlashAttribute("msg", "SUCCESS");

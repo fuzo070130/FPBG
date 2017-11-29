@@ -32,6 +32,7 @@
 							<input type='hidden' name='perPageNum' value="${cri.perPageNum}">
 							<input type='hidden' name='searchType' value="${cri.searchType}">
 							<input type='hidden' name='keyword' value="${cri.keyword}">
+							<input type='hidden' name='boardGood' value="${cri.boardGood}">
 
 						</form>
 
@@ -55,6 +56,21 @@
 								<label for="exampleInputEmail1">Writer</label> <input
 									type="text" name="memNickName" class="form-control"
 									value="${boardVO.memNickName}" readonly="readonly">
+							</div>
+							
+							<div class="reply">
+								<div class="reply-body">
+									<div class="reply-insert">
+										<label for="exampleInputPassword1">댓글</label>
+										<input type="hidden" name='memNickName' id='memNickName' value="${sessionScope.vo.memNickName }">
+										<input type="hidden" name='memNumber' id='memNumber' value="${sessionScope.vo.memNumber }">
+										<input type="text" name="replyContent" id='replyContent' class="form-control">
+									</div>
+									<button id="replyAddBtn" class="btn btn-primary">댓글 쓰기</button>
+								</div>
+								<ul id="replies">
+								
+								</ul>
 							</div>
 						</div>
 						<!-- /.box-body -->
@@ -108,20 +124,7 @@ $(document).ready(function(){
 
 			</div>
 			<!-- /.row --> </section>
-			<div class="reply">
-				<div class="reply-body">
-					<div class="reply-insert">
-						<label for="exampleInputPassword1">댓글</label>
-						<input type="hidden" name='memNickName' id='memNickName' value="${sessionScope.vo.memNickName }">
-						<input type="hidden" name='memNumber' id='memNumber' value="${sessionScope.vo.memNumber }">
-						<input type="text" name="replyContent" id='replyContent' class="form-control">
-					</div>
-					<button id="replyAddBtn" class="btn btn-primary">댓글 쓰기</button>
-				</div>
-				<ul id="replies">
-				
-				</ul>
-			</div>
+			
 			<script>
 				boardNumber = $("#boardNumber").val();
 				function getAllList() {

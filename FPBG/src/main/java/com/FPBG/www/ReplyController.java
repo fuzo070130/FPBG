@@ -80,7 +80,6 @@ public class ReplyController {
 		ResponseEntity<List<ReplyVO>> entity = null;
 		try {
 			entity = new ResponseEntity<>(service.list(boardNumber) , HttpStatus.OK);
-			System.out.println("성공");
 		}catch(Exception e){
 			e.printStackTrace();
 			entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);

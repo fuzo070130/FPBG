@@ -24,12 +24,13 @@
 						</div>
 						<!-- /.box-header -->
 
-						<form role="form" action="modifyPage" method="post" id="frm">
+						<form action="modifyPage" method="post" id="frm">
 
 							<input type='hidden' name='page' value="${cri.page}"> 
 							<input type='hidden' name='perPageNum' value="${cri.perPageNum}">
 							<input type='hidden' name='searchType' value="${cri.searchType}">
 							<input type='hidden' name='keyword' value="${cri.keyword}">
+							<input type='hidden' name='boardGood' value="${cri.boardGood}">
 
 							<div class="box-body">
 
@@ -40,7 +41,7 @@
 
 								<div class="form-group">
 									<label for="exampleInputEmail1">Title</label> <input
-										type="text" name='boardTitle' class="form-control" value="${boardVO.boardTitle}">
+										type="text" name='boardTitle' class="form-control" value="${boardVO.boardTitle}" id="board-Title">
 								</div>
 								<div class="form-group">
 									<label for="exampleInputPassword1">Content</label>
@@ -56,25 +57,50 @@
 							<!-- /.box-body -->
 						</form>
 						<div class="box-footer">
-							<button type="submit" class="btn btn-primary" id="smartSubmit">SAVE</button>
-							<button type="submit" class="btn btn-warning">CANCEL</button>
+							<button type="button" class="btn btn-primary" id="smartSubmit">SAVE</button>
+							<button type="button" class="btn btn-warning">CANCEL</button>
 						</div>
 
 <script>
  $(document).ready(function() {
 	 
-	var formObj = $("form[role='form']");
-	
-	console.log(formObj);
-	
 	$(".btn-warning").on("click",function() {
-	self.location = "/FPBG/sboard/listPage?page=${cri.page}&perPageNum=${cri.perPageNum}"
-			+ "&searchType=${cri.searchType}&keyword=${cri.keyword}";
+	self.location = "/FPBG/sboard/list?page=${cri.page}&perPageNum=${cri.perPageNum}"
+			+ "&searchType=${cri.searchType}&keyword=${cri.keyword}&boardGood=${cri.boardGood}";
 	});
 	
-	$(".btn-primary").on("click",function() {
-	formObj.submit();
+	//전역변수선언
+	var editor_object = [];
+
+	nhn.husky.EZCreator.createInIFrame({
+        oAppRef: editor_object,
+        elPlaceHolder: "smarteditor",
+        sSkinURI: "/FPBG/resources/smarteditor/SmartEditor2Skin.html",
+        htParams : {
+            // 툴바 사용 여부 (true:사용/ false:사용하지 않음)
+            bUseToolbar : true,            
+            // 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음)
+            bUseVerticalResizer : true,    
+            // 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음)
+            bUseModeChanger : true,
+	        		}
+    });
+	
+	$("#smartSubmit").click(function(event){
+		editor_object.getById["smarteditor"].exec("UPDATE_CONTENTS_FIELD", []);
+		
+		var board_Title = $("#board-Title").val();
+		var smarteditor = $("#smarteditor").val();
+		
+		if(isEmpty(board_Title)){
+			alert('제목을 확인해주세요');
+		}else if(isEmpty(smarteditor)){
+			alert('내용을 확인해주세요');
+		}else{
+			$("#frm").submit()
+		}
 	});
+	
  });
 </script>
 
@@ -96,29 +122,9 @@
 	<script>
 	
 	$(function(){
-    //전역변수선언
-    var editor_object = [];
-     
-    	nhn.husky.EZCreator.createInIFrame({
-	        oAppRef: editor_object,
-	        elPlaceHolder: "smarteditor",
-	        sSkinURI: "/FPBG/resources/smarteditor/SmartEditor2Skin.html",
-	        htParams : {
-	            // 툴바 사용 여부 (true:사용/ false:사용하지 않음)
-	            bUseToolbar : true,            
-	            // 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음)
-	            bUseVerticalResizer : true,    
-	            // 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음)
-	            bUseModeChanger : true,
-		        		}
-	    });
-    	$("#smartSubmit").click(function(){
-    		editor_object.getById["smarteditor"].exec("UPDATE_CONTENTS_FIELD", []);
-    		
-    		$("#frm").submit();
-    	})
-    
-	})
+   		
+    	
+	});
 </script>
 </body>
 </html>

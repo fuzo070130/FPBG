@@ -55,55 +55,62 @@
 						<!-- /.box-body -->
 
 						<div class="box-footer">
-							<!-- <button type="button" class="btn btn-warning updateBtn">회원수정</button>
-							<button type="button" class="btn btn-danger deleteBtn">회원탈퇴</button> -->
+							<button type="button" class="btn btn-primary gomodifyBtn" data-toggle="modal" data-target="#Password">정보수정</button>
 							<button type="button" class="btn btn-primary goListBtn">메인으로</button>
 						</div>
+						
+						<div class="modal fade" id="Password" role="dialog">
+					    	<div class="modal-dialog">
+					      		<!-- Modal content-->
+					      		<div class="modal-content">
+						        	<div class="modal-header">
+						            	<button type="button" class="close" data-dismiss="modal">&times;</button>
+						            	<h4 class="modal-title">비밀번호 확인</h4>
+						        	</div>
+							        <div class="modal-body">
+										<div class="input-span">
+							        		<span class="glyphicon glyphicon-lock"></span>
+											<input type="password" name="memPassword" placeholder="Your Password" id="Password-check">
+										</div>
+							        </div>
+							        <div class="modal-footer">
+							            <button type="button" class="btn btn-default Password-Btn">확인</button>
+							        </div>
+					      		</div>
+					    	</div>
+					    </div>
 
 
 <script>
 $(document).ready(function(){
 	
-	/*$(".updateBtn").on("click", function(){
-		var memID = $("#memID").val();
-		var memNickName = $("#memNickName").val();
-		var memEmail = $("#memEmail").val();
-		var memDiscord = $("#memDiscord").val();
-		var memReg = $("#memReg").val();
-		var memNumber = $("#memNumber").val();
-		console.log(memID);
+	$(".goListBtn").on("click", function(){
+		location.href = "/FPBG";
+	});
+	$(".Password-Btn").on("click", function(){
+		var memPassword = $("#Password-check").val();
 		$.ajax({
-			type : 'post',
-			url : '/FPBG/Option/update',
+			type : 'POST',
+			url : '/FPBG/Member/passwordCheck',
 			headers : {
 				"Content-Type" : "application/json",
-				"X-HTTP-Method-Override" : "POST"
+				"X-HTTP-Method-Override" : "post"
 			},
 			dataType : 'text',
 			data : JSON.stringify({
-				memID : memID,
-				memNickName : memNickName,
-				memEmail : memEmail,
-				memDiscord : memDiscord,
-				memReg : memReg,
-				memNumber : memNumber
+				memPassword : memPassword
 			}),
 			success : function(result){
 				if(result == 'succ'){
-					alert("성공");
-					location.href="/FPBG";
+					alert("확인되었습니다");
+					location.href = "/FPBG/Member/modify";
 				} else if(result == 'fail'){
-					alert("성공");
-					location.href="/FPBG";
+					alert("비밀번호가 틀리셨습니다");
 				}
 			}
 		});
 	});
-	$(".deleteBtn").on("click", function(){
-		
-	});*/
-	$(".goListBtn").on("click", function(){
-		location.href = "/FPBG";
+	$(".godeleteBtn").on("click", function(){
 	});
 	
 }); 

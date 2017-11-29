@@ -31,7 +31,7 @@
 								<div class="form-group">
 									<label for="exampleInputEmail1">Title</label> <input
 										type="text" name='boardTitle' class="form-control"
-										placeholder="Enter Title">
+										placeholder="Enter Title" id="board-Title">
 								</div>
 								<div class="form-group">
 									<label for="exampleInputPassword1">Content</label>
@@ -44,6 +44,7 @@
 
 							<div class="box-footer">
 								<button type="button" class="btn btn-primary" id="smartSubmit">Submit</button>
+								<button type="button" id='listBtn' class="btn btn-primary btn">목록보기</button>
 							</div>
 							
 						</form>
@@ -81,12 +82,28 @@
 	            bUseModeChanger : true,
 		        		}
 	    });
-    	$("#smartSubmit").click(function(){
+    	
+    	$("#smartSubmit").click(function(event){
+    		event.preventDefault();
     		editor_object.getById["smarteditor"].exec("UPDATE_CONTENTS_FIELD", []);
     		
-    		$("#frm").submit();
-    	})
-    
+    		var board_Title = $("#board-Title").val();
+    		var smarteditor = $("#smarteditor").val();
+    		
+    		if(!board_Title){
+    			alert('제목을 확인해주세요');
+    		}else if(!smarteditor){
+    			alert('내용을 확인해주세요');
+    		}else{
+	    		$("#frm").submit();
+    		}
+    		
+    	});
+    	
+    	$('#listBtn').on("click",function(event) {
+			location.href ="/FPBG/sboard/list";
+		});
+    	
 	})
 </script>
 </body>

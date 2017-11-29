@@ -6,7 +6,15 @@ public class SearchCriteria extends Criteria{
 
 	private String searchType;
 	private String keyword;
+	private String boardGood;
 	
+	
+	public String getBoardGood() {
+		return boardGood;
+	}
+	public void setBoardGood(String boardGood) {
+		this.boardGood = boardGood;
+	}
 	public String getSearchType() {
 		return searchType;
 	}

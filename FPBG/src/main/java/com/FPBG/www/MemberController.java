@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -115,10 +116,74 @@ public class MemberController {
 		return new ResponseEntity<String>("fail", HttpStatus.OK);
 	}
 	
+	@ResponseBody
+	@RequestMapping(value = "/insert", method = RequestMethod.POST)
+	public ResponseEntity<String> insert(@RequestBody MemberVO vo)throws Exception {
+		ResponseEntity<String> entity = null;
+		
+		PasswordSecurity security = new PasswordSecurity();
+		vo.setMemPassword(security.encryptSHA256(vo.getMemPassword()));
+			
+		try {
+			service.insert(vo);
+			entity = new ResponseEntity<String>("succ", HttpStatus.OK);
+		}catch(Exception e){
+			entity = new ResponseEntity<String>("fail", HttpStatus.OK);
+		}	
+		return entity;
+	}
+	
 	@RequestMapping(value = "/select", method = RequestMethod.GET)
 	public String select() throws Exception{
 		
 		return "/Member/select";
+	}
+	
+	@RequestMapping(value = "/modify", method = RequestMethod.GET)
+	public String modify() throws Exception{
+		
+		return "/Member/modify";
+	}
+	@ResponseBody
+	@RequestMapping(value = "/modify", method = RequestMethod.PATCH)
+	public ResponseEntity<String> modifypost(@RequestBody MemberVO vo,HttpServletRequest request) throws Exception{
+		try{
+			service.update(vo);
+			HttpSession session = request.getSession();
+			session.invalidate();
+			return new ResponseEntity<String>("succ", HttpStatus.OK);
+		}catch(Exception e){
+			return new ResponseEntity<String>("fail", HttpStatus.OK);
+		}
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/delete/{memNumber}", method = RequestMethod.DELETE)
+	public ResponseEntity<String> modifypost(@PathVariable ("memNumber") String memNumber,HttpServletRequest request) throws Exception{
+		try{
+			MemberVO vo = new MemberVO();
+			System.out.println(memNumber);
+			vo.setMemNumber(Integer.parseInt(memNumber));
+			service.delete(vo);
+			HttpSession session = request.getSession();
+			session.invalidate();
+			return new ResponseEntity<String>("succ", HttpStatus.OK);
+		}catch(Exception e){
+			e.printStackTrace();
+			return new ResponseEntity<String>("fail", HttpStatus.OK);
+		}
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/passwordCheck", method = RequestMethod.POST)
+	public ResponseEntity<String> passwordCheck(@RequestBody MemberVO mvo, HttpServletRequest request){
+		PasswordSecurity security = new PasswordSecurity();
+		HttpSession session = request.getSession();
+		MemberVO vo = (MemberVO) session.getAttribute("vo");
+		if(vo.getMemPassword().equals(security.encryptSHA256(mvo.getMemPassword()))){
+			return new ResponseEntity<String>("succ", HttpStatus.OK);
+		}
+		return new ResponseEntity<String>("fail", HttpStatus.OK);
 	}
 	
 	
