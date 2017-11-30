@@ -94,6 +94,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				#{keyword}, '%'))
 			</if>
 		</if>
+		<if test="boardGood == 1">
+			and boardGood = 1
+		</if>
 	</sql>
 
 	<select id="listSearch" resultType="BoardVO">

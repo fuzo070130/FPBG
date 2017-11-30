@@ -56,7 +56,6 @@
 						value='${cri.keyword }'>
 					<button id='searchBtn' class="btn btn-primary btn"
 					>Search</button>
-					
 
 				</div>
 			</div>
@@ -111,6 +110,8 @@
 						<div class="box-footer">
 							<a href="/FPBG/sboard/register"><button
 									class="btn btn-primary btn">글쓰기</button></a>
+							<button id='boardGood' class="btn btn-primary btn">화제글</button>
+							<button id='listBtn' class="btn btn-primary btn">목록보기</button>
 						</div>
 						<div class="text-center">
 						<ul class="pagination">
@@ -163,22 +164,31 @@
 		}
 	</script>
 	<script>
-	$(document).ready(
-			function() {
+	$(document).ready(function() {
 
-				$('#searchBtn').on(
-						"click",
-						function(event) {
+		$('#searchBtn').on("click",function(event) {
+			self.location = "list"
+					+ '${pageMaker.makeQuery(1)}'
+					+ "&searchType="
+					+ $("select option:selected").val()
+					+ "&keyword=" + $('#keywordInput').val();
 
-							self.location = "list"
-									+ '${pageMaker.makeQuery(1)}'
-									+ "&searchType="
-									+ $("select option:selected").val()
-									+ "&keyword=" + $('#keywordInput').val();
+		});
+		
+		$("#boardGood").on("click",function(event) {
+			self.location = "list"
+				+ '${pageMaker.makeQuery(1)}'
+				+ "&searchType="
+				+ $("select option:selected").val()
+				+ "&keyword=" + $('#keywordInput').val()
+				+ "&boardGood=1";
+		});
+		
+		$('#listBtn').on("click",function(event) {
+			location.href ="/FPBG/sboard/list";
+		});
 
-						});
-
-			});
+	});
 	</script>
 </body>
 </html>

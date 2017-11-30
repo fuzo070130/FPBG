@@ -32,7 +32,7 @@
 							<div class="form-group">
 								<label for="exampleInputEmail1">아이디</label> <input
 									type="text" class="form-control"
-									value="${sessionScope.vo.memID}" readonly="readonly" name="memID" id="memID">
+									value="${sessionScope.vo.memID}" name="memID" id="modify-memID">
 							</div>
 							<div class="form-group">
 								<label for="exampleInputEmail1">이메일</label> <input
@@ -42,7 +42,7 @@
 							<div class="form-group">
 								<label for="exampleInputEmail1">디스코드</label> <input
 									type="text" class="form-control"
-									value="${sessionScope.vo.memDiscord}" id="memDiscord" readonly="readonly">
+									value="${sessionScope.vo.memDiscord}" id="modify-memDiscord">
 							</div>
 							<div class="form-group">
 								<label for="exampleInputEmail1">가입날짜</label> <input
@@ -50,36 +50,15 @@
 									
 									value="${sessionScope.vo.memReg}" readonly="readonly" id="memReg">
 							</div>
-							<input type="hidden" value=${sessionScope.vo.memNumber } name="memNumber" id="memNumber">
+							<input type="hidden" value=${sessionScope.vo.memNumber } name="memNumber" id="modify-memNumber">
 						</div>
 						<!-- /.box-body -->
 
 						<div class="box-footer">
-							<button type="button" class="btn btn-primary gomodifyBtn" data-toggle="modal" data-target="#Password">정보수정</button>
+							<button type="button" class="btn btn-primary gomodifyMainBtn">회원수정</button>
+							<button type="button" class="btn btn-primary godeleteBtn">회원탈퇴</button>
 							<button type="button" class="btn btn-primary goListBtn">메인으로</button>
 						</div>
-						
-						<div class="modal fade" id="Password" role="dialog">
-					    	<div class="modal-dialog">
-					      		<!-- Modal content-->
-					      		<div class="modal-content">
-						        	<div class="modal-header">
-						            	<button type="button" class="close" data-dismiss="modal">&times;</button>
-						            	<h4 class="modal-title">비밀번호 확인</h4>
-						        	</div>
-							        <div class="modal-body">
-										<div class="input-span">
-							        		<span class="glyphicon glyphicon-lock"></span>
-											<input type="password" name="memPassword" placeholder="Your Password" id="Password-check">
-										</div>
-							        </div>
-							        <div class="modal-footer">
-							            <button type="button" class="btn btn-default Password-Btn">확인</button>
-							        </div>
-					      		</div>
-					    	</div>
-					    </div>
-
 
 <script>
 $(document).ready(function(){
@@ -87,30 +66,56 @@ $(document).ready(function(){
 	$(".goListBtn").on("click", function(){
 		location.href = "/FPBG";
 	});
-	$(".Password-Btn").on("click", function(){
-		var memPassword = $("#Password-check").val();
-		$.ajax({
-			type : 'POST',
-			url : '/FPBG/Member/passwordCheck',
+	
+	$(".gomodifyMainBtn").on("click", function(){
+		var memID = $("#modify-memID").val();
+		var memDiscord = $("#modify-memDiscord").val();
+		var memNumber = $("#modify-memNumber").val();
+	 	$.ajax({
+			type : 'patch',
+			url : '/FPBG/Member/modify',
 			headers : {
 				"Content-Type" : "application/json",
-				"X-HTTP-Method-Override" : "post"
+				"X-HTTP-Method-Override" : "PATCH"
 			},
 			dataType : 'text',
 			data : JSON.stringify({
-				memPassword : memPassword
+				memID : memID,
+				memDiscord : memDiscord,
+				memNumber : memNumber
 			}),
 			success : function(result){
-				if(result == 'succ'){
-					alert("확인되었습니다");
-					location.href = "/FPBG/Member/modify";
-				} else if(result == 'fail'){
-					alert("비밀번호가 틀리셨습니다");
+				if(result == 'succ') {
+					alert('성공했습니다 재로그인 해주세요');
+					location.href = "/FPBG";
+				} else if(result == 'fail') {
+					alert('수정에 실패했습니다');
+					location.href = "/FPBG";
 				}
 			}
 		});
 	});
+	
 	$(".godeleteBtn").on("click", function(){
+		var memNumber = $("#modify-memNumber").val();
+	 	$.ajax({
+			type : 'delete',
+			url : '/FPBG/Member/delete/' + memNumber,
+			headers : {
+				"Content-Type" : "application/json",
+				"X-HTTP-Method-Override" : "DELETE"
+			},
+			dataType : 'text',
+			success : function(result){
+				if(result == 'succ') {
+					alert('탈퇴에 성공했습니다 이용해주셔서 감사합니다');
+					location.href = "/FPBG";
+				} else if(result == 'fail') {
+					alert('탈퇴에 실패했습니다');
+					location.href = "/FPBG";
+				}
+			}
+		});
 	});
 	
 }); 

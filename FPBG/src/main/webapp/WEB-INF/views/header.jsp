@@ -17,6 +17,7 @@
 	<script src="/FPBG/resources/js/bootstrap.js"></script>
 	<script src="/FPBG/resources/js/Nwagon.js"></script>
 	<script src="/FPBG/resources/js/Nwagon_no_vml.js"></script>
+	
 </head>
 <body>
 	<nav class="navbar navbar-default">
@@ -156,6 +157,14 @@
 		        		</div>
 					</div>
 					<script>
+						var isEmpty = function(value){ 
+							if( value == "" || value == null || value == undefined || ( value != null && typeof value == "object" && !Object.keys(value).length ) ){ 
+								return true 
+							}else{ 
+								return false 
+							} 
+						};
+						
 						$(document).ready(function(){
 							/* 인풋 호버 이벤트 */
 							$(".input-span-1").focus(function(){
