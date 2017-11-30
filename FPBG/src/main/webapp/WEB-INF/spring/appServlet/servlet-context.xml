@@ -24,6 +24,8 @@
 	<interceptors>
 		<interceptor>
 			<mapping path="/sboard/register"/>			
+			<mapping path="/sboard/removePage"/>			
+			<mapping path="/sboard/modifyPage"/>			
 			<mapping path="/Member/select"/>
 			<mapping path="/Reply/*"/>
 			<mapping path="/good/likeCheck/*"/>

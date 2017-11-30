@@ -20,9 +20,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		= #{boardNumber}
 	</select>
 
-	<update id="update">
-		update Board set boardTitle =#{boardTitle},
-		boardContent=#{boardContent}
+	<update id="update" parameterType="BoardVO">
+		update Board set boardTitle = #{boardTitle},
+		boardContent = #{boardContent}
 		where boardNumber = #{boardNumber}
 	</update>
 
