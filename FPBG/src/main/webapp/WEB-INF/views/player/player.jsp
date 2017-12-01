@@ -43,6 +43,7 @@
 														<c:when test="${param.season eq 'pre3-2017' }">2017-Pre3</c:when>
 														<c:when test="${param.season eq 'pre4-2017' }">2017-Pre4</c:when>
 														<c:when test="${param.season eq 'pre5-2017' }">2017-Pre5</c:when>
+														<c:when test="${param.season eq 'pre6-2017' }">2017-Pre6</c:when>
 													</c:choose>
 												</c:when>
 										    </c:choose>
@@ -54,6 +55,7 @@
 											<li><a href="#">2017-Pre3</a></li>
 											<li><a href="#">2017-Pre4</a></li>
 											<li><a href="#">2017-Pre5</a></li>
+											<li><a href="#">2017-Pre6</a></li>
 										</ul>
 									</div>
 								</div>
@@ -173,6 +175,8 @@
 												season = 'pre4-2017';
 											}else if(season == '2017-Pre5') {
 												season = 'pre5-2017';
+											}else if(season == '2017-Pre6') {
+												season = 'pre6-2017';
 											}
 											
 											if(server == 'KR/JP') {
@@ -220,7 +224,7 @@
 				<div class="row">
 					<div class="col-md-3">
 						<div class="search-box">
-							<div class="value value-blue">${search.rating}</div>
+							<div class="value value-blue">${dto.rating}</div>
 							<div class="label label-blue">RATING</div>
 						</div>
 						<div class="search-box">
@@ -230,8 +234,8 @@
 					</div>
 					<div class="col-md-3">
 						<div class="search-box">
-							<div class="value value-green">${search.top_10_Ratio}</div>
-							<div class="label label-green">TOP 10 RATE</div>
+							<div class="value value-green">${dto.top10}</div>
+							<div class="label label-green">TOP 10</div>
 						</div>
 						<div class="search-box">
 							<div class="value value-green">${search.kill_Death_Ratio}</div>

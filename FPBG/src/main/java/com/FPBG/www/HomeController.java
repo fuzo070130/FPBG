@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.FPBG.domain.dto.PlayerDTO;
 import com.FPBG.domain.dto.RankMemberDTO;
+import com.FPBG.domain.dto.SearchDTO;
 import com.FPBG.domain.vo.BoardVO;
 import com.FPBG.service.BoardService;
+import com.FPBG.util.MakeSearch;
 import com.FPBG.util.MakeTOP10;
 import com.FPBG.util.MakeTOP100;
 import com.jpubg.www.StatsSearch;
@@ -49,18 +51,23 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
-	public String search(String search ,String season, String mode, String Region,Model model) {
-		StatsSearch playersearch = new StatsSearch();
-		try {
-			PlayerDTO dto = playersearch.search(search, season, mode, Region);
-			if(dto != null){
-				model.addAttribute("search" , playersearch.search(search,season,mode,Region));
-			}else{
-				model.addAttribute("error", "error");
-			}
-		}catch(Exception e){
-			model.addAttribute("error", "error");
-		}
+	public String search(String search ,String season, String mode, String Region,Model model)throws Exception{
+		MakeSearch Make = new MakeSearch();
+		SearchDTO dto = Make.Search(search, Region, mode, season);
+		
+		model.addAttribute("dto", dto);
+		
+		return "player/player";
+	}
+	
+	@RequestMapping(value = "/compare", method = RequestMethod.GET)
+	public String search(String search1 ,String search2 ,String season, String mode, String Region,Model model)throws Exception{
+		MakeSearch Make = new MakeSearch();
+		SearchDTO dto1 = Make.Search(search1, Region, mode, season);
+		SearchDTO dto2 = Make.Search(search2, Region, mode, season);
+		
+		model.addAttribute("dto1", dto1);
+		model.addAttribute("dto2", dto2);
 		
 		return "player/player";
 	}

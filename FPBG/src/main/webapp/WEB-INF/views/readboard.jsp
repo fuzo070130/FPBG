@@ -105,7 +105,7 @@
 									
 									for(var i = 1; i <= 101; i++){
 										var toolink = $("table > tbody > tr:nth-child("+i+") > td:nth-child(2) > a").attr('href');
-										toolink += "&Region=" + reallink[5] +"&mode=" + reallink[6] +"&season=pre5-2017";
+										toolink += "&Region=" + reallink[5] +"&mode=" + reallink[6] +"&season=pre6-2017";
 										$("table > tbody > tr:nth-child("+i+") > td:nth-child(2) > a").attr('href',toolink);
 									}
 									

@@ -44,6 +44,8 @@ public class StatsSearch {
 			}else if(season.equals("pre5-2017") || season == "pre5-2017"){
 				criteria.setSeason(PUBGSeason.PRE5_2017);
 				System.out.println("season5");
+			}else if(season.equals("pre6-2017") || season == "pre6-2017"){
+				System.out.println("season6");
 			}
 		}
 		

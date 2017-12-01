@@ -82,7 +82,7 @@
             bUseVerticalResizer : true,    
             // 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음)
             bUseModeChanger : true,
-	        		}
+	        }
     });
 	
 	$("#smartSubmit").click(function(event){
@@ -95,9 +95,9 @@
 			alert('제목을 확인해주세요');
 		}else if(isEmpty(smarteditor)){
 			alert('내용을 확인해주세요');
-		}else{
-			$("#frm").submit()
-		}
+		}else{ 
+			$("#frm").submit();
+		} 
 	});
 	
  });
