@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 	<link rel="stylesheet" href="/FPBG/resources/css/player.css">
 	<link rel="stylesheet" href="resources/css/readboardMain.css">
+	<link rel="stylesheet" href="resources/css/compare.css">
 </head>
 <body>
 	<jsp:include page="../header.jsp"/>
@@ -18,13 +19,13 @@
 				<div class="container-header">
 					<div class="row">
 							<div class="col-md-4">
-								<div class="left-box">	
+								<%-- <div class="left-box">	
 									<img src="${dto.photo }" width="100x;" height="100px;" style="margin-top: 0px">
 									<div class="box-text">
 										${dto.nickName }
 										${dto.rating }
 									</div>
-								</div>
+								</div> --%>
 							</div>
 							<form>
 								<div class="col-md-2">
@@ -168,7 +169,8 @@
 											var season = $(".select-toggle1").attr('data-season');
 											var server = $(".select-toggle2").attr('data-server');
 											var mode = $(".select-toggle3").attr('data-mode');
-											var search = '${param.search}';
+											var search1 = '${param.search1}';
+											var search2 = '${param.search2}';
 											
 											if(season == '2017-Pre1') {
 												season = 'pre1-2017';
@@ -218,7 +220,7 @@
 												mode = mode;
 											}
 											
-											location.href = "/FPBG/search?search=" + search + "&Region=" + server + "&mode=" + mode + "&season=" + season;
+											location.href = "/FPBG/compare?search1=" + search1 + "&search2=" + search2 + "&Region=" + server + "&mode=" + mode + "&season=" + season;
 											
 										});
 									});
@@ -228,26 +230,49 @@
 					</div>
 				<div class="row">
 					<div class="col-md-12">
-						닉네임 : ${dto.nickName } <br/>
+						닉네임 : ${dto1.nickName } <br/>
 						
 						
-						점수 : ${dto.rating } <br/>
-						순위 : ${dto.rank } <br/>
-						승리 : ${dto.win } <br/>
-						TOP10 : ${dto.top10 } <br/>
-						패배 : ${dto.lose } <br/>
+						점수 : ${dto1.rating } <br/>
+						순위 : ${dto1.rank } <br/>
+						승리 : ${dto1.win } <br/>
+						TOP10 : ${dto1.top10 } <br/>
+						패배 : ${dto1.lose } <br/>
 						
-						K/D : ${dto.kd } <br/>
-						K/D/A : ${dto.kda } <br/>
-						평균딜량 : ${dto.avgdmg } <br/>
-						헤드샷 : ${dto.head } <br/>
-						최다킬 : ${dto.mostkill } <br/>
-						게임수 : ${dto.match } <br/>
+						K/D : ${dto1.kd } <br/>
+						K/D/A : ${dto1.kda } <br/>
+						평균딜량 : ${dto1.avgdmg } <br/>
+						헤드샷 : ${dto1.head } <br/>
+						최다킬 : ${dto1.mostkill } <br/>
+						게임수 : ${dto1.match } <br/>
 						
-						최고점 : ${dto.bestrating } <br/>
-						1경기 최대 킬수 : ${dto.bestkill } <br/>
-						최대 연속 킬 : ${dto.bestkills } <br/>
-						최대생존시간 : ${dto.besttime } <br/>
+						최고점 : ${dto1.bestrating } <br/>
+						1경기 최대 킬수 : ${dto1.bestkill } <br/>
+						최대 연속 킬 : ${dto1.bestkills } <br/>
+						최대생존시간 : ${dto1.besttime } <br/>
+					</div>
+					<div class="row">
+					<div class="col-md-12">
+						닉네임 : ${dto2.nickName } <br/>
+						
+						
+						점수 : ${dto2.rating } <br/>
+						순위 : ${dto2.rank } <br/>
+						승리 : ${dto2.win } <br/>
+						TOP10 : ${dto2.top10 } <br/>
+						패배 : ${dto2.lose } <br/>
+						
+						K/D : ${dto2.kd } <br/>
+						K/D/A : ${dto2.kda } <br/>
+						평균딜량 : ${dto2.avgdmg } <br/>
+						헤드샷 : ${dto2.head } <br/>
+						최다킬 : ${dto2.mostkill } <br/>
+						게임수 : ${dto2.match } <br/>
+						
+						최고점 : ${dto2.bestrating } <br/>
+						1경기 최대 킬수 : ${dto2.bestkill } <br/>
+						최대 연속 킬 : ${dto2.bestkills } <br/>
+						최대생존시간 : ${dto2.besttime } <br/>
 					</div>
 				</div>
 			</div>		

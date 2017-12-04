@@ -66,7 +66,7 @@ public class HomeController {
 		model.addAttribute("dto1", dto1);
 		model.addAttribute("dto2", dto2);
 		
-		return "player/player";
+		return "player/compare";
 	}
 	
 	@RequestMapping(value = "/readboard", method = RequestMethod.GET)
@@ -115,9 +115,9 @@ public class HomeController {
 		return "board";
 	}
 	
-	@RequestMapping(value = "/new", method = RequestMethod.GET)
+	@RequestMapping(value = "/formcompare", method = RequestMethod.GET)
 	public String newfile(BoardVO vo)throws Exception {
-		return "NewFile";
+		return "formcompare";
 	}
 	
 }
