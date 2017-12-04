@@ -35,7 +35,7 @@
 
 								<div class="form-group">
 									<label for="exampleInputEmail1">BNO</label> <input type="text"
-										name='boardNumber' class="form-control" value="${boardVO.boardNumber}" readonly="readonly">
+										 name="boardNumber" class="form-control" value="${boardVO.boardNumber}" readonly="readonly">
 								</div>
 
 								<div class="form-group">
@@ -49,7 +49,7 @@
 								</div>
 								<div class="form-group">
 									<label for="exampleInputEmail1">Writer</label> <input
-										type="text" name="memNickName" class="form-control"
+										type="text" class="form-control"
 										value="${boardVO.memNickName}" readonly="readonly">
 								</div>
 							</div>

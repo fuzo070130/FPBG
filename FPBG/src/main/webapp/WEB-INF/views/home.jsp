@@ -52,7 +52,7 @@
 										<c:forEach var="solo" items="${solo }">
 											<tr>
 												<td>${solo.rank }</td>
-												<td><a href="/FPBG/search?search=${solo.memNickName }&Region=as&mode=solo&season=pre5-2017">${solo.memNickName }</a></td>
+												<td><a href="/FPBG/search?search=${solo.memNickName }&Region=as&mode=solo&season=pre6-2017">${solo.memNickName }</a></td>
 											</tr>
 										</c:forEach>
 									</table>
@@ -72,7 +72,7 @@
 										<c:forEach var="duo" items="${duo }">
 											<tr>
 												<td>${duo.rank }</td>
-												<td><a href="/FPBG/search?search=${duo.memNickName }&Region=as&mode=duo&season=pre5-2017">${duo.memNickName }</a></td>
+												<td><a href="/FPBG/search?search=${duo.memNickName }&Region=as&mode=duo&season=pre6-2017">${duo.memNickName }</a></td>
 											</tr>
 										</c:forEach>
 									</table>
@@ -94,7 +94,7 @@
 										<c:forEach var="squad" items="${squad }">
 											<tr>
 												<td>${squad.rank }</td>
-												<td><a href="/FPBG/search?search=${squad.memNickName }&Region=as&mode=squad&season=pre5-2017">${squad.memNickName }</a></td>
+												<td><a href="/FPBG/search?search=${squad.memNickName }&Region=as&mode=squad&season=pre6-2017">${squad.memNickName }</a></td>
 											</tr>
 										</c:forEach>
 									</table>

@@ -16,6 +16,7 @@ public class BoardVO {
 	private int boardGood;
 	private String memNickName;
 	private String memNumber;
+	
 	public int getBoardNumber() {
 		return boardNumber;
 	}

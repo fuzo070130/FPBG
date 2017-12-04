@@ -43,6 +43,7 @@
 														<c:when test="${param.season eq 'pre3-2017' }">2017-Pre3</c:when>
 														<c:when test="${param.season eq 'pre4-2017' }">2017-Pre4</c:when>
 														<c:when test="${param.season eq 'pre5-2017' }">2017-Pre5</c:when>
+														<c:when test="${param.season eq 'pre6-2017' }">2017-Pre6</c:when>
 													</c:choose>
 												</c:when>
 										    </c:choose>
@@ -54,6 +55,7 @@
 											<li><a href="#">2017-Pre3</a></li>
 											<li><a href="#">2017-Pre4</a></li>
 											<li><a href="#">2017-Pre5</a></li>
+											<li><a href="#">2017-Pre6</a></li>
 										</ul>
 									</div>
 								</div>
@@ -173,6 +175,8 @@
 												season = 'pre4-2017';
 											}else if(season == '2017-Pre5') {
 												season = 'pre5-2017';
+											}else if(season == '2017-Pre6') {
+												season = 'pre6-2017';
 											}
 											
 											if(server == 'KR/JP') {
@@ -220,42 +224,52 @@
 				<div class="row">
 					<div class="col-md-3">
 						<div class="search-box">
-							<div class="value value-blue">${search.rating}</div>
+							<div class="value value-blue"><img src="${dto.photo}"/></div>
+							<div class="label label-blue">photo</div>
+						</div>
+						<div class="search-box">
+							<div class="value value-blue">${dto.rating}</div>
 							<div class="label label-blue">RATING</div>
 						</div>
+					</div>
+					<div class="col-md-3">
 						<div class="search-box">
-							<div class="value value-blue">${search.win_Ratio}</div>
-							<div class="label label-blue">WIN%</div>
+							<div class="value value-green">${dto.rank}</div>
+							<div class="label label-green">rank</div>
+						</div>
+						<div class="search-box">
+							<div class="value value-green">${dto.win}</div>
+							<div class="label label-green">win</div>
 						</div>
 					</div>
 					<div class="col-md-3">
 						<div class="search-box">
-							<div class="value value-green">${search.top_10_Ratio}</div>
-							<div class="label label-green">TOP 10 RATE</div>
+							<div class="value value-red">${dto.top10}</div>
+							<div class="label label-red">top10</div>
 						</div>
 						<div class="search-box">
-							<div class="value value-green">${search.kill_Death_Ratio}</div>
-							<div class="label label-green">K/D</div>
-						</div>
-					</div>
-					<div class="col-md-3">
-						<div class="search-box">
-							<div class="value value-red">${search.kills}</div>
-							<div class="label label-red">KILLS</div>
-						</div>
-						<div class="search-box">
-							<div class="value value-red">${search.wins}</div>
-							<div class="label label-red">WINS</div>
+							<div class="value value-red">${dto.lose}</div>
+							<div class="label label-red">lose</div>
 						</div>
 					</div>
 					<div class="col-md-3">
 						<div class="search-box">
-							<div class="value value-orange">${search.damage_Per_Game}</div>
-							<div class="label label-orange">AVG DMG PER MATCH</div>
+							<div class="value value-orange">${dto.kd}</div>
+							<div class="label label-orange">kd</div>
 						</div>
 						<div class="search-box">
-							<div class="value value-orange">${search.round_Played}</div>
-							<div class="label label-orange">TOTAL GAME</div>
+							<div class="value value-orange">${dto.avgdmg}</div>
+							<div class="label label-orange">avgdmg</div>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="search-box">
+							<div class="value value-orange">${dto.head}</div>
+							<div class="label label-orange">headshot</div>
+						</div>
+						<div class="search-box">
+							<div class="value value-orange">${dto.mostkill}</div>
+							<div class="label label-orange">mostkill</div>
 						</div>
 					</div>
 				</div>

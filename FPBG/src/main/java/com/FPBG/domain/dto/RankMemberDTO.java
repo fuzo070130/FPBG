@@ -31,7 +31,5 @@ public class RankMemberDTO {
 	public void setMatch(int match) {
 		this.match = match;
 	}
-	
-	
 
 }
