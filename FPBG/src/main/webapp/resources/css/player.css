@@ -6,28 +6,11 @@
 	border-radius: 0px 25px 25px 0px;
 }
 
-.value {
-	font-size: 34px;
-	margin: 0 auto;
+.left-box {
+	height: 100px;
 }
 
-.label {
-	font-size: 100% !important;
-	margin: 0 auto;
-}
-
-.label-blue{
-	color: blue !important;
-}
-
-.label-green{
-	color: green !important;
-}
-
-.label-red{
-	color: red !important;
-}
-
-.label-orange{
-	color: orange !important;
+.box-text {
+	display: inline;
+	height: 100px;
 }

@@ -9,6 +9,18 @@ public class MakeSearch {
 	
 	public SearchDTO Search(String search,String Region,String mode,String season)throws Exception {
 		
+		if(season == null){
+			season = "2017-pre1";
+		}
+		
+		if(Region == null){
+			Region = "as";
+		}
+		
+		if(mode == null){
+			mode = "solo";
+		}
+		
 		if(season == "pre1-2017" || season.equals("pre1-2017")) {
 			season = "2017-pre1";
 		}else if(season == "pre2-2017" || season.equals("pre2-2017")) {
