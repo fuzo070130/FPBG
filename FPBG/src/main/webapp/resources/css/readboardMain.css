@@ -12,12 +12,13 @@
 .col-md-2 .submit-button,
 .col-md-3,
 .col-md-3 .dropdown,
-.col-md-3 .submit-button{
+.col-md-3 .submit-button {
 	height: 100px;
 }
 
 /* 상단 여백 */
 .col-md-3 .dropdown,
+.col-md-2 .dropdown,
 .col-md-4 img,
 .submit-button {
 	margin-top: 12.5px;
@@ -26,7 +27,7 @@
 /* 하단 마진,색깔 */
 .container-header {
 	margin-bottom: 25px;
-	background-color: gray;
+	background-color: #696d65;
 }
 
 /* 검색칸 버튼 크기,색깔 */
@@ -34,6 +35,9 @@
 .dropdown .btn-primary {
 	height: 75%;
 	width: 100%;
+	background-color: #dbdbdb;
+	border: 0px;
+	color: black;
 }
 
 /* 검색 버튼 */

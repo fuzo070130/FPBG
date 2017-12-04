@@ -1,5 +1,8 @@
 @CHARSET "UTF-8";
 
+.select-toggle1,
+.select-toggle2,
+.select-toggle3,
 .search-box {
 	height: 65px;
 	border: 1px solid black;
@@ -13,4 +16,15 @@
 .box-text {
 	display: inline;
 	height: 100px;
+	font-size: 36px;
+}
+
+table th {
+	background-color: #344758;
+	color:white;
+	font-size: 36px;
+}
+
+table tr {
+	font-size: 24px;
 }

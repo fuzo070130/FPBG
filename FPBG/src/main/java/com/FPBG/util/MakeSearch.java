@@ -41,7 +41,14 @@ public class MakeSearch {
 		/*기본스탯*/
 		dto.setNickName(search);
 		dto.setPhoto(doc.select(".profile").attr("src"));
-		dto.setRating(doc.select("div.info > p.rating").text());
+		String rating = doc.select("div.info > p.rating").text();
+		if(rating != null){
+			int index = rating.indexOf("상");
+			String realrating = rating.substring(index);
+			String superrating = rating.substring(0, index);
+			dto.setRating(superrating);
+			dto.setRatingper(realrating);
+		}
 		dto.setRank(doc.select("div.info > p.rate > span").text());
 		dto.setWin(doc.select("div.wt10l > table > thead > tr > th:nth-child(1)").text());
 		dto.setTop10(doc.select("div.wt10l > table > thead > tr > th:nth-child(2)").text());

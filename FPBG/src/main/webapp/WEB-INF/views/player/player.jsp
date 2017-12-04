@@ -22,7 +22,6 @@
 									<img src="${dto.photo }" width="100x;" height="100px;" style="margin-top: 0px">
 									<div class="box-text">
 										${dto.nickName }
-										${dto.rating }
 									</div>
 								</div>
 							</div>
@@ -228,26 +227,59 @@
 					</div>
 				<div class="row">
 					<div class="col-md-12">
-						닉네임 : ${dto.nickName } <br/>
+						<table class="table table-bordered" style="text-align: center;">
+							<tr>
+								<th>닉네임</th>
+								<th>점수</th>
+								<th>순위</th>
+								<th>승리</th>
+								<th>TOP10</th>
+								<th>패배</th>
+							</tr>
+							<tr>
+								<td>${dto.nickName }</td>
+								<td>${dto.rating }점 (${dto.ratingper })</td>
+								<td>${dto.rank }</td>
+								<td>${dto.win }</td>
+								<td>${dto.top10 }</td>
+								<td>${dto.lose }</td>
+							</tr>
+						</table>
 						
+						<table class="table table-bordered" style="text-align: center;">
+							<tr>
+								<th>K/D</th>
+								<th>K/D/A</th>
+								<th>평균딜량</th>
+								<th>헤드샷</th>
+								<th>최다킬</th>
+								<th>게임수</th>
+							</tr>
+							<tr>
+								<td>${dto.kd }</td>
+								<td>${dto.kda }</td>
+								<td>${dto.avgdmg }</td>
+								<td>${dto.head }</td>
+								<td>${dto.mostkill }</td>
+								<td>${dto.match }</td>
+							</tr>
+						</table>
 						
-						점수 : ${dto.rating } <br/>
-						순위 : ${dto.rank } <br/>
-						승리 : ${dto.win } <br/>
-						TOP10 : ${dto.top10 } <br/>
-						패배 : ${dto.lose } <br/>
+						<table class="table table-bordered" style="text-align: center;">
+							<tr>
+								<th>최고점</th>
+								<th>1경기 최대 킬수</th>
+								<th>최대 연속 킬</th>
+								<th>최대생존시간</th>
+							</tr>
+							<tr>
+								<td>${dto.bestrating }</td>
+								<td>${dto.bestkill }</td>
+								<td>${dto.bestkills }</td>
+								<td>${dto.besttime }</td>
+							</tr>
+						</table>
 						
-						K/D : ${dto.kd } <br/>
-						K/D/A : ${dto.kda } <br/>
-						평균딜량 : ${dto.avgdmg } <br/>
-						헤드샷 : ${dto.head } <br/>
-						최다킬 : ${dto.mostkill } <br/>
-						게임수 : ${dto.match } <br/>
-						
-						최고점 : ${dto.bestrating } <br/>
-						1경기 최대 킬수 : ${dto.bestkill } <br/>
-						최대 연속 킬 : ${dto.bestkills } <br/>
-						최대생존시간 : ${dto.besttime } <br/>
 					</div>
 				</div>
 			</div>		

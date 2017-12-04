@@ -5,6 +5,7 @@ public class SearchDTO {
 	private String nickName;
 	private String photo;
 	private String rating;
+	private String ratingper;
 	private String rank;
 	private String win;
 	private String top10;
@@ -21,6 +22,13 @@ public class SearchDTO {
 	private String bestkills;
 	private String besttime;
 	
+	
+	public String getRatingper() {
+		return ratingper;
+	}
+	public void setRatingper(String ratingper) {
+		this.ratingper = ratingper;
+	}
 	public String getNickName() {
 		return nickName;
 	}
