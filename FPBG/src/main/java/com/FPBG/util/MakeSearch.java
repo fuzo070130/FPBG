@@ -10,7 +10,7 @@ public class MakeSearch {
 	public SearchDTO Search(String search,String Region,String mode,String season)throws Exception {
 		
 		if(season == null){
-			season = "2017-pre1";
+			season = "2017-pre6";
 		}
 		
 		if(Region == null){
