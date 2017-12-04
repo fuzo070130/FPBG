@@ -18,8 +18,12 @@
 				<div class="container-header">
 					<div class="row">
 							<div class="col-md-4">
-								<div class="left-box">
-								
+								<div class="left-box">	
+									<img src="${dto.photo }" width="100x;" height="100px;" style="margin-top: 0px">
+									<div class="box-text">
+										${dto.nickName }
+										${dto.rating }
+									</div>
 								</div>
 							</div>
 							<form>
@@ -28,9 +32,9 @@
 										<button class="btn btn-primary dropdown-toggle select-toggle1" type="button" data-toggle="dropdown">
 											<c:choose>
 												<c:when test="${empty param.season}">
-													2017-Pre5
+													2017-Pre6
 													<script>
-														$(".select-toggle1").attr('data-season', 'pre5-2017');
+														$(".select-toggle1").attr('data-season', 'pre6-2017');
 													</script>
 												</c:when>
 												<c:when test="${!empty param.season}">
@@ -90,6 +94,7 @@
 											<li><a href="#">NA</a></li>
 											<li><a href="#">EU</a></li>
 											<li><a href="#">Asia</a></li>
+											<li><a href="#">KR/JP</a></li>
 											<li><a href="#">OC</a></li>
 											<li><a href="#">SA</a></li>
 											<li><a href="#">SEA</a></li>
@@ -222,45 +227,27 @@
 						</div>
 					</div>
 				<div class="row">
-					<div class="col-md-3">
-						<div class="search-box">
-							<div class="value value-blue">${dto.rating}</div>
-							<div class="label label-blue">RATING</div>
-						</div>
-						<div class="search-box">
-							<div class="value value-blue">${search.win_Ratio}</div>
-							<div class="label label-blue">WIN%</div>
-						</div>
-					</div>
-					<div class="col-md-3">
-						<div class="search-box">
-							<div class="value value-green">${dto.top10}</div>
-							<div class="label label-green">TOP 10</div>
-						</div>
-						<div class="search-box">
-							<div class="value value-green">${search.kill_Death_Ratio}</div>
-							<div class="label label-green">K/D</div>
-						</div>
-					</div>
-					<div class="col-md-3">
-						<div class="search-box">
-							<div class="value value-red">${search.kills}</div>
-							<div class="label label-red">KILLS</div>
-						</div>
-						<div class="search-box">
-							<div class="value value-red">${search.wins}</div>
-							<div class="label label-red">WINS</div>
-						</div>
-					</div>
-					<div class="col-md-3">
-						<div class="search-box">
-							<div class="value value-orange">${search.damage_Per_Game}</div>
-							<div class="label label-orange">AVG DMG PER MATCH</div>
-						</div>
-						<div class="search-box">
-							<div class="value value-orange">${search.round_Played}</div>
-							<div class="label label-orange">TOTAL GAME</div>
-						</div>
+					<div class="col-md-12">
+						닉네임 : ${dto.nickName } <br/>
+						
+						
+						점수 : ${dto.rating } <br/>
+						순위 : ${dto.rank } <br/>
+						승리 : ${dto.win } <br/>
+						TOP10 : ${dto.top10 } <br/>
+						패배 : ${dto.lose } <br/>
+						
+						K/D : ${dto.kd } <br/>
+						K/D/A : ${dto.kda } <br/>
+						평균딜량 : ${dto.avgdmg } <br/>
+						헤드샷 : ${dto.head } <br/>
+						최다킬 : ${dto.mostkill } <br/>
+						게임수 : ${dto.match } <br/>
+						
+						최고점 : ${dto.bestrating } <br/>
+						1경기 최대 킬수 : ${dto.bestkill } <br/>
+						최대 연속 킬 : ${dto.bestkills } <br/>
+						최대생존시간 : ${dto.besttime } <br/>
 					</div>
 				</div>
 			</div>		

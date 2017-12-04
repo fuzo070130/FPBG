@@ -10,11 +10,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.FPBG.domain.dto.PlayerDTO;
 import com.FPBG.domain.dto.RankMemberDTO;
 import com.FPBG.domain.dto.SearchDTO;
 import com.FPBG.domain.vo.BoardVO;
@@ -22,7 +20,6 @@ import com.FPBG.service.BoardService;
 import com.FPBG.util.MakeSearch;
 import com.FPBG.util.MakeTOP10;
 import com.FPBG.util.MakeTOP100;
-import com.jpubg.www.StatsSearch;
 
 /**
  * Handles requests for the application home page.
