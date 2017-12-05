@@ -1,4 +1,70 @@
 @charset "UTF-8";
 
-.box { margin: 150px; }
-.form-control { margin: 20px; }
+
+.container {
+	height: 850px;	
+}
+
+.search-box {
+	width: 100%;
+}
+
+.form-control { 
+	height: 62px !important;
+	width: 100% !important;
+	font-size: 36px !important;
+}
+
+.form-box {
+	width: 100%;
+	height: 62px;
+}
+
+.input-group-btn {
+	width: 100px !important;
+}
+
+.search-btn {
+	width: 100% !important;
+	height: 62px;
+}
+
+/* TOP10 선 */
+.textboard{
+	border: 2px solid #BDBDBD;
+}
+
+/* TOP10 곡선, 텍스트정렬,크기 */
+.textboard {
+	border-radius: 15px 15px 0px 0px;
+	text-align: center;
+	font-size: 16px;
+	margin-bottom: 20px;
+}
+
+.readboard {
+	height: 430px;
+	border-left: 0px;
+	border-bottom: 0px;
+	border-right: 0px;
+}
+
+.textboard > span {
+	font-size: 24px;
+}
+
+.board {
+	margin-top: 100px;
+}
+
+#search-form {
+	margin-top: 50px;
+}
+#search\20 box1 {
+	border-radius: 50px 0 0 0 !important;
+	text-align: right;
+}
+#search\20 box2 {
+	border-radius: 0 50px 0 0 !important;
+	text-align: left;
+}

@@ -5,7 +5,7 @@
 <html>
 <head>
 <title>Home</title>
-<link rel="stylesheet" href="resources/css/home.css">
+	<link rel="stylesheet" href="resources/css/home.css">
 </head>
 <body>
 	<jsp:include page="header.jsp" />

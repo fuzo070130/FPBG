@@ -45,14 +45,7 @@
 				    		<li><a href="/FPBG/readboard/as/squad-fpp">FFP 스쿼드</a></li>
 				    	</ul>
 				    </li>
-				    <li class="dropdown">
-				    	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">정보<span class="caret"></span></a>
-				    	<ul class="dropdown-menu">
-				    		<li><a href="/FPBG/weapons">무기</a></li>
-				    		<li><a href="/FPBG/items">아이템</a></li>
-				    		<li><a href="/FPBG/attachments">부착물</a></li>
-				    	</ul>
-				    </li>
+				    <li><a href="/FPBG/formcompare">유저 비교</a></li>
 				    <li><a href="/FPBG/patch/Adminlist">패치내역</a></li>
 				    <li><a href="https://himap.me/">지도</a></li>
 				    <li><a href="/FPBG/sboard/list">게시판</a></li>

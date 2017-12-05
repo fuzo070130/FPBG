@@ -116,7 +116,17 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/formcompare", method = RequestMethod.GET)
-	public String newfile(BoardVO vo)throws Exception {
+	public String newfile(BoardVO vo, Model model)throws Exception {
+		MakeTOP10 top = new MakeTOP10();
+
+		ArrayList<RankMemberDTO> solo = top.MakeSolo();
+		ArrayList<RankMemberDTO> duo = top.MakeDuo();
+		ArrayList<RankMemberDTO> squad = top.MakeSquad();
+		
+		model.addAttribute("solo", solo);
+		model.addAttribute("duo", duo);
+		model.addAttribute("squad", squad);
+		
 		return "formcompare";
 	}
 	
