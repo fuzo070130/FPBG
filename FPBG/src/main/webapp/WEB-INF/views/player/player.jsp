@@ -225,7 +225,13 @@
 							</form>
 						</div>
 					</div>
-				<div class="row">
+				<c:choose>
+				    <c:when test="${empty dto.rating}">
+				    	<p style="font-size: 56px;">시즌 기록이 없습니다.</p>
+				    </c:when>
+					  
+				    <c:when test="${!empty dto.rating}">
+						<div class="row">
 					<div class="col-md-12">
 						<table class="table table-bordered" style="text-align: center;">
 							<tr>
@@ -282,6 +288,9 @@
 						
 					</div>
 				</div>
+				    </c:when>
+				</c:choose>
+				
 			</div>		
 		</div>
 	</div>

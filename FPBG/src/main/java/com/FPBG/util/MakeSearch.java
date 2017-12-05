@@ -43,7 +43,6 @@ public class MakeSearch {
 		dto.setPhoto(doc.select(".profile").attr("src"));
 		String rating = doc.select("div.info > p.rating").text();
 		
-		dto.setRank(doc.select("div.info > p.rate > span").text());
 		dto.setWin(doc.select("div.wt10l > table > thead > tr > th:nth-child(1)").text());
 		dto.setTop10(doc.select("div.wt10l > table > thead > tr > th:nth-child(2)").text());
 		dto.setLose(doc.select("div.wt10l > table > thead > tr > th:nth-child(3)").text());
@@ -65,6 +64,12 @@ public class MakeSearch {
 			String superrating = rating.substring(0, index);
 			dto.setRating(superrating);
 			dto.setRatingper(realrating);
+			
+			String rank = doc.select("div.info > p.rate > span").text();
+			System.out.println(rank);
+			int rankin = rank.indexOf("위");
+			dto.setRank(rank.substring(0, rankin));
+			System.out.println(rank.substring(0,rankin));
 		}
 		
 		return dto;

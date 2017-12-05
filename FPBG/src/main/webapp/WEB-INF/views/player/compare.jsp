@@ -6,9 +6,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-	<link rel="stylesheet" href="/FPBG/resources/css/player.css">
-	<link rel="stylesheet" href="resources/css/readboardMain.css">
 	<link rel="stylesheet" href="resources/css/compare.css">
+	<link rel="stylesheet" href="resources/css/readboardMain.css">
 </head>
 <body>
 	<jsp:include page="../header.jsp"/>
@@ -18,17 +17,8 @@
 			<div class="container">
 				<div class="container-header">
 					<div class="row">
-							<div class="col-md-4">
-								<%-- <div class="left-box">	
-									<img src="${dto.photo }" width="100x;" height="100px;" style="margin-top: 0px">
-									<div class="box-text">
-										${dto.nickName }
-										${dto.rating }
-									</div>
-								</div> --%>
-							</div>
 							<form>
-								<div class="col-md-2">
+								<div class="col-md-3">
 									<div class="dropdown">
 										<button class="btn btn-primary dropdown-toggle select-toggle1" type="button" data-toggle="dropdown">
 											<c:choose>
@@ -64,7 +54,7 @@
 										</ul>
 									</div>
 								</div>
-								<div class="col-md-2">
+								<div class="col-md-3">
 									<div class="dropdown">
 										<button class="btn btn-primary dropdown-toggle select-toggle2" type="button" data-toggle="dropdown">
 											<c:choose>
@@ -102,7 +92,7 @@
 										</ul>
 									</div>
 								</div>
-								<div class="col-md-2">
+								<div class="col-md-3">
 									<div class="dropdown">
 										<button class="btn btn-primary dropdown-toggle select-toggle3" type="button" data-toggle="dropdown"">
 											<c:choose>
@@ -138,7 +128,7 @@
 										</ul>
 									</div>
 								</div>
-								<div class="col-md-2">
+								<div class="col-md-3">
 									<button class="submit-button" type="submit" id="search-solo">검색</button>
 								</div>
 								<script type="text/javascript">
@@ -228,54 +218,373 @@
 							</form>
 						</div>
 					</div>
-				<div class="row">
-					<div class="col-md-12">
-						닉네임 : ${dto1.nickName } <br/>
+				<c:choose>
+				    <c:when test="${empty dto1.rating}">
+				    	<p style="font-size: 56px;">비교할 대상끼리의 시즌 기록이 없습니다.</p>
+				    </c:when>
+				
+				    <c:when test="${!empty dto1.rating}">
+					<div class="row row-title">
+						<div class="col-md-5 row-box box-title">
+							${dto1.nickName }
+						</div>
+						<div class="col-md-2 row-box box-title box-middle">
+							닉네임
+						</div>
+						<div class="col-md-5 row-box box-title">
+							${dto2.nickName }
+						</div>
+						</div>
+						<div class="row row-body">
+							<div class="col-md-5 row-box box-body">
+								${dto1.rating }
+							</div>
+							<div class="col-md-2 row-box box-body box-middle">
+								점수
+							</div>
+							<div class="col-md-5 row-box box-body">
+								${dto2.rating }
+							</div>
+						</div>
+						<div class="row row-body">
+							<div class="col-md-5 row-box box-body">
+								${dto1.rank }위
+							</div>
+							<div class="col-md-2 row-box box-body box-middle">
+								순위
+							</div>
+							<div class="col-md-5 row-box box-body">
+								${dto2.rank }위
+							</div>
+						</div>
+						<div class="row row-body">
+							<div class="col-md-5 row-box box-body">
+								${dto1.win }
+							</div>
+							<div class="col-md-2 row-box box-body box-middle">
+								승리
+							</div>
+							<div class="col-md-5 row-box box-body">
+								${dto2.win }
+							</div>
+						</div>
+						<div class="row row-body">
+							<div class="col-md-5 row-box box-body">
+								${dto1.top10 }
+							</div>
+							<div class="col-md-2 row-box box-body box-middle">
+								TOP10
+							</div>
+							<div class="col-md-5 row-box box-body">
+								${dto2.top10 }
+							</div>
+						</div>
+						<div class="row row-body">
+							<div class="col-md-5 row-box box-body">
+								${dto1.lose }
+							</div>
+							<div class="col-md-2 row-box box-body box-middle">
+								패배
+							</div>
+							<div class="col-md-5 row-box box-body">
+								${dto2.lose }
+							</div>
+						</div>
+						<div class="row row-body">
+							<div class="col-md-5 row-box box-body">
+								${dto1.kd}
+							</div>
+							<div class="col-md-2 row-box box-body box-middle">
+								K/D
+							</div>
+							<div class="col-md-5 row-box box-body">
+								${dto2.kd }
+							</div>
+						</div>
+						<div class="row row-body">
+							<div class="col-md-5 row-box box-body">
+								${dto1.kda }
+							</div>
+							<div class="col-md-2 row-box box-body box-middle">
+								K/D/A
+							</div>
+							<div class="col-md-5 row-box box-body">
+								${dto2.kda }
+							</div>
+						</div>
+						<div class="row row-body">
+							<div class="col-md-5 row-box box-body">
+								${dto1.avgdmg }
+							</div>
+							<div class="col-md-2 row-box box-body box-middle">
+								평균딜량
+							</div>
+							<div class="col-md-5 row-box box-body">
+								${dto2.avgdmg }
+							</div>
+						</div>
+						<div class="row row-body">
+							<div class="col-md-5 row-box box-body">
+								${dto1.head }
+							</div>
+							<div class="col-md-2 row-box box-body box-middle">
+								헤드샷
+							</div>
+							<div class="col-md-5 row-box box-body">
+								${dto2.head }
+							</div>
+						</div>
+						<div class="row row-body">
+							<div class="col-md-5 row-box box-body">
+								${dto1.mostkill }
+							</div>
+							<div class="col-md-2 row-box box-body box-middle">
+								최다킬
+							</div>
+							<div class="col-md-5 row-box box-body">
+								${dto2.mostkill }
+							</div>
+						</div>
+						<div class="row row-body">
+							<div class="col-md-5 row-box box-body">
+								${dto1.match }
+							</div>
+							<div class="col-md-2 row-box box-body box-middle">
+								게임수
+							</div>
+							<div class="col-md-5 row-box box-body">
+								${dto2.match }
+							</div>
+						</div>
+						<div class="row row-body">
+							<div class="col-md-5 row-box box-body">
+								${dto1.bestrating }
+							</div>
+							<div class="col-md-2 row-box box-body box-middle">
+								최고점
+							</div>
+							<div class="col-md-5 row-box box-body">
+								${dto2.bestrating }
+							</div>
+						</div>
+						<div class="row row-body">
+							<div class="col-md-5 row-box box-body">
+								${dto1.bestkill }
+							</div>
+							<div class="col-md-2 row-box box-body box-middle">
+								1경기 최대 킬수
+							</div>
+							<div class="col-md-5 row-box box-body">
+								${dto2.bestkill }
+							</div>
+						</div>
+						<div class="row row-body">
+							<div class="col-md-5 row-box box-body">
+								${dto1.bestkills }
+							</div>
+							<div class="col-md-2 row-box box-body box-middle">
+								최대 연속 킬
+							</div>
+							<div class="col-md-5 row-box box-body">
+								${dto2.bestkills }
+							</div>
+						</div>
+						<div class="row row-body row-footer">
+							<div class="col-md-5 row-box box-body">
+								${dto1.besttime }
+							</div>
+							<div class="col-md-2 row-box box-body box-middle">
+								최대생존시간
+							</div>
+							<div class="col-md-5 row-box box-body">
+								${dto2.besttime }
+							</div>
+						</div>
+				    </c:when>
+				</c:choose>
+
+				
+				<script>
+					$(document).ready(function(){
+						function Upcompare(x,y){
+							if(x > y){
+								return x;
+							}else if(x < y){
+								return y;
+							}else if(x == y){
+								return "같음";
+							}
+						}
+						function Downcompare(x,y){
+							if(x > y){
+								return y;
+							}else if(x < y){
+								return x;
+							}else if(x == y){
+								return "같음";
+							}
+						}
+						var win = '#3498db';
+						var lose = '#bdc3c7';
+						var mo = '#bdc3c7';
+						//비교 이후 CSS//
+						if(Upcompare(${dto1.rating},${dto2.rating}) == ${dto1.rating}){
+							$("div.content > div > div:nth-child(3) > div:nth-child(1)").css('background-color', win);
+							$("div.content > div > div:nth-child(3) > div:nth-child(3)").css('background-color', lose);
+							
+							$("div.content > div > div:nth-child(4) > div:nth-child(1)").css('background-color', win);
+							$("div.content > div > div:nth-child(4) > div:nth-child(3)").css('background-color', lose);
+						}else if(Upcompare(${dto1.rating},${dto2.rating}) == ${dto2.rating}){
+							$("div.content > div > div:nth-child(3) > div:nth-child(1)").css('background-color', lose);
+							$("div.content > div > div:nth-child(3) > div:nth-child(3)").css('background-color', win);
+							
+							$("div.content > div > div:nth-child(4) > div:nth-child(1)").css('background-color', lose);
+							$("div.content > div > div:nth-child(4) > div:nth-child(3)").css('background-color', win);
+						}else{
+							$("div.content > div > div:nth-child(3) > div:nth-child(1)").css('background-color', mo);
+							$("div.content > div > div:nth-child(3) > div:nth-child(3)").css('background-color', mo);
+							
+							$("div.content > div > div:nth-child(4) > div:nth-child(1)").css('background-color', mo);
+							$("div.content > div > div:nth-child(4) > div:nth-child(3)").css('background-color', mo);
+						}
 						
+						if(Upcompare(${dto1.win},${dto2.win}) == ${dto1.win}){
+							$("div.content > div > div:nth-child(5) > div:nth-child(1)").css('background-color', win);
+							$("div.content > div > div:nth-child(5) > div:nth-child(3)").css('background-color', lose);
+						}else if(Upcompare(${dto1.win},${dto2.win}) == ${dto2.win}){
+							$("div.content > div > div:nth-child(5) > div:nth-child(1)").css('background-color', lose);
+							$("div.content > div > div:nth-child(5) > div:nth-child(3)").css('background-color', win);
+						}else{
+							$("div.content > div > div:nth-child(5) > div:nth-child(1)").css('background-color', mo);
+							$("div.content > div > div:nth-child(5) > div:nth-child(3)").css('background-color', mo);
+						}
 						
-						점수 : ${dto1.rating } <br/>
-						순위 : ${dto1.rank } <br/>
-						승리 : ${dto1.win } <br/>
-						TOP10 : ${dto1.top10 } <br/>
-						패배 : ${dto1.lose } <br/>
+						if(Upcompare(${dto1.top10},${dto2.top10}) == ${dto1.top10}){
+							$("div.content > div > div:nth-child(6) > div:nth-child(1)").css('background-color', win);
+							$("div.content > div > div:nth-child(6) > div:nth-child(3)").css('background-color', lose);
+						}else if(Upcompare(${dto1.top10},${dto2.top10}) == ${dto2.top10}){
+							$("div.content > div > div:nth-child(6) > div:nth-child(1)").css('background-color', lose);
+							$("div.content > div > div:nth-child(6) > div:nth-child(3)").css('background-color', win);
+						}else{
+							$("div.content > div > div:nth-child(6) > div:nth-child(1)").css('background-color', mo);
+							$("div.content > div > div:nth-child(6) > div:nth-child(3)").css('background-color', mo);
+						}
 						
-						K/D : ${dto1.kd } <br/>
-						K/D/A : ${dto1.kda } <br/>
-						평균딜량 : ${dto1.avgdmg } <br/>
-						헤드샷 : ${dto1.head } <br/>
-						최다킬 : ${dto1.mostkill } <br/>
-						게임수 : ${dto1.match } <br/>
+						if(Upcompare(${dto1.lose},${dto2.lose}) == ${dto1.lose}){
+							$("div.content > div > div:nth-child(7) > div:nth-child(1)").css('background-color', win);
+							$("div.content > div > div:nth-child(7) > div:nth-child(3)").css('background-color', lose);
+						}else if(Upcompare(${dto1.lose},${dto2.lose}) == ${dto2.lose}){
+							$("div.content > div > div:nth-child(7) > div:nth-child(1)").css('background-color', lose);
+							$("div.content > div > div:nth-child(7) > div:nth-child(3)").css('background-color', win);
+						}else{
+							$("div.content > div > div:nth-child(7) > div:nth-child(1)").css('background-color', mo);
+							$("div.content > div > div:nth-child(7) > div:nth-child(3)").css('background-color', mo);
+						}
 						
-						최고점 : ${dto1.bestrating } <br/>
-						1경기 최대 킬수 : ${dto1.bestkill } <br/>
-						최대 연속 킬 : ${dto1.bestkills } <br/>
-						최대생존시간 : ${dto1.besttime } <br/>
-					</div>
-					<div class="row">
-					<div class="col-md-12">
-						닉네임 : ${dto2.nickName } <br/>
+						if(Upcompare(${dto1.kd},${dto2.kd}) == ${dto1.kd}){
+							$("div.content > div > div:nth-child(8) > div:nth-child(1)").css('background-color', win);
+							$("div.content > div > div:nth-child(8) > div:nth-child(3)").css('background-color', lose);
+						}else if(Upcompare(${dto1.kd},${dto2.kd}) == ${dto2.kd}){
+							$("div.content > div > div:nth-child(8) > div:nth-child(1)").css('background-color', lose);
+							$("div.content > div > div:nth-child(8) > div:nth-child(3)").css('background-color', win);
+						}else{
+							$("div.content > div > div:nth-child(8) > div:nth-child(1)").css('background-color', mo);
+							$("div.content > div > div:nth-child(8) > div:nth-child(3)").css('background-color', mo);
+						}
 						
+						$("div.content > div > div:nth-child(9) > div:nth-child(1)").css('background-color', mo);
+						$("div.content > div > div:nth-child(9) > div:nth-child(3)").css('background-color', mo);
 						
-						점수 : ${dto2.rating } <br/>
-						순위 : ${dto2.rank } <br/>
-						승리 : ${dto2.win } <br/>
-						TOP10 : ${dto2.top10 } <br/>
-						패배 : ${dto2.lose } <br/>
+						if(Upcompare(${dto1.avgdmg},${dto2.avgdmg}) == ${dto1.avgdmg}){
+							$("div.content > div > div:nth-child(10) > div:nth-child(1)").css('background-color', win);
+							$("div.content > div > div:nth-child(10) > div:nth-child(3)").css('background-color', lose);
+						}else if(Upcompare(${dto1.avgdmg},${dto2.avgdmg}) == ${dto2.avgdmg}){
+							$("div.content > div > div:nth-child(10) > div:nth-child(1)").css('background-color', lose);
+							$("div.content > div > div:nth-child(10) > div:nth-child(3)").css('background-color', win);
+						}else{
+							$("div.content > div > div:nth-child(10) > div:nth-child(1)").css('background-color', mo);
+							$("div.content > div > div:nth-child(10) > div:nth-child(3)").css('background-color', mo);
+						}
 						
-						K/D : ${dto2.kd } <br/>
-						K/D/A : ${dto2.kda } <br/>
-						평균딜량 : ${dto2.avgdmg } <br/>
-						헤드샷 : ${dto2.head } <br/>
-						최다킬 : ${dto2.mostkill } <br/>
-						게임수 : ${dto2.match } <br/>
+						if(Upcompare(${dto1.head},${dto2.head}) == ${dto1.head}){
+							$("div.content > div > div:nth-child(11) > div:nth-child(1)").css('background-color', win);
+							$("div.content > div > div:nth-child(11) > div:nth-child(3)").css('background-color', lose);
+						}else if(Upcompare(${dto1.head},${dto2.head}) == ${dto2.head}){
+							$("div.content > div > div:nth-child(11) > div:nth-child(1)").css('background-color', lose);
+							$("div.content > div > div:nth-child(11) > div:nth-child(3)").css('background-color', win);
+						}else{
+							$("div.content > div > div:nth-child(11) > div:nth-child(1)").css('background-color', mo);
+							$("div.content > div > div:nth-child(11) > div:nth-child(3)").css('background-color', mo);
+						}
 						
-						최고점 : ${dto2.bestrating } <br/>
-						1경기 최대 킬수 : ${dto2.bestkill } <br/>
-						최대 연속 킬 : ${dto2.bestkills } <br/>
-						최대생존시간 : ${dto2.besttime } <br/>
-					</div>
-				</div>
-			</div>		
+						if(Upcompare(${dto1.mostkill},${dto2.mostkill}) == ${dto1.mostkill}){
+							$("div.content > div > div:nth-child(12) > div:nth-child(1)").css('background-color', win);
+							$("div.content > div > div:nth-child(12) > div:nth-child(3)").css('background-color', lose);
+						}else if(Upcompare(${dto1.mostkill},${dto2.mostkill}) == ${dto2.mostkill}){
+							$("div.content > div > div:nth-child(12) > div:nth-child(1)").css('background-color', lose);
+							$("div.content > div > div:nth-child(12) > div:nth-child(3)").css('background-color', win);
+						}else{
+							$("div.content > div > div:nth-child(12) > div:nth-child(1)").css('background-color', mo);
+							$("div.content > div > div:nth-child(12) > div:nth-child(3)").css('background-color', mo);
+						}
+						
+						if(Downcompare(${dto1.match},${dto2.match}) == ${dto1.match}){
+							$("div.content > div > div:nth-child(13) > div:nth-child(1)").css('background-color', win);
+							$("div.content > div > div:nth-child(13) > div:nth-child(3)").css('background-color', lose);
+						}else if(Downcompare(${dto1.match},${dto2.match}) == ${dto2.match}){
+							$("div.content > div > div:nth-child(13) > div:nth-child(1)").css('background-color', lose);
+							$("div.content > div > div:nth-child(13) > div:nth-child(3)").css('background-color', win);
+						}else{
+							$("div.content > div > div:nth-child(13) > div:nth-child(1)").css('background-color', mo);
+							$("div.content > div > div:nth-child(13) > div:nth-child(3)").css('background-color', mo);
+						}
+						
+						if(Upcompare(${dto1.bestrating},${dto2.bestrating}) == ${dto1.bestrating}){
+							$("div.content > div > div:nth-child(14) > div:nth-child(1)").css('background-color', win);
+							$("div.content > div > div:nth-child(14) > div:nth-child(3)").css('background-color', lose);
+						}else if(Upcompare(${dto1.bestrating},${dto2.bestrating}) == ${dto2.bestrating}){
+							$("div.content > div > div:nth-child(14) > div:nth-child(1)").css('background-color', lose);
+							$("div.content > div > div:nth-child(14) > div:nth-child(3)").css('background-color', win);
+						}else{
+							$("div.content > div > div:nth-child(14) > div:nth-child(1)").css('background-color', mo);
+							$("div.content > div > div:nth-child(14) > div:nth-child(3)").css('background-color', mo);
+						}
+						
+						if(Upcompare(${dto1.bestkill},${dto2.bestkill}) == ${dto1.bestkill}){
+							$("div.content > div > div:nth-child(15) > div:nth-child(1)").css('background-color', win);
+							$("div.content > div > div:nth-child(15) > div:nth-child(3)").css('background-color', lose);
+						}else if(Upcompare(${dto1.bestkill},${dto2.bestkill}) == ${dto2.bestkill}){
+							$("div.content > div > div:nth-child(15) > div:nth-child(1)").css('background-color', lose);
+							$("div.content > div > div:nth-child(15) > div:nth-child(3)").css('background-color', win);
+						}else{
+							$("div.content > div > div:nth-child(15) > div:nth-child(1)").css('background-color', mo);
+							$("div.content > div > div:nth-child(15) > div:nth-child(3)").css('background-color', mo);
+						}
+						
+						if(Upcompare(${dto1.bestkills},${dto2.bestkills}) == ${dto1.bestkills}){
+							$("div.content > div > div:nth-child(16) > div:nth-child(1)").css('background-color', win);
+							$("div.content > div > div:nth-child(16) > div:nth-child(3)").css('background-color', lose);
+						}else if(Upcompare(${dto1.bestkills},${dto2.bestkills}) == ${dto2.bestkills}){
+							$("div.content > div > div:nth-child(16) > div:nth-child(1)").css('background-color', lose);
+							$("div.content > div > div:nth-child(16) > div:nth-child(3)").css('background-color', win);
+						}else{
+							$("div.content > div > div:nth-child(16) > div:nth-child(1)").css('background-color', mo);
+							$("div.content > div > div:nth-child(16) > div:nth-child(3)").css('background-color', mo);
+						}
+						
+						if(Upcompare(${dto1.besttime},${dto2.besttime}) == ${dto1.besttime}){
+							$("div.content > div > div.row.row-body.row-footer > div:nth-child(1)").css('background-color', win);
+							$("div.content > div > div.row.row-body.row-footer > div:nth-child(3)").css('background-color', lose);
+						}else if(Upcompare(${dto1.besttime},${dto2.besttime}) == ${dto2.besttime}){
+							$("div.content > div > div.row.row-body.row-footer > div:nth-child(1)").css('background-color', lose);
+							$("div.content > div > div.row.row-body.row-footer > div:nth-child(3)").css('background-color', win);
+						}else{
+							$("div.content > div > div.row.row-body.row-footer > div:nth-child(1)").css('background-color', mo);
+							$("div.content > div > div.row.row-body.row-footer > div:nth-child(3)").css('background-color', mo);
+						}
+						
+					});
+				</script>
 		</div>
 	</div>
 	
