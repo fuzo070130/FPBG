@@ -45,7 +45,7 @@
 								<label for="exampleInputPassword1">Content</label>
 								<%-- <textarea class="form-control" name="adminboardContent" rows="3"
 									readonly="readonly">${AdminBoardVO.adminboardContent}</textarea> --%>
-								<div class="form-control" style="width: 100%; height: 100%;">
+								<div class="form-control" style="width: 100%; overflow: auto; height: 1600px;">
 									${AdminBoardVO.adminboardContent}
 								</div>
 							</div>
@@ -92,6 +92,8 @@ $(document).ready(function(){
 		formObj.attr("action", "/FPBG/patch/Adminlist");
 		formObj.submit();
 	});
+	
+	$("img").css('width','100%').css('hegiht','100%');
 	
 });
 </script>

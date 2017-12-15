@@ -41,8 +41,11 @@
 							</div>
 							<div class="form-group">
 								<label for="exampleInputPassword1">Content</label>
-								<textarea class="form-control" name="boardContent" rows="3"
-									readonly="readonly">${boardVO.boardContent}</textarea>
+								<%-- <textarea class="form-control" name="boardContent" rows="3"
+									readonly="readonly">${boardVO.boardContent}</textarea> --%>
+								<div class="form-control" style="width: 100%; overflow: auto; height: 1600px;">
+									${boardVO.boardContent}
+								</div>
 							</div>
 							<div class="form-group">
 								<label for="exampleInputEmail1">Writer</label> <input
